@@ -11,7 +11,7 @@ namespace Core\Interfaces;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class _Controller
+abstract class _Controller
 {
     protected $container;
 

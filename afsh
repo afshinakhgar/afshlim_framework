@@ -1,0 +1,77 @@
+#!/usr/bin/env php
+<?php
+require __DIR__.'/vendor/autoload.php';
+define("MIGRATIONS_PATH", __DIR__."/database/migrations");
+define("SEEDS_PATH", __DIR__."/database/seeds");
+
+
+use \Slim\App;
+require __DIR__.'/config/settings.php';
+$app = new App($config);
+require_once __DIR__.'/bootstrap/dependencies.php';
+
+/**
+ * Script for creating, destroying, and seeding the app's database
+ */
+class Afsh {
+    function __construct($args,$container)
+    {
+        $this->args = $args;
+        $this->container = $container;
+    }
+    function help()
+    {
+        echo "\n";
+        echo "syntaxis: php afsh <command> [<args>]".PHP_EOL;
+        echo PHP_EOL;
+        echo "Commands: \n";
+        echo "php afsh --help                  -->   Displays the help menu.".PHP_EOL;
+        echo "php afsh migrate                 -->   Migrate the database.".PHP_EOL;
+        echo "php afsh seed                    -->   Seed the database tables.".PHP_EOL;
+        echo "php afsh afsh migrate --seed   -->   Migrate and seed the database.".PHP_EOL;
+        echo PHP_EOL;
+    }
+    function exec()
+    {
+        if (count($this->args) <= 1) {
+            $this->help();
+        } else {
+            switch ($this->args[1]) {
+                case "migrate":
+                    $this->runMigrations();
+                    if (!isset($this->args[2]) || $this->args[2] != '--seed')
+                        break;
+                case "seed":
+                    $this->runSeed();
+                    break;
+                case "help":
+                case "--help":
+                    $this->help();
+                    break;
+            }
+        }
+    }
+    function runMigrations()
+    {
+    echo __DIR__;
+        $files = glob(MIGRATIONS_PATH.'/*.php');
+        $this->run($files);
+    }
+    function runSeed()
+    {
+        $files = glob(SEEDS_PATH.'/*.php');
+        $this->run($files);
+    }
+    
+    private function run($files)
+    {
+        foreach ($files as $file) {
+            require_once($file);
+            $class = basename($file, '.php');
+            $obj = new $class($this->container);
+            $obj->run();
+        }
+    }
+}
+$afsh = new Afsh($argv,$container);
+$afsh->exec();
