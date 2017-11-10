@@ -1,5 +1,4 @@
 <?php
-use App\Controller\HomeController;
 
 $container = $app->getContainer();
 
@@ -13,6 +12,28 @@ $container['db'] = function ($container) {
     return $pdo;
 };
 
+// Service factory for the ORM
+$container['db_el_orm'] = function ($container) {
+    $capsule = new \Illuminate\Database\Capsule\Manager;
+    $capsule->addConnection($container['settings']['db']);
+
+    $capsule->setAsGlobal();
+    $capsule->bootEloquent();
+
+    return $capsule;
+};
+
+
+
+// Register provider
+$container['flash'] = function () {
+    return new \Slim\Flash\Messages();
+};
+
+
+$container['validator'] = function () {
+    return new Awurth\SlimValidation\Validator();
+};
 
 $GLOBALS['container'] = $container;
 

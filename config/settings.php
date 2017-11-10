@@ -4,11 +4,11 @@ $config = [
         'displayErrorDetails' => true,
         'addContentLengthHeader' => false,
         'debug'=>true,
-        'logger' => [
-            'name' => 'slim-app',
-            'level' => Monolog\Logger::DEBUG,
-            'path' => __DIR__ . '/../logs/app.log',
-        ],
+//        'logger' => [
+//            'name' => 'slim-app',
+//            'level' => Monolog\Logger::DEBUG,
+//            'path' => __DIR__ . '/../logs/app.log',
+//        ],
         'db' => [
             'host' 	 => 'localhost',
             'user' 	 => 'root',
