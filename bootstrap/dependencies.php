@@ -35,6 +35,17 @@ $container['validator'] = function () {
     return new Awurth\SlimValidation\Validator();
 };
 
+
+
+use Slim\Views\PhpRenderer;
+
+$container['view'] = function ($container) {
+    $view = $container['settings']['view'];
+    return new PhpRenderer($view['path']);
+};
+
+
+
 $GLOBALS['container'] = $container;
 
 return $container;

@@ -15,6 +15,9 @@ $config = [
             'pass' 	 => 'root',
             'dbname' => 'cafesaba',
         ],
+        'view' => [
+            'path' 	 => '../app/View',
+        ],
 
     ],
 

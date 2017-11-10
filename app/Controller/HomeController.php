@@ -2,12 +2,19 @@
 namespace App\Controller;
 
 
+use Slim\Http\Request;
+use Slim\Http\Response;
+
 class HomeController extends Controller
 {
 
-    function index()
+    function index(Request $request , Response $response)
     {
-        dd(1);
+
+
+
+        //Render a Template
+        $response = $this->view->render($response, "index.php");
     }
 
 
