@@ -13,15 +13,38 @@ $container['db'] = function ($container) {
 };
 
 // Service factory for the ORM
-$container['db_el_orm'] = function ($container) {
+
+
+$container['eloquent'] = function ($container) {
     $capsule = new \Illuminate\Database\Capsule\Manager;
     $capsule->addConnection($container['settings']['db']);
-
     $capsule->setAsGlobal();
     $capsule->bootEloquent();
+    return $capsule;
+};
+
+
+$capsule = new \Illuminate\Database\Capsule\Manager;
+$capsule->addConnection($container['settings']['db']);
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
+$container['db_eloquent'] = function ($container) {
 
     return $capsule;
 };
+
+
+
+//
+//$container['db_el_orm'] = function ($container) {
+//    $capsule = new \Illuminate\Database\Capsule\Manager;
+//    $capsule->addConnection($container['settings']['db']);
+//
+//    $capsule->setAsGlobal();
+//    $capsule->bootEloquent();
+//
+//    return $capsule;
+//};
 
 
 
@@ -42,12 +65,16 @@ $container['view'] = function ($container) {
 
     $view = $container['settings']['view'];
 
-    return new PhpRenderer($view['path']);
+    return new \Slim\Views\PhpRenderer($view['path']);
 };
 
 
 
 $GLOBALS['container'] = $container;
+
+
+
+
 
 return $container;
 

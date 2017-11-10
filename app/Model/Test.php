@@ -10,9 +10,11 @@ namespace App\Model;
 
 
 use Core\Interfaces\_Model;
-use Illuminate\Database\Eloquent\Model;
 
 class Test extends _Model
 {
+
+    protected $fillable = ['name','email','password'];
+
 
 }

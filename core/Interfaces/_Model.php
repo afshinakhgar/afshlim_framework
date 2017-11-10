@@ -7,9 +7,11 @@
  */
 
 namespace Core\Interfaces;
+use Illuminate\Database\Capsule\Manager;
+use Illuminate\Database\Eloquent\Model;
 
-
-abstract class _Model
+class _Model extends Model
 {
+
 
 }

@@ -33,17 +33,19 @@ class HomeController extends Controller
 //
 //
 
-        $this->testModel->serialnumber = 123;
-        $this->testModel->name = 'My Test Widget';
-        $this->testModel->save();
-        echo 'Created!';
+
+        // Or create a new book
+        $book = new Test(array(
+            'name' => 'afshin22',
+            'email' => 'afshi2n@2a.com',
+            'password' => crypt('afshin@a.com'),
+        ));
+        $book->save();
+        echo $book->toJson();
 
 
-        $a = [
-          'a'=>213123
-        ];
         //Render a Template
-        $response = $this->view->render($response, "index.php",$a);
+        $response = $this->view->render($response, "index.php");
     }
 
 
