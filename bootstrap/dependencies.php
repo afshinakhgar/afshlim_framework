@@ -35,6 +35,16 @@ $container['db_eloquent'] = function ($container) {
 
 
 
+// monolog
+$container['logger'] = function ($c) {
+    $settings = $c->get('settings')['logger'];
+    $logger = new Monolog\Logger($settings['name']);
+    $logger->pushProcessor(new Monolog\Processor\UidProcessor());
+    $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
+    return $logger;
+};
+
+
 //
 //$container['db_el_orm'] = function ($container) {
 //    $capsule = new \Illuminate\Database\Capsule\Manager;

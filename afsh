@@ -53,7 +53,6 @@ class Afsh {
     }
     function runMigrations()
     {
-    echo __DIR__;
         $files = glob(MIGRATIONS_PATH.'/*.php');
         $this->run($files);
     }
@@ -65,9 +64,15 @@ class Afsh {
     
     private function run($files)
     {
+//        echo " \n";
         foreach ($files as $file) {
             require_once($file);
+
             $class = basename($file, '.php');
+
+            echo $class .' ++++ MIGRATION RUN ++++' .PHP_EOL;
+
+
             $obj = new $class($this->container);
             $obj->run();
         }
