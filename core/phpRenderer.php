@@ -9,9 +9,9 @@
 namespace Core;
 
 use Psr\Http\Message\ResponseInterface;
-use Slim\Views\PhpRenderer;
+use Slim\Views\PhpRenderer as  rend;
 
-class View extends PhpRenderer
+class phpRenderer extends rend
 {
     protected $layout;
 

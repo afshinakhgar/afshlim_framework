@@ -9,7 +9,13 @@
         "awurth/slim-validation": "^3.0",
         "slim/csrf": "^0.8.2",
         "monolog/monolog": "^1.23",
-        "maximebf/debugbar": "1.*"
+        "maximebf/debugbar": "1.*",
+        "zeuxisoo/slim-whoops": "0.6.*",
+        "filp/whoops": "2.1.10",
+        "illuminate/view": "^5.5",
+        "illuminate/events": "^5.5",
+        "illuminate/filesystem": "^5.5"
+
     },
     "autoload": {
         "psr-4": {
