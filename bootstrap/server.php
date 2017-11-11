@@ -4,12 +4,10 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 require '../vendor/autoload.php';
 
+define("PATH_ROOT", __DIR__ . '/../');
 
 
 use \Slim\App;
-use Core\Helpers\EnvHelper;
-$env = new EnvHelper();
-
 require '../config/settings.php';
 $app = new App($config);
 

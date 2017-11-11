@@ -28,8 +28,18 @@ class Afsh {
         echo "php afsh --help                  -->   Displays the help menu.".PHP_EOL;
         echo "php afsh migrate                 -->   Migrate the database.".PHP_EOL;
         echo "php afsh seed                    -->   Seed the database tables.".PHP_EOL;
-        echo "php afsh afsh migrate --seed   -->   Migrate and seed the database.".PHP_EOL;
+        echo "php afsh  migrate --seed   -->   Migrate and seed the database.".PHP_EOL;
+        echo "php afsh serve --[port]   -->   php SERVER with port. localhost:8000 ".PHP_EOL;
         echo PHP_EOL;
+    }
+
+    function runServer ()
+    {
+        if(isset($this->args[2])){
+            exec('php -S localhost:'.$this->args[2].'');
+        }else{
+            exec('php -S localhost:8000 ');
+        }
     }
     function exec()
     {
@@ -43,6 +53,9 @@ class Afsh {
                         break;
                 case "seed":
                     $this->runSeed();
+                    break;
+                case "serve":
+                    $this->runServer();
                     break;
                 case "help":
                 case "--help":

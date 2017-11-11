@@ -7,13 +7,12 @@
  */
 
 namespace Core\Helpers;
-
+use Dotenv\Dotenv;
 
 class EnvHelper
 {
     public function __invoke($filePath ,$key, $default = null)
     {
-
         if (file_exists($filePath . '/.env')) {
             $_dotenv = new Dotenv($filePath );
             $_dotenv->load();
