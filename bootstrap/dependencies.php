@@ -47,16 +47,21 @@ $container['logger'] = function ($c) {
 
 
 //
-//$container['db_el_orm'] = function ($container) {
-//    $capsule = new \Illuminate\Database\Capsule\Manager;
-//    $capsule->addConnection($container['settings']['db']);
+//$container['view'] = function ($container) {
 //
-//    $capsule->setAsGlobal();
-//    $capsule->bootEloquent();
+//    $view = $container['settings']['view'];
 //
-//    return $capsule;
+//    return new \Slim\Views\PhpRenderer($view['path']);
 //};
 
+
+// Register Blade View helper
+$container['view'] = function ($container) {
+    return new \Slim\Views\Blade(
+        $container['settings']['renderer']['blade_template_path'],
+        $container['settings']['renderer']['blade_cache_path']
+    );
+};
 
 
 // Register provider
@@ -71,13 +76,6 @@ $container['validator'] = function () {
 
 
 
-
-$container['view'] = function ($container) {
-
-    $view = $container['settings']['view'];
-
-    return new \Slim\Views\PhpRenderer($view['path']);
-};
 
 
 

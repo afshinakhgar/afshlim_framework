@@ -27,6 +27,11 @@ $config = [
         'view' => [
             'path' 	 => '../app/View',
         ],
+        // Renderer settings
+        'renderer' => [
+            'blade_template_path' => '../app/View/blade', // String or array of multiple paths
+            'blade_cache_path'    => '../app/View/blade_cache', // Mandatory by default, though could probably turn caching off for development
+        ],
 
     ],
 

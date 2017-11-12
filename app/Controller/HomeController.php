@@ -33,19 +33,24 @@ class HomeController extends Controller
 //
 //
 
+//
+//        // Or create a new book
+//        $book = new Test(array(
+//            'name' => 'afshin22',
+//            'email' => 'afshi2n@2a.com',
+//            'password' => crypt('afshin@a.com'),
+//        ));
+//        $book->save();
+//        echo $book->toJson();
 
-        // Or create a new book
-        $book = new Test(array(
-            'name' => 'afshin22',
-            'email' => 'afshi2n@2a.com',
-            'password' => crypt('afshin@a.com'),
-        ));
-        $book->save();
-        echo $book->toJson();
+
+
+        return $this->view->render($response, 'index');
+
 
 
         //Render a Template
-        $response = $this->view->render($response, "index.php");
+//        $response = $this->view->render($response, "index.php");
     }
 
 
