@@ -9,8 +9,8 @@
         "awurth/slim-validation": "^3.0",
         "slim/csrf": "^0.8.2",
         "monolog/monolog": "^1.23",
-        "maximebf/debugbar": "1.*",
-        "rubellum/slim-blade-view": "^0.1.1"
+        "rubellum/slim-blade-view": "^0.1.1",
+        "runcmf/runtracy": "^0.2.10"
     },
     "autoload": {
         "psr-4": {

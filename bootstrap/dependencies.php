@@ -21,6 +21,8 @@ $container['eloquent'] = function ($container) {
     $capsule->addConnection($container['settings']['db']);
     $capsule->setAsGlobal();
     $capsule->bootEloquent();
+    $capsule::connection()->enableQueryLog();
+
     return $capsule;
 };
 
@@ -29,6 +31,8 @@ $capsule = new \Illuminate\Database\Capsule\Manager;
 $capsule->addConnection($container['settings']['db']);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
+$capsule::connection()->enableQueryLog();
+
 $container['db_eloquent'] = function ($container) {
 
     return $capsule;
@@ -53,7 +57,6 @@ $container['logger'] = function ($c) {
 //
 //    return new \Slim\Views\PhpRenderer($view['path']);
 //};
-
 
 // Register Blade View helper
 $container['view'] = function ($container) {
