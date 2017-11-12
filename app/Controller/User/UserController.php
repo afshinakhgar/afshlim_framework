@@ -19,23 +19,7 @@ class HomeController extends Controller
 
 
 
-    function register()
-    {
-        $user = User::create([
-            'first_name' => 'afshin',
-            'last_name' => 'akhgar',
-            'email' => 'afshi2n@2a.com',
-            'password' => crypt('afshin@a.com'),
-        ]);
 
-
-
-
-        $response = $this->view->render($user, "index.php");
-
-
-
-    }
 
     function index(Request $request , Response $response)
     {
