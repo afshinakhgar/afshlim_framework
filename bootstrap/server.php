@@ -11,9 +11,12 @@ use \Slim\App;
 require '../config/settings.php';
 $app = new App($config);
 
+require  'middlewares.php';
+
 // get container app
 require 'dependencies.php';
 require  'routes.php';
+require  'bootstrap.php';
 
 
 

@@ -12,5 +12,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends _Model
 {
-
+    /**
+     * User tokens relation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tokens()
+    {
+        return $this->hasMany(Token::class);
+    }
 }

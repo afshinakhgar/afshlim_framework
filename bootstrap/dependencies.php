@@ -27,16 +27,16 @@ $container['eloquent'] = function ($container) {
 };
 
 
-$capsule = new \Illuminate\Database\Capsule\Manager;
-$capsule->addConnection($container['settings']['db']);
-$capsule->setAsGlobal();
-$capsule->bootEloquent();
-$capsule::connection()->enableQueryLog();
-
-$container['db_eloquent'] = function ($container) {
-
-    return $capsule;
-};
+//$capsule = new \Illuminate\Database\Capsule\Manager;
+//$capsule->addConnection($container['settings']['db']);
+//$capsule->setAsGlobal();
+//$capsule->bootEloquent();
+//$capsule::connection()->enableQueryLog();
+//
+//$container['db_eloquent'] = function ($container) {
+//
+//    return $capsule;
+//};
 
 
 
@@ -49,20 +49,11 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 
-
-//
-//$container['view'] = function ($container) {
-//
-//    $view = $container['settings']['view'];
-//
-//    return new \Slim\Views\PhpRenderer($view['path']);
-//};
-
 // Register Blade View helper
 $container['view'] = function ($container) {
     return new \Slim\Views\Blade(
-        $container['settings']['renderer']['blade_template_path'],
-        $container['settings']['renderer']['blade_cache_path']
+        $container['settings']['view']['blade_template_path'].$container['settings']['view']['template'],
+        $container['settings']['view']['blade_cache_path']
     );
 };
 
@@ -70,11 +61,6 @@ $container['view'] = function ($container) {
 // Register provider
 $container['flash'] = function () {
     return new \Slim\Flash\Messages();
-};
-
-
-$container['validator'] = function () {
-    return new Awurth\SlimValidation\Validator();
 };
 
 

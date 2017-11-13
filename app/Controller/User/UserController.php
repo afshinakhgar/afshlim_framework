@@ -6,7 +6,7 @@ use App\Model\User;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class HomeController extends Controller
+class UserController extends Controller
 {
 
     private $testModel;

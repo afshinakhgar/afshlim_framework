@@ -9,7 +9,7 @@
 namespace Core\Helpers;
 use Dotenv\Dotenv;
 
-class EnvHelper
+class Env
 {
     public function __invoke($filePath ,$key, $default = null)
     {

@@ -1,20 +1,20 @@
 <?php
 
 $APPROOT =  __DIR__ . '/../';
-use Core\Helpers\EnvHelper;
-$env = new EnvHelper();
+$env = new \Core\Helpers\Env();
 
 use Tracy\Debugger;
 
 defined('DS') || define('DS', DIRECTORY_SEPARATOR);
 define('DIR', realpath(__DIR__ . '/../') . DS);
 Debugger::enable(Debugger::DEVELOPMENT, DIR . 'logs/debugger');
-//Debugger::enable(Debugger::PRODUCTION, DIR . 'var/log');
 $config = [
     'settings' => [
         'displayErrorDetails' => true,
         'addContentLengthHeader' => false,
+        'determineRouteBeforeAppMiddleware' => true,
         'debug'=>true,
+        'default_migration_table' => 'phinxlog',
         'logger' => [
             'name' => 'afshFramework',
             'level' => Monolog\Logger::DEBUG,
@@ -34,9 +34,10 @@ $config = [
             'path' 	 => '../app/View',
         ],
         // Renderer settings
-        'renderer' => [
-            'blade_template_path' => '../app/View/blade', // String or array of multiple paths
-            'blade_cache_path'    => '../app/View/blade_cache', // Mandatory by default, though could probably turn caching off for development
+        'view' => [
+            'blade_template_path' => '../app/View/', // String or array of multiple paths
+            'blade_cache_path'    => '../app/View/cache', // Mandatory by default, though could probably turn caching off for development
+            'template'    => 'blade', // template name
         ],
 
         /* Tracy debuger*/

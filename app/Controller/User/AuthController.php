@@ -17,26 +17,30 @@ use Slim\Http\Response;
 class AuthController extends Controller
 {
 
-    function register(Request $request , Response $response)
+    public function get_register_Action(Request $request , Response $response )
     {
-        $validation = $this->validator->validate($request,[
-            'email' => v::noWhitespace()->notEmpty()->email()->emailAvailable(),
-            'name' => v::noWhitespace()->notEmpty()->alpha(),
-            'password' => v::noWhitespace()->notEmpty(),
-        ]);
+        return $this->view->render($response, 'auth/register');
+    }
 
 
-        if ($validation->failed()) {
-            return $response->withRedirect($this->router->pathFor('auth.signup'));
-        }else{
-            $user = User::create([
-                'first_name' => 'afshin',
-                'last_name' => 'akhgar',
-                'email' => 'afshi2n@2a.com',
-                'password' => crypt('afshin@a.com'),
+    public function post_register_Action(Request $request , Response $response)
+    {
+            $validation = $this->validator->validate($request,[
+                'email' => v::noWhitespace()->notEmpty()->email()->emailAvailable(),
+                'name' => v::noWhitespace()->notEmpty()->alpha(),
+                'password' => v::noWhitespace()->notEmpty(),
             ]);
-        }
 
 
+            if ($validation->failed()) {
+                return $response->withRedirect($this->router->pathFor('auth.signup'));
+            }else{
+                $user = User::create([
+                    'first_name' => 'afshin',
+                    'last_name' => 'akhgar',
+                    'email' => 'afshi2n@2a.com',
+                    'password' => crypt('afshin@a.com'),
+                ]);
+            }
     }
 }
