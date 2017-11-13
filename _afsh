@@ -10,6 +10,9 @@ require __DIR__.'/config/settings.php';
 $app = new App($config);
 require_once __DIR__.'/bootstrap/dependencies.php';
 
+
+
+
 /**
  * Script for creating, destroying, and seeding the app's database
  */

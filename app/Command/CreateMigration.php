@@ -50,8 +50,8 @@ class CreateMigration extends Command
             $map    .= '$table->'.$type.'("'.$name.'");'."\n";
         }
         $file = str_replace("!table", $map, $file);
-        if (!file_exists($directory.date('YmdHis')."_".ucfirst($names)."Migration.php")) {
-            $fh = fopen($directory .date('YmdHis')."_". ucfirst($names) . "Migration.php", "w");
+        if (!file_exists($directory.date('Y-m-d-His')."_".ucfirst($names)."Migration.php")) {
+            $fh = fopen($directory .date('Y-m-d-His')."_". ucfirst($names) . "Migration.php", "w");
             fwrite($fh, $file);
             fclose($fh);
             $className = ucfirst($names) . "Migration.php";

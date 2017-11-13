@@ -4,17 +4,17 @@ namespace Database\Migration;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Core\Interfaces\_Migration;
 use Illuminate\Database\Schema\Blueprint as Blueprint;
-class !nameMigration extends _Migration
+class UserMigration extends _Migration
 {
     /**
      * Do the migration
      */
     public function up()
     {
-        $this->schema->create('?name', function(Blueprint $table)
+        $this->schema->create('user', function(Blueprint $table)
         {
             $table->increments('id');
-            !table
+            
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ class !nameMigration extends _Migration
      */
     public function down()
     {
-        $this->schema->drop('?name');
+        $this->schema->drop('user');
     }
 }

@@ -16,7 +16,7 @@ abstract class _Migration extends AbstractMigration {
     public $capsule;
     /** @var \Illuminate\Database\Schema\Builder $capsule */
     public $schema;
-    public function init($container)  {
+    protected function init($container)  {
         $this->schema = $container->eloquent->schema();
     }
 }
