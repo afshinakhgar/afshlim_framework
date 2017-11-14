@@ -9,7 +9,6 @@
         "rubellum/slim-blade-view": "^0.1.1",
         "runcmf/runtracy": "^0.2.10",
         "alexgarrett/violin": "2.*",
-        "robmorgan/phinx": "0.5.*",
         "symfony/console": "^3.3"
 
     },

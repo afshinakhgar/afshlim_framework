@@ -4,8 +4,16 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+
+use \Slim\App;
+require __DIR__.'/config/settings.php';
+$app = new App($config);
+require_once __DIR__.'/bootstrap/dependencies.php';
+
+
+
 use App\Command\HashCommand;
-use App\Command\CreateMigration;
+use App\Command\MakeMigration;
 use App\Command\MigrateCommand;
 use Symfony\Component\Console\Application;
 
@@ -13,7 +21,7 @@ use Symfony\Component\Console\Application;
 $app = new Application();
 
 $app->add(new HashCommand());
-$app->add(new CreateMigration());
+$app->add(new MakeMigration());
 $app->add(new MigrateCommand());
 
 

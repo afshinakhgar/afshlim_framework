@@ -8,15 +8,20 @@
 
 namespace Core\Interfaces;
 
-use Illuminate\Database\Capsule\Manager as Capsule;
-use Phinx\Migration\AbstractMigration;
 
-abstract class _Migration extends AbstractMigration {
-    /** @var \Illuminate\Database\Capsule\Manager $capsule */
-    public $capsule;
-    /** @var \Illuminate\Database\Schema\Builder $capsule */
-    public $schema;
-    protected function init($container)  {
-        $this->schema = $container->eloquent->schema();
+
+abstract class _Migration
+{
+    public function __construct($container)
+    {
+        $this->container = $container;
     }
+
+    public function __get($property)
+    {
+        if ($this->container->{$property}) {
+            return $this->container->{$property};
+        }
+    }
+
 }
