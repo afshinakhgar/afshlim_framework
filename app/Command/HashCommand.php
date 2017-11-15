@@ -8,7 +8,7 @@
 
 namespace App\Command;
 
-use Symfony\Component\Console\Command\Command;
+use Core\Interfaces\_Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
@@ -17,7 +17,7 @@ use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 
 use Core\Helpers\Hash;
 
-class HashCommand extends Command{
+class HashCommand extends _Command {
 
     protected function configure(){
         $this->setName("hash")

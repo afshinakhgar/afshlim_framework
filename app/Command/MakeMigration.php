@@ -7,19 +7,19 @@
  */
 
 namespace App\Command;
-use Symfony\Component\Console\Command\Command;
+use Core\Interfaces\_Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 
-class CreateMigration extends Command
+class MakeMigration extends _Command
 {
     protected function configure()
     {
         $this
-            ->setName('create:migration')
+            ->setName('make:migration')
             ->setDescription('Generate Model Class')
             ->addArgument(
                 'name',
@@ -39,9 +39,16 @@ class CreateMigration extends Command
         $column = $input->getArgument('column');
         $map ="";
         $directory = 'database/migrations/';
-        $file = file_get_contents("core/resources/migration.template.txt");
-        $file = str_replace("!name", ucfirst($names), $file);
-        $file = str_replace("?name", strtolower($names), $file);
+        $file = file_get_contents("core/resources/templates/create_migration.txt");
+        $explodedArrName = explode('_',$names);
+        $classNameNew ='';
+        foreach($explodedArrName as $parted_names){
+            $classNameNew .= ucfirst($parted_names);
+        }
+
+
+        $file = str_replace("!name", ucfirst($classNameNew), $file);
+        $file = str_replace("?name", strtolower($classNameNew), $file);
         foreach ($column as $c) {
             $entity = explode(":", $c);
             $name   = $entity[0];
@@ -50,11 +57,16 @@ class CreateMigration extends Command
             $map    .= '$table->'.$type.'("'.$name.'");'."\n";
         }
         $file = str_replace("!table", $map, $file);
-        if (!file_exists($directory.date('Y-m-d-His')."_".ucfirst($names)."Migration.php")) {
-            $fh = fopen($directory .date('Y-m-d-His')."_". ucfirst($names) . "Migration.php", "w");
+        $explodedArrName = explode('_',$names);
+        $fileNameNew ='';
+        foreach($explodedArrName as $parted_names){
+            $fileNameNew .= ucfirst($parted_names).'_';
+        }
+        if (!file_exists($directory.date('Y-m-d-His')."_".ucfirst($fileNameNew)."Migration.php")) {
+            $fh = fopen($directory .date('Y-m-d-His')."_". ucfirst($fileNameNew) . "Migration.php", "w");
             fwrite($fh, $file);
             fclose($fh);
-            $className = ucfirst($names) . "Migration.php";
+            $className = ucfirst($fileNameNew) . "Migration.php";
             $output->writeln("Created $className in migrations");
         } else {
             $output->writeln("Class migration already Exists!");
