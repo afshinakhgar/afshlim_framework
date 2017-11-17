@@ -1,0 +1,16 @@
+<?php
+
+date_default_timezone_set("Asia/Tehran");
+require_once 'vendor/autoload.php';
+use Phpmig\Adapter;
+use Illuminate\Database\Capsule\Manager as Capsule;
+include 'settings.php';
+$capsule   = new Capsule;
+$capsule->addConnection($config['settings']['db']);
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
+$container = new ArrayObject();
+$container['phpmig.adapter'] = new Adapter\Illuminate\Database($capsule, 'migrations');
+$container['phpmig.migrations_path'] =  'database/migrations';
+$container['phpmig.migrations_template_path'] = 'core/ources/create_migration.txt';
+return $container;

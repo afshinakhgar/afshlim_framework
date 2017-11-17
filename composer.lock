@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "24a90d37f68a0328c4e97ba09173ecad",
+    "content-hash": "c099cfad09f6fac747fea6bde3017ef1",
     "packages": [
         {
             "name": "alexgarrett/violin",
@@ -81,6 +81,69 @@
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
             "time": "2017-02-14T19:40:03+00:00"
+        },
+        {
+            "name": "davedevelopment/phpmig",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/davedevelopment/phpmig.git",
+                "reference": "93882bfa15b7cb443b58d248bfec868dded8614c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/davedevelopment/phpmig/zipball/93882bfa15b7cb443b58d248bfec868dded8614c",
+                "reference": "93882bfa15b7cb443b58d248bfec868dded8614c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/config": "^2||^3",
+                "symfony/console": "^2||^3"
+            },
+            "require-dev": {
+                "mockery/mockery": "*@dev",
+                "phpunit/phpunit": "3.*"
+            },
+            "suggest": {
+                "pimple/pimple": "Pimple allows to bootstrap phpmig really easily."
+            },
+            "bin": [
+                "bin/phpmig"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Phpmig": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dave Marshall",
+                    "email": "dave.marshall@atstsolutions.co.uk",
+                    "homepage": "http://davedevelopment.co.uk"
+                },
+                {
+                    "name": "David Nielsen",
+                    "email": "david@panmedia.co.nz"
+                }
+            ],
+            "description": "Simple migrations system for php",
+            "homepage": "http://github.com/davedevelopment/phpmig",
+            "keywords": [
+                "database migrations",
+                "migrations"
+            ],
+            "time": "2017-09-06T15:42:49+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -1289,6 +1352,68 @@
             "time": "2017-11-04T08:46:46+00:00"
         },
         {
+            "name": "symfony/config",
+            "version": "v3.3.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/config.git",
+                "reference": "8d2649077dc54dfbaf521d31f217383d82303c5f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/config/zipball/8d2649077dc54dfbaf521d31f217383d82303c5f",
+                "reference": "8d2649077dc54dfbaf521d31f217383d82303c5f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9|>=7.0.8",
+                "symfony/filesystem": "~2.8|~3.0"
+            },
+            "conflict": {
+                "symfony/dependency-injection": "<3.3",
+                "symfony/finder": "<3.3"
+            },
+            "require-dev": {
+                "symfony/dependency-injection": "~3.3",
+                "symfony/finder": "~3.3",
+                "symfony/yaml": "~3.0"
+            },
+            "suggest": {
+                "symfony/yaml": "To use the yaml reference dumper"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Config\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Config Component",
+            "homepage": "https://symfony.com",
+            "time": "2017-11-07T14:16:22+00:00"
+        },
+        {
             "name": "symfony/console",
             "version": "v3.3.12",
             "source": {
@@ -1411,6 +1536,55 @@
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
             "time": "2017-11-10T16:38:39+00:00"
+        },
+        {
+            "name": "symfony/filesystem",
+            "version": "v3.3.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/filesystem.git",
+                "reference": "77db266766b54db3ee982fe51868328b887ce15c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/77db266766b54db3ee982fe51868328b887ce15c",
+                "reference": "77db266766b54db3ee982fe51868328b887ce15c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9|>=7.0.8"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Filesystem\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Filesystem Component",
+            "homepage": "https://symfony.com",
+            "time": "2017-11-07T14:12:55+00:00"
         },
         {
             "name": "symfony/finder",

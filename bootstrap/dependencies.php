@@ -1,6 +1,7 @@
 <?php
 
-
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Phpmig\Adapter;
 $container = $app->getContainer();
 
 /* database connection */
@@ -18,6 +19,7 @@ $container['db'] = function ($container) {
 // Service factory for the ORM
 
 
+
 $container['eloquent'] = function ($container) {
     $capsule = new \Illuminate\Database\Capsule\Manager;
     $capsule->addConnection($container['settings']['db']);
@@ -28,18 +30,11 @@ $container['eloquent'] = function ($container) {
     return $capsule;
 };
 
-
-$capsule = new \Illuminate\Database\Capsule\Manager;
-$capsule->addConnection($container['settings']['db']);
+// database
+$capsule = new Capsule;
+$capsule->addConnection($config['settings']['db']);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
-$capsule::connection()->enableQueryLog();
-
-$container['db_eloquent'] = function ($container) {
-
-    return $capsule;
-};
-
 
 
 // monolog

@@ -1,11 +1,10 @@
 <?php
 
-$APPROOT =  __DIR__ . '/../';
+$APPROOT =  __APP_ROOT__;
 $env = new \Core\Helpers\Env();
 
 
 defined('DS') || define('DS', DIRECTORY_SEPARATOR);
-define('DIR', realpath(__DIR__ . '/../') . DS);
 $config = [
     'settings' => [
         'displayErrorDetails' => true,
@@ -70,7 +69,7 @@ $config = [
                 'ConsoleHashAlgorithm' => 'sha1',
                 // Home directory (multi-user mode supported) values ( var || array )
                 // '' || '/tmp' || ['user1' => '/home/user1', 'user2' => '/home/user2']
-                'ConsoleHomeDirectory' => DIR,
+                'ConsoleHomeDirectory' => __APP_ROOT__,
                 // terminal.js full URI
                 'ConsoleTerminalJs' => '/assets/js/jquery.terminal.min.js',
                 // terminal.css full URI
@@ -90,4 +89,5 @@ $config = [
 
 ];
 
+return $config;
 ?>
