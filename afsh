@@ -19,6 +19,7 @@ use App\Command\HashCommand;
 use App\Command\MakeMigration;
 use App\Command\MigrateCommand;
 use App\Command\MakeController;
+use App\Command\MakeModel;
 use Symfony\Component\Console\Application;
 
 
@@ -28,6 +29,7 @@ $app->add(new HashCommand());
 $app->add(new MakeMigration());
 $app->add(new MigrateCommand());
 $app->add(new MakeController());
+$app->add(new MakeModel());
 
 
 

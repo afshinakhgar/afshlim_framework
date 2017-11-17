@@ -20,7 +20,7 @@ class MakeMigration extends _Command
     {
         $this
             ->setName('make:migration')
-            ->setDescription('Generate Model Class')
+            ->setDescription('Generate Migration Class')
             ->addArgument(
                 'name',
                 InputArgument::REQUIRED,

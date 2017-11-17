@@ -1,0 +1,11 @@
+<?php
+namespace !namespace;
+use Core\Interfaces\_Model;
+
+/**
+*
+*/
+class !name extends _Model
+{
+
+}
