@@ -47,7 +47,7 @@ class MakeMigration extends _Command
         }
 
 
-        $file = str_replace("!name", ucfirst($classNameNew), $file);
+        $file = str_replace("!name", ucfirst($classNameNew).'Migration', $file);
         $file = str_replace("?name", strtolower($classNameNew), $file);
         foreach ($column as $c) {
             $entity = explode(":", $c);
@@ -62,12 +62,12 @@ class MakeMigration extends _Command
         foreach($explodedArrName as $parted_names){
             $fileNameNew .= ucfirst($parted_names).'_';
         }
-        if (!file_exists($directory.date('Y-m-d-His')."_".ucfirst($fileNameNew)."Migration.php")) {
-            $fh = fopen($directory .date('Y-m-d-His')."_". ucfirst($fileNameNew) . "Migration.php", "w");
+        if (!file_exists($directory.date('YmdHis')."_".ucfirst($fileNameNew)."Migration.php")) {
+            $fh = fopen($directory .date('YmdHis')."_". ucfirst($fileNameNew) . "Migration.php", "w");
             fwrite($fh, $file);
             fclose($fh);
             $className = ucfirst($fileNameNew) . "Migration.php";
-            $output->writeln("Created $className in migrations");
+            $output->writeln("Created $className Migration in migrations");
         } else {
             $output->writeln("Class migration already Exists!");
         }

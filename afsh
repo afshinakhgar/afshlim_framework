@@ -18,6 +18,7 @@ use Phpmig\Console\Command;
 use App\Command\HashCommand;
 use App\Command\MakeMigration;
 use App\Command\MigrateCommand;
+use App\Command\MakeController;
 use Symfony\Component\Console\Application;
 
 
@@ -25,18 +26,9 @@ $app = new Application();
 
 $app->add(new HashCommand());
 $app->add(new MakeMigration());
+$app->add(new MigrateCommand());
+$app->add(new MakeController());
 
-$app->addCommands(array(
-    new Command\InitCommand(),
-    new Command\StatusCommand(),
-    new Command\CheckCommand(),
-    new Command\GenerateCommand(),
-    new Command\UpCommand(),
-    new Command\DownCommand(),
-    new Command\MigrateCommand(),
-    new Command\RollbackCommand(),
-    new Command\RedoCommand()
-));
 
 
 

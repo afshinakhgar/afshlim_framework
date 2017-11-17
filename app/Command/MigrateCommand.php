@@ -7,6 +7,7 @@
  */
 
 namespace App\Command;
+use Core\Interfaces\_MigrateCommand;
 use Symfony\Component\Console\Command\Command;
 
 use Symfony\Component\Console\Input\InputArgument;
@@ -15,12 +16,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\ArrayInput;
 
 
-class MigrateCommand extends  Command
+class MigrateCommand extends \Phpmig\Console\Command\MigrateCommand
 {
-    private $_MIGRATIONS_PATH = 'database/migrations';
-
     protected function configure()
     {
+        parent::configure();
+
         $this
             ->setName('migrate')
             ->setDescription('Migration Execution')
@@ -28,41 +29,7 @@ class MigrateCommand extends  Command
     }
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $files = glob($this->_MIGRATIONS_PATH.'/*.php');
-        $this->_run($files);
-        $output->writeln("Class migration already Exists!");
-    }
-
-
-    public function _run($files)
-    {
-        foreach ($files as $file) {
-            if(!file_exists($file)) {
-                continue;
-            }
-            require_once($file);
-
-
-            $directory = 'database/migrations/';
-            $explodedArrName = explode('_',basename($file, '.php'));
-            $classNameNew ='';
-            unset($explodedArrName[0]);
-            foreach($explodedArrName as $parted_names){
-                $classNameNew .= ucfirst($parted_names);
-            }
-
-            $class = explode('_',basename($file, '.php'));
-            unset($class[0]);
-            $class = implode('',$class);
-
-            $class = $class;
-            echo $class .' ++++ MIGRATION RUN ++++' .PHP_EOL;
-
-            if(isset($class)){
-                $obj = new $class($container);
-            }
-            $obj->up();
-        }
+        parent::execute( $input,  $output);
     }
 
 }
