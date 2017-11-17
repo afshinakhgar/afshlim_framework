@@ -11,7 +11,6 @@ namespace App\Controller\User;
 
 
 use App\Controller\Controller;
-use Respect\Validation\Validator as v;
 use Slim\Http\Request;
 use Slim\Http\Response;
 

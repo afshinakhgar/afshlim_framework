@@ -8,10 +8,31 @@
 
 namespace App\Model;
 use Core\Interfaces\_Model;
-use Illuminate\Database\Eloquent\Model;
 
 class User extends _Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'mobile'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
     /**
      * User tokens relation
      *
@@ -21,4 +42,5 @@ class User extends _Model
     {
         return $this->hasMany(Token::class);
     }
+
 }
