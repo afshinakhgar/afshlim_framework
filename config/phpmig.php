@@ -12,5 +12,5 @@ $capsule->bootEloquent();
 $container = new ArrayObject();
 $container['phpmig.adapter'] = new Adapter\Illuminate\Database($capsule, 'migrations');
 $container['phpmig.migrations_path'] =  'database/migrations';
-$container['phpmig.migrations_template_path'] = 'core/resources/create_migration.txt';
+$container['phpmig.migrations_template_path'] = 'core/resources/templates/create_migration.txt';
 return $container;

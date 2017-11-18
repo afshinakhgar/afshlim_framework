@@ -14,9 +14,11 @@ class UsersMigration extends Migration
         {
             $table->increments('id');
             $table->string('name');
-            $table->string('mobile')->nullable();
+            $table->string('username')->nullable();
+            $table->string('mobile')->unique();
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('api_token');
             $table->rememberToken();
             $table->timestamps();
         });

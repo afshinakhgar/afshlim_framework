@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Capsule\Manager as Capsule;
-use Phpmig\Adapter;
 $container = $app->getContainer();
 
 /* database connection */
