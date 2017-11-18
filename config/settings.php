@@ -1,6 +1,6 @@
 <?php
 
-$APPROOT =  __APP_ROOT__;
+$APPROOT = __APP_ROOT__;
 $env = new \Core\Helpers\Env();
 
 

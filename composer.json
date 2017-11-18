@@ -10,7 +10,9 @@
         "runcmf/runtracy": "^0.2.10",
         "alexgarrett/violin": "2.*",
         "symfony/console": "^3.3",
-        "davedevelopment/phpmig": "^1.4"
+        "davedevelopment/phpmig": "^1.4",
+        "zeuxisoo/slim-whoops": "0.6.*"
+
 
     },
     "autoload": {
