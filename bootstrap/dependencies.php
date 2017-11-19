@@ -15,6 +15,18 @@ $container['db'] = function ($container) {
     return $pdo;
 };
 
+//
+//$container['translator'] = function (\Interop\Container\ContainerInterface $container) {
+//    $translator = new \Core\TranslationHandler($container);
+//    return $translator;
+//};
+
+//    $translation_conf = $container['settings']['translation'] ;
+//    $loader = new \Illuminate\Translation\FileLoader(new \Illuminate\Filesystem\Filesystem(), $translation_conf['translations_path']);
+//    // Register the Dutch translator (set to "en" for English)
+//    $translator = new \Illuminate\Translation\Translator($loader, "fa");
+//    dd($translator->trans('title'));
+
 // Service factory for the ORM
 
 

@@ -3,6 +3,9 @@
 $APPROOT = __APP_ROOT__;
 $env = new \Core\Helpers\Env();
 
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Translation\FileLoader;
+use Illuminate\Translation\Translator;
 
 defined('DS') || define('DS', DIRECTORY_SEPARATOR);
 $config = [
@@ -11,6 +14,10 @@ $config = [
         'addContentLengthHeader' => false,
         'determineRouteBeforeAppMiddleware' => true,
         'debug'=>true,
+        'translation' => [
+            'default_lang' => 'fa',
+            'translations_path' => __DIR__ . '/translations/',
+        ],
         'logger' => [
             'name' => 'afshFramework',
             'level' => Monolog\Logger::DEBUG,
@@ -36,7 +43,6 @@ $config = [
             'blade_cache_path'    => '../app/View/cache', // Mandatory by default, though could probably turn caching off for development
             'template'    => 'blade', // template name
         ],
-
         /* Tracy debuger*/
         'tracy' => [
             'showPhpInfoPanel' => 1,

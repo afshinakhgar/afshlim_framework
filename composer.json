@@ -1,4 +1,8 @@
 {
+    "name": "afshinpersian/afshlimFramework",
+    "description": "slim fullstack framework in my way!",
+    "type": "project",
+    "license": "MIT",
     "require": {
         "slim/slim": "^3.0",
         "vlucas/phpdotenv": "^2.4",
@@ -11,15 +15,14 @@
         "alexgarrett/violin": "2.*",
         "symfony/console": "^3.3",
         "davedevelopment/phpmig": "^1.4",
-        "zeuxisoo/slim-whoops": "0.6.*"
-
+        "zeuxisoo/slim-whoops": "0.6.*",
+        "illuminate/translation": "^5.3"
 
     },
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Core\\": "core/",
-            "Database\\": "database/"
+            "Core\\": "core/"
         }
     }
 }
