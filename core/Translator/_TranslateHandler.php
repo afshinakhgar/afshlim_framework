@@ -37,5 +37,5 @@ abstract class _TranslateHandler
         return $this->container;
     }
 
-    abstract public function trans(string $key);
+    abstract public function trans(string $key , array $replace);
 }

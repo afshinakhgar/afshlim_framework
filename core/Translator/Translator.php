@@ -19,7 +19,7 @@ class Translator extends _TranslateHandler
     }
 
 
-    private function _loadkey(string $key)
+    private function _loadkey(string $key , array $replace = [])
     {
         list($namespace,$group) = explode('.',$key);
         $t_dir = $this->getTranslation_dirs();
@@ -39,13 +39,20 @@ class Translator extends _TranslateHandler
         }
 
 
-
-        return $lang[$group];
+        if(count($replace) > 0){
+            foreach($replace as $key=>$replace_item){
+                if(strpos($lang[$group],'%') != 0){
+                    str_replace($key,$replace_item,$lang[$group]);
+                }
+            }
+        }else{
+            return $lang[$group];
+        }
     }
 
-    public function trans(string $key)
+    public function trans(string $key, array $replace)
     {
-        return $this->_loadkey($key);
+        return $this->_loadkey($key,$replace);
     }
 
 

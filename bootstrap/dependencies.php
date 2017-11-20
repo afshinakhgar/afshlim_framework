@@ -16,12 +16,6 @@ $container['db'] = function ($container) {
 };
 
 //
-$container['translator'] = function ($container) {
-    $translator = new \Core\Translator\Translator($container);
-    $translator->init();
-
-    return $translator;
-};
 
 
 
@@ -60,10 +54,14 @@ $container['logger'] = function ($c) {
 $container['view'] = function ($container) {
     return new \Slim\Views\Blade(
         $container['settings']['view']['blade_template_path'].$container['settings']['view']['template'],
-        $container['settings']['view']['blade_cache_path'],
-        null,
-        $container['translator']
+        $container['settings']['view']['blade_cache_path']
     );
+};
+$container['translator'] = function ($container) {
+    $translator = new \Core\Translator\Translator($container);
+    $translator->init();
+
+    return $translator;
 };
 
 
