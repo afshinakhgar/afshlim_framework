@@ -25,6 +25,14 @@ class AuthController extends Controller
 
     public function post_register_Action(Request $request , Response $response)
     {
+
+        try{
+
+        }catch (e $exception){
+            throw $exception;
+        }
+
+
             $validation = $this->validator->validate($request,[
                 'email' => v::noWhitespace()->notEmpty()->email()->emailAvailable(),
                 'name' => v::noWhitespace()->notEmpty()->alpha(),

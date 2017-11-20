@@ -18,7 +18,9 @@ $container['db'] = function ($container) {
 //
 
 
-
+$c['generalErrorHandler'] = function ($container) {
+    return new \Core\Handlers\GeneralErrorHandler($container);
+};
 
 // Service factory for the ORM
 
