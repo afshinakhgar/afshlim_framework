@@ -1,0 +1,13 @@
+<?php
+namespace !namespace;
+use Core\Interfaces\_AppTest;
+
+/**
+*
+*/
+class !name extends _AppTest
+{
+    public function sample() {
+        $this->assertTrue(true);
+    }
+}

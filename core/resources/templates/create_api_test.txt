@@ -1,0 +1,13 @@
+<?php
+namespace !namespace;
+use Core\Interfaces\_ApiTest;
+
+/**
+*
+*/
+class !name extends _ApiTest
+{
+    public function sample() {
+        $this->assertTrue(true);
+    }
+}
