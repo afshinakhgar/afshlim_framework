@@ -1,11 +1,11 @@
 <?php
-namespace !namespace;
-use Core\Interfaces\_ApiTest;
+namespace Test\App;
+use Core\Interfaces\_AppTest;
 
 /**
 *
 */
-class !name extends _ApiTest
+class UserTest extends _AppTest
 {
     public function testSample() {
         $this->assertTrue(true);

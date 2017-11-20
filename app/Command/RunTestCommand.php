@@ -15,6 +15,8 @@ use Symfony\Component\Console\Helper\ProcessHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Helper\ProgressBar;
 
 class RunTestCommand extends _Command
 {
@@ -23,20 +25,39 @@ class RunTestCommand extends _Command
         parent::configure();
 
         $this
-            ->setName('test:api')
+            ->setName('test')
             ->setDescription('Test Api Run')
+            ->addArgument(
+                'path',
+                InputArgument::OPTIONAL,
+                'path of test'
+            )
         ;
     }
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
+        $validPaths = [
+            'app','api'
+        ];
 
 
-        $dir = $this->getPath();
+
+        $path = $input->getArgument('path');
+        $path = isset($path) ? $path : 'app';
+        $dir = $this->getPath($path);
+
+
+        if(!in_array($path,$validPaths)){
+            $output->writeln('Problem With Path');
+            return;
+        }
 
         foreach($dir as $testFile){
-            $process = new Process('./vendor/bin/phpunit '. __APP_ROOT__.'/test/api/'.$testFile);
+            $process = new Process('./vendor/bin/phpunit '. __APP_ROOT__.'/tests/'.$path.'/'.$testFile);
             $process->setTimeout(3600);
+
+
             $process->run();
 
             if (!$process->isSuccessful()) {
@@ -48,16 +69,15 @@ class RunTestCommand extends _Command
         }
 
 
-
-
-
+        $output->writeln(PHP_EOL.'Test Completed');
+        return;
 
     }
 
 
-    public function getPath()
+    public function getPath($path)
     {
-        $dir = scandir(__APP_ROOT__.'/test/api');
+        $dir = scandir(__APP_ROOT__.'/tests/'.$path);
         $ex_folders = array('..', '.');
 
         return array_diff($dir,$ex_folders);

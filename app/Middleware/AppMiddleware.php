@@ -17,10 +17,9 @@ class AppMiddleware extends _Middleware
     {
 //        $response->getBody()->write('BEFORE');
 //      Before App
-        $routeParams = $request->getAttribute('routeInfo')[2];
+//        $routeParams = $request->getAttribute('routeInfo')[2];
 
-        $parameters = explode('/',$routeParams['params']);
-
+//        $parameters = explode('/',$routeParams['params']);
         $response = $next($request, $response);
 //        $response->getBody()->write('AFTER');
 //

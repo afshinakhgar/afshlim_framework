@@ -7,7 +7,7 @@ use Core\Interfaces\_AppTest;
 */
 class !name extends _AppTest
 {
-    public function sample() {
+    public function testSample() {
         $this->assertTrue(true);
     }
 }

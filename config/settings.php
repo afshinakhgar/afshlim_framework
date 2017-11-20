@@ -48,16 +48,15 @@ $config = [
             'showSlimResponsePanel' => 1,
             'showSlimContainer' =>1 ,
             'showEloquentORMPanel' => 1,
-            'showTwigPanel' => 0,
             'showIdiormPanel' => 0,// > 0 mean you enable logging
             // but show or not panel you decide in browser in panel selector
             'showDoctrinePanel' => 'em',// here also enable logging and you must enter your Doctrine container name
             // and also as above show or not panel you decide in browser in panel selector
-            'showProfilerPanel' => 0,
-            'showVendorVersionsPanel' => 0,
-            'showXDebugHelper' => 0,
-            'showIncludedFiles' => 0,
-            'showConsolePanel' => 0,
+            'showProfilerPanel' => 1,
+            'showVendorVersionsPanel' => 1,
+            'showXDebugHelper' =>1,
+            'showIncludedFiles' => 1,
+            'showConsolePanel' =>1,
             'configs' => [
                 // XDebugger IDE key
                 'XDebugHelperIDEKey' => 'PHPSTORM',

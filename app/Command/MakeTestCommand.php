@@ -53,7 +53,7 @@ class MakeTestCommand extends _Command
             $output->writeln('Problem With Path');
             return;
         }
-        $directory = "test/".$path.'/';
+        $directory = "tests/".$path.'/';
 
         $file = file_get_contents("core/resources/templates/create_{$path}_test.txt");
         $hasNamespace = true;
