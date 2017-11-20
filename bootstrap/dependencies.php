@@ -54,13 +54,17 @@ $container['logger'] = function ($c) {
 $container['view'] = function ($container) {
     return new \Slim\Views\Blade(
         $container['settings']['view']['blade_template_path'].$container['settings']['view']['template'],
-        $container['settings']['view']['blade_cache_path']
+        $container['settings']['view']['blade_cache_path'],
+        null,
+        [
+            'translator'=>$container['translator']
+        ]
     );
 };
-$container['translator'] = function ($container) {
-    $translator = new \Core\Translator\Translator($container);
-    $translator->init();
+$translator = new \Core\Translator\Translator($container);
+$translator->init();
 
+$container['translator'] = function ($container) use ($translator) {
     return $translator;
 };
 

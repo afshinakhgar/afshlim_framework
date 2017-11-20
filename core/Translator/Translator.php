@@ -50,7 +50,7 @@ class Translator extends _TranslateHandler
         }
     }
 
-    public function trans(string $key, array $replace)
+    public function trans(string $key, array $replace = [])
     {
         return $this->_loadkey($key,$replace);
     }

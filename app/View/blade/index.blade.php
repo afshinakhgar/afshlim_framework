@@ -2,6 +2,6 @@
 
 @section('content')
 
-<h1>asdfsa dsa dasd sad asd </h1>
+<h1><?php echo $translator->trans('messages.title')?></h1>
 <p>asd sad asd asd</p>
 @endsection
