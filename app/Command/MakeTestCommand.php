@@ -81,7 +81,7 @@ class MakeTestCommand extends _Command
             $file = str_replace("!namespace", "Test", $file);
         }
 
-        $file = str_replace("!name", ucfirst($name), $file);
+        $file = str_replace("!name", ucfirst($name).'Test', $file);
 
         if (is_dir($directory) && !is_writable($directory)) {
             $output->writeln('The "%s" directory is not writable');

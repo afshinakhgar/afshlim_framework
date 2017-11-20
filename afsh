@@ -22,6 +22,7 @@ use App\Command\MigrateCommand;
 use App\Command\MakeController;
 use App\Command\MakeModel;
 use App\Command\MakeTestCommand;
+use App\Command\RunTestCommand;
 use Symfony\Component\Console\Application;
 
 
@@ -33,6 +34,7 @@ $app->add(new MigrateCommand());
 $app->add(new MakeController());
 $app->add(new MakeModel());
 $app->add(new MakeTestCommand());
+$app->add(new RunTestCommand());
 
 
 

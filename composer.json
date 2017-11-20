@@ -19,7 +19,8 @@
         "zeuxisoo/slim-whoops": "0.6.*"
     },
     "require-dev": {
-        "phpunit/phpunit": "5.4.*"
+        "phpunit/phpunit": "5.4.*",
+        "symfony/process": "2.*"
     },
     "autoload": {
         "psr-4": {
