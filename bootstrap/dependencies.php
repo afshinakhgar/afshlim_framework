@@ -16,16 +16,15 @@ $container['db'] = function ($container) {
 };
 
 //
-//$container['translator'] = function (\Interop\Container\ContainerInterface $container) {
-//    $translator = new \Core\TranslationHandler($container);
-//    return $translator;
-//};
+$container['translator'] = function ($container) {
+    $translator = new \Core\Translator\Translator($container);
+    $translator->init();
 
-//    $translation_conf = $container['settings']['translation'] ;
-//    $loader = new \Illuminate\Translation\FileLoader(new \Illuminate\Filesystem\Filesystem(), $translation_conf['translations_path']);
-//    // Register the Dutch translator (set to "en" for English)
-//    $translator = new \Illuminate\Translation\Translator($loader, "fa");
-//    dd($translator->trans('title'));
+    return $translator;
+};
+
+
+
 
 // Service factory for the ORM
 
@@ -61,7 +60,9 @@ $container['logger'] = function ($c) {
 $container['view'] = function ($container) {
     return new \Slim\Views\Blade(
         $container['settings']['view']['blade_template_path'].$container['settings']['view']['template'],
-        $container['settings']['view']['blade_cache_path']
+        $container['settings']['view']['blade_cache_path'],
+        null,
+        $container['translator']
     );
 };
 

@@ -44,7 +44,6 @@ class HomeController extends Controller
 //        echo $book->toJson();
 
 
-        dd($this->getContainer('translator')->trans('title'));
         return $this->view->render($response, 'index');
 
 

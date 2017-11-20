@@ -3,10 +3,6 @@
 $APPROOT = __APP_ROOT__;
 $env = new \Core\Helpers\Env();
 
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Translation\FileLoader;
-use Illuminate\Translation\Translator;
-
 defined('DS') || define('DS', DIRECTORY_SEPARATOR);
 $config = [
     'settings' => [
@@ -16,7 +12,7 @@ $config = [
         'debug'=>true,
         'translation' => [
             'default_lang' => 'fa',
-            'translations_path' => __DIR__ . '/translations/',
+            'translations_path' => $APPROOT . 'translations/',
         ],
         'logger' => [
             'name' => 'afshFramework',
