@@ -23,9 +23,23 @@ a Slim framework boilerplate in my Way
 + Violin Validation
 
 ## How to install
+Run this command from the directory in which you want to install
+```bash
+    composer create-project afshinpersian/afshlim_framework
+```
 
+create mysql database
 
+copy .env_example file
 
+```bash
+    cp .env_example .env
+```
+run migration with this command
+```bash
+    php afsh migrate
+```
+it's done
 
 ## CLI Tools
 * Currently there are some supported commands:
