@@ -4,7 +4,9 @@ a Slim framework boilerplate in my Way
 - [PSR-4](http://www.php-fig.org/psr/psr-4/ "PHP Framework Interop Group")
 - PHP 7.0
 - Namespaced
-<br>
+
+<br><br>
+
 * Helpers
 * Services
 * Blade Views
