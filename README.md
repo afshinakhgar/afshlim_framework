@@ -6,19 +6,19 @@ a Slim framework boilerplate in my Way
 - Namespaced
 <br>
 ## tools
-+ Helpers
-+ Services
-+ Blade Views
-+ Flash Messages
-+ Symfony VarDumper
-+ Logging with Monolog
-+ Environment variables with Dotenv
-+ Translation And Localizations
-+ Core Interfaces
-+ MVC Pattern
-+ Command Line Tool For Better and Easy Developing
-+ Database Migration With PhpMig
-+ Violin Validation
+- Helpers
+- Services
+- Blade Views
+- Flash Messages
+- Symfony VarDumper
+- Logging with Monolog
+- Environment variables with Dotenv
+- Translation And Localizations
+- Core Interfaces
+- MVC Pattern
+- Command Line Tool For Better and Easy Developing
+- Database Migration With PhpMig
+- Violin Validation
 
 ## How to install
 Run this command from the directory in which you want to install
