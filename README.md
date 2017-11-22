@@ -52,21 +52,3 @@ it's done
 * `php afsh migration:status` // checking status of migrations
 
 
-
-
-## CLI Tools
-* Currently there are some supported commands:
-* `php afsh make:controller MyControllerClassName`
-* `php afsh make:middleware MyMiddlewareClassName`
-* `php afsh make:model MyModelClassName`
-* `php afsh make:migration MymigrationClassName`
-* `php afsh list` // list of commnads
-* `php afsh migrate` // run migrations
-* `php afsh migrate:rollback`// rollback migrations
-* `php afsh migration:status` // checking status of migrations
-
-
-
-
-
-
