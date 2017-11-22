@@ -3,6 +3,17 @@
     "description": "slim fullstack framework in my way!",
     "type": "project",
     "license": "MIT",
+    "keywords": [
+        "PHP",
+        "Slim",
+        "Framework",
+        "Skeleton",
+        "Blade",
+        "Eloquent",
+        "Command Line",
+        "Flash",
+        "VarDumper"
+    ],
     "require": {
         "php": ">= 7.0.0",
         "slim/slim": "^3.0",
