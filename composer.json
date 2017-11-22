@@ -12,7 +12,9 @@
         "Eloquent",
         "Command Line",
         "Flash",
-        "VarDumper"
+        "VarDumper",
+        "cli-tool",
+        "console"
     ],
     "require": {
         "php": ">= 7.0.0",
