@@ -1,6 +1,6 @@
 {
-    "name": "afshinpersian/afshlimFramework",
-    "description": "slim fullstack framework in my way!",
+    "name": "afshinpersian/afshlim_framework",
+    "description": "Slim fullstack framework in my way!",
     "type": "project",
     "license": "MIT",
     "keywords": [
