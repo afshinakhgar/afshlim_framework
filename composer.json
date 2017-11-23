@@ -29,7 +29,8 @@
         "alexgarrett/violin": "2.*",
         "symfony/console": "^3.3",
         "davedevelopment/phpmig": "^1.4",
-        "zeuxisoo/slim-whoops": "0.6.*"
+        "zeuxisoo/slim-whoops": "0.6.*",
+        "zhangshize/slim-facades": "^1.1"
     },
     "require-dev": {
         "phpunit/phpunit": "5.4.*",

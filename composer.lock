@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "67af816ec62a311cc1eac2fcf5fe7458",
+    "content-hash": "d0d3b6dee5622aa05779d941766c3b1c",
     "packages": [
         {
             "name": "alexgarrett/violin",
@@ -1987,6 +1987,48 @@
                 "whoops"
             ],
             "time": "2017-03-23T02:42:19+00:00"
+        },
+        {
+            "name": "zhangshize/slim-facades",
+            "version": "1.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zhangshize/slim-facades.git",
+                "reference": "274dda90306bb47a82b4b23e6f72d2cded24be54"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zhangshize/slim-facades/zipball/274dda90306bb47a82b4b23e6f72d2cded24be54",
+                "reference": "274dda90306bb47a82b4b23e6f72d2cded24be54",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0",
+                "slim/slim": ">=3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SlimFacades\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache License Version 2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Shi Ze Zhang",
+                    "email": "shizezhang@hotmail.com"
+                }
+            ],
+            "description": "Facades for Slim 3.",
+            "homepage": "https://github.com/zhangshize/slim-facades",
+            "keywords": [
+                "facades",
+                "slim"
+            ],
+            "time": "2016-12-31T02:09:21+00:00"
         }
     ],
     "packages-dev": [

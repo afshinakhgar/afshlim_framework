@@ -7,11 +7,16 @@ define("PATH_ROOT", __DIR__ . '/../');
 
 require  'bootstrap.php';
 require '../vendor/autoload.php';
-
-
 use \Slim\App;
 require '../config/settings.php';
 $app = new App($config);
+
+
+use SlimFacades\Facade;
+use SlimFacades\Route;
+
+Facade::setFacadeApplication($app);
+
 
 
 
