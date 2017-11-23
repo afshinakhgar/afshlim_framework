@@ -14,6 +14,7 @@ a Slim framework boilerplate in my Way
 * Translation And Localizations
 * Core Interfaces
 * MVC Pattern
+* DataAccess Repository Pattern
 * Command Line Tool For Better and Easy Developing 
 * [Facade Pattern slim-facades](https://github.com/zhshize/slim-facades)
 * [Logging with Monolog](https://github.com/Seldaek/monolog)
