@@ -11,12 +11,10 @@ namespace App\Command;
 
 use Core\Interfaces\_Command;
 use SebastianBergmann\GlobalState\RuntimeException;
-use Symfony\Component\Console\Helper\ProcessHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Helper\ProgressBar;
 
 class RunTestCommand extends _Command
 {

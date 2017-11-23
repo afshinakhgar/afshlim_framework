@@ -14,7 +14,8 @@
         "Flash",
         "VarDumper",
         "cli-tool",
-        "console"
+        "console",
+        "phpunit"
     ],
     "require": {
         "php": ">= 7.0.0",

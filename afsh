@@ -25,6 +25,7 @@ use App\Command\MakeTestCommand;
 use App\Command\RunTestCommand;
 use App\Command\MigrationStatusCommand;
 use App\Command\MigrateRollbackCommand;
+use App\Command\ServeCommand;
 use Symfony\Component\Console\Application;
 
 
@@ -39,6 +40,7 @@ $app->add(new MakeTestCommand());
 $app->add(new RunTestCommand());
 $app->add(new MigrationStatusCommand());
 $app->add(new MigrateRollbackCommand());
+$app->add(new ServeCommand());
 
 
 

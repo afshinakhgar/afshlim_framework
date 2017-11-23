@@ -13,7 +13,8 @@ class UsersMigration extends Migration
         Capsule::schema()->create('users', function($table)
         {
             $table->increments('id');
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('username')->nullable();
             $table->string('mobile')->unique();
             $table->string('email')->unique();

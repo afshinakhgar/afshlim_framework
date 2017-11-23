@@ -13,6 +13,8 @@ use App\Model\User;
 
 
 use App\Controller\Controller;
+use Core\Helpers\Hash;
+use Core\Validator as v;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -27,25 +29,44 @@ class AuthController extends Controller
 
     public function post_register_Action(Request $request , Response $response)
     {
+        $validate = $this->validator->validate($request,[
+            'firstname' => v::noWhitespace()->notEmpty()->alpha(),
+            'lastname' => v::noWhitespace()->notEmpty()->alpha(),
+            'mobile' => v::noWhitespace()->notEmpty(),
+            'email' => v::noWhitespace()->notEmpty(),
+            'username' => v::noWhitespace()->notEmpty(),
+        ]);
 
 
+        try{
+            if($validate){
+                $userOne = User::where('username',$request->getParam('username'))->orWhere('email',$request->getParam('email'))->orWhere('mobile',$request->getParam('mobile'))->first();
 
-            $validation = $this->validator->validate($request,[
-                'email' => v::noWhitespace()->notEmpty()->email()->emailAvailable(),
-                'firstname' => v::noWhitespace()->notEmpty()->alpha(),
-                'mobile' => v::noWhitespace()->notEmpty(),
-            ]);
-            dd($validation->failed());
+                if(!isset($userOne->id)){
+                    $user = new User();
+                    $hash = new Hash();
+                    $user->first_name = $request->getParam('firstname');
+                    $user->last_name = $request->getParam('lastname');
+                    $user->email = $request->getParam('email');
+                    $user->username = $request->getParam('username');
+                    $user->mobile = $request->getParam('mobile');
+                    $user->password = $hash->hash($request->getParam('password'));
+                    $user->api_token = $hash->hash($request->getParam('email'));
+                    $user->save();
+                    return $response->withRedirect('/');
+                }else{
+                    return $response->withRedirect('/');
+                }
 
-            if ($validation->failed()) {
-                return $response->withRedirect($this->router->pathFor('auth.signup'));
             }else{
-                $user = User::create([
-                    'first_name' => 'afshin',
-                    'last_name' => 'akhgar',
-                    'email' => 'afshi2n@2a.com',
-                    'password' => crypt('afshin@a.com'),
-                ]);
+
             }
+
+        } catch (Exception $e) {
+            // Generate Exception Error
+        }
+
+
+
     }
 }

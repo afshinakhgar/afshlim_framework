@@ -22,8 +22,12 @@ $c['generalErrorHandler'] = function ($container) {
     return new \Core\Handlers\GeneralErrorHandler($container);
 };
 
-// Service factory for the ORM
 
+
+// Service factory for the ORM
+$container['validator'] = function ($container) {
+    return new Core\Validator($container);
+};
 
 
 $container['eloquent'] = function ($container) {
