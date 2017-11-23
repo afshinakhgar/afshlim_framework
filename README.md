@@ -22,8 +22,6 @@ a Slim framework boilerplate in my Way
 * [slim/Flash](https://github.com/slimphp/Slim-Flash)
 * [symfony command](https://github.com/symfony/console/blob/master/Command/Command.php)
 * [Database Migration With PhpMig](https://github.com/davedevelopment/phpmig)
-* [Violin Validation](https://github.com/alexgarrett/violin)
-* [Facade Pattern zhshize/slim-facades](https://github.com/zhshize/slim-facades)
 
 ## How to install
 Run this command from the directory in which you want to install

@@ -11,7 +11,7 @@ $config = [
         'determineRouteBeforeAppMiddleware' => true,
         'debug'=>true,
         'translation' => [
-            'default_lang' => 'fa',
+            'default_lang' => 'en',
             'translations_path' => $APPROOT . 'translations/',
         ],
         'logger' => [

@@ -26,4 +26,5 @@ $app->post('/console', 'RunTracy\Controllers\RunTracyConsole:index');
 
 $app->get('/', HomeController::class.':index');
 $app->get('/register[/{params:.*}]', \App\Controller\User\AuthController::class.':get_register_Action');
+$app->post('/register', \App\Controller\User\AuthController::class.':post_register_Action');
 
