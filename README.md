@@ -9,17 +9,21 @@ a Slim framework boilerplate in my Way
 
 * Helpers
 * Services
-* Blade Views
-* Flash Messages
 * Symfony VarDumper
-* Logging with Monolog
 * Environment variables with Dotenv
 * Translation And Localizations
 * Core Interfaces
 * MVC Pattern
-* Command Line Tool For Better and Easy Developing
-* Database Migration With PhpMig
-* Violin Validation
+* Command Line Tool For Better and Easy Developing 
+* [Facade Pattern slim-facades](https://github.com/zhshize/slim-facades)
+* [Logging with Monolog](https://github.com/Seldaek/monolog)
+* [Blade View](https://github.com/rubellum/Slim-Blade-View)
+* [slim/csrf](https://github.com/slimphp/Slim-Csrf)
+* [slim/Flash](https://github.com/slimphp/Slim-Flash)
+* [symfony command](https://github.com/symfony/console/blob/master/Command/Command.php)
+* [Database Migration With PhpMig](https://github.com/davedevelopment/phpmig)
+* [Violin Validation](https://github.com/alexgarrett/violin)
+* [Facade Pattern zhshize/slim-facades](https://github.com/zhshize/slim-facades)
 
 ## How to install
 Run this command from the directory in which you want to install
