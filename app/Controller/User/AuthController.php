@@ -9,7 +9,7 @@
 namespace App\Controller\User;
 
 
-use App\DataAccess\User\AuthenticationDataAccess;
+use App\DataAccess\User\UserDataAccess;
 use App\Model\User;
 
 
@@ -43,7 +43,7 @@ class AuthController extends Controller
             if($validate){
 
                 $params = $request->getParams();
-                $userOne = AuthenticationDataAccess::getUserByEmail_OR_Mobile_OR_Username_one_r($params['username'],$params['email'],$params['mobile']);
+                $userOne = UserDataAccess::getUserByEmail_OR_Mobile_OR_Username_one_r($params['username'],$params['email'],$params['mobile']);
 
                 if(!isset($userOne->id)){
                     $user = new User();

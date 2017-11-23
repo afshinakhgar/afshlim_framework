@@ -12,7 +12,7 @@ namespace App\DataAccess\User;
 use Core\Interfaces\_DataAccess;
 use PDO;
 use App\Model\User;
-class AuthenticationDataAccess extends _DataAccess
+class UserDataAccess extends _DataAccess
 {
     function getUserByEmail_OR_Mobile_OR_Username_one_r(string $username,string $email,string $mobile)
     {
