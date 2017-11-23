@@ -26,7 +26,7 @@ $c['generalErrorHandler'] = function ($container) {
 
 // Service factory for the ORM
 $container['validator'] = function ($container) {
-    return new Core\Validator($container);
+    return new App\Validation\Validator();
 };
 
 

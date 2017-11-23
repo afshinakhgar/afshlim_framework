@@ -11,11 +11,10 @@ namespace App\Controller\User;
 
 use App\DataAccess\User\UserDataAccess;
 use App\Model\User;
-
+use Respect\Validation\Validator as v;
 
 use App\Controller\Controller;
 use Core\Helpers\Hash;
-use Core\Validator as v;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -40,7 +39,9 @@ class AuthController extends Controller
 
 
         try{
-            if($validate){
+            dd($validate);
+
+            if(!$validate->failed()){
 
                 $params = $request->getParams();
                 $userOne = UserDataAccess::getUserByEmail_OR_Mobile_OR_Username_one_r($params['username'],$params['email'],$params['mobile']);
@@ -56,13 +57,13 @@ class AuthController extends Controller
                     $user->password = $hash->hash($request->getParam('password'));
                     $user->api_token = $hash->hash($request->getParam('email'));
                     $user->save();
+                    $this->flash->addMessage('info','You have been signed up');
                     return $response->withRedirect('/');
                 }else{
                     return $response->withRedirect('/');
                 }
 
             }else{
-
             }
 
         } catch (Exception $e) {
