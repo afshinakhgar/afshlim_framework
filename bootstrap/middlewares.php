@@ -1,4 +1,12 @@
 <?php
 $app->add(new RunTracy\Middlewares\TracyMiddleware($app));
-$appMiddleWare = new \App\Middleware\AppMiddleware();
+
+$appMiddleWare = new \App\Middleware\AppMiddleware($app->getContainer());
 $app->add($appMiddleWare);
+
+$flashMiddleWare = new \App\Middleware\FlashMessageMiddleWare($app->getContainer());
+$app->add($flashMiddleWare);
+
+
+$timerMiddleWare = new \App\Middleware\TimerMiddleware($app->getContainer());
+$app->add($timerMiddleWare);

@@ -39,7 +39,6 @@ class AuthController extends Controller
 
 
         try{
-            dd($validate);
 
             if(!$validate->failed()){
 
@@ -64,6 +63,8 @@ class AuthController extends Controller
                 }
 
             }else{
+                $this->flash->addMessage('error','Invalid Inputs');
+                return $response->withRedirect('/');
             }
 
         } catch (Exception $e) {

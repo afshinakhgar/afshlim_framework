@@ -58,12 +58,17 @@ $container['logger'] = function ($c) {
 
 // Register Blade View helper
 $container['view'] = function ($container) {
+
+    $messages = $container->flash->getMessages();
+
+
     return new \Slim\Views\Blade(
         $container['settings']['view']['blade_template_path'].$container['settings']['view']['template'],
         $container['settings']['view']['blade_cache_path'],
         null,
         [
-            'translator'=>$container['translator']
+            'translator'=>$container['translator'],
+            'messages'=> $messages
         ]
     );
 };
