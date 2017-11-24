@@ -1,4 +1,4 @@
-@if($messages['error'])
+@if(isset($messages['error']))
 <div>
     <ul class="alert alert-danger">
     @foreach($messages['error'] as $error)

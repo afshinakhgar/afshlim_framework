@@ -6,6 +6,9 @@ $env = new \Core\Helpers\Env();
 defined('DS') || define('DS', DIRECTORY_SEPARATOR);
 $config = [
     'settings' => [
+        'app' => [
+            'log_timer'=>true
+        ],
         'displayErrorDetails' => true,
         'addContentLengthHeader' => false,
         'determineRouteBeforeAppMiddleware' => true,

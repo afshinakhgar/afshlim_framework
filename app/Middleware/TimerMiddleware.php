@@ -28,7 +28,12 @@ class TimerMiddleware extends _Middleware
         $timePre = microtime(true);
         $response = $next($request, $response);
         $timePost = microtime(true);
-        $this->logger->info("Render time:" . ($timePost - $timePre));
+        if($this->settings['app']['log_timer']){
+
+            $this->logger->info("Render time:" . ($timePost - $timePre));
+        }
+
         return $response;
+
     }
 }
