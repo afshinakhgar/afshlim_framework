@@ -14,6 +14,12 @@ use PDO;
 use App\Model\User;
 class UserDataAccess extends _DataAccess
 {
+    /**
+     * @param string $username
+     * @param string $email
+     * @param string $mobile
+     * @return User
+     */
     function getUserByEmail_OR_Mobile_OR_Username_one_r(string $username,string $email,string $mobile)
     {
         return User::where('username',$username)
@@ -21,4 +27,11 @@ class UserDataAccess extends _DataAccess
             ->orWhere('mobile',$mobile)
             ->first();
     }
+
+    function getUserById(int $userid)
+    {
+        return User::find((int)$userid);
+    }
+
+
 }

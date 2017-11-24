@@ -21,6 +21,13 @@ use Slim\Http\Response;
 class AuthController extends Controller
 {
 
+    public function get_login_Action(Request $request , Response $response)
+    {
+        return $this->view->render($response, 'auth/login');
+    }
+
+
+
     public function get_register_Action(Request $request , Response $response )
     {
         return $this->view->render($response, 'auth/register');
@@ -70,8 +77,5 @@ class AuthController extends Controller
         } catch (Exception $e) {
             // Generate Exception Error
         }
-
-
-
     }
 }
