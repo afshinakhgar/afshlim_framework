@@ -21,13 +21,14 @@ use App\Controller\HomeController;
 //];
 //
 
+$route = new \Core\Route($app);
+$route->resource('/user/auth', '\App\Controller\User\AuthController', $args = []);
 
-$app->post('/console', 'RunTracy\Controllers\RunTracyConsole:index');
 
-$app->get('/', HomeController::class.':index');
-$app->get('/register[/{params:.*}]', \App\Controller\User\AuthController::class.':get_register_Action');
-$app->post('/register', \App\Controller\User\AuthController::class.':post_register_Action');
-
-$app->get('/login', \App\Controller\User\AuthController::class.':get_login_Action');
-$app->post('/login', \App\Controller\User\AuthController::class.':post_login_Action');
+$route->post('/console', 'RunTracy\Controllers\RunTracyConsole:index');
+$route->get('/', HomeController::class.':index');
+$route->get('/register[/{params:.*}]', \App\Controller\User\AuthController::class.':get_register_Action');
+$route->post('/register', \App\Controller\User\AuthController::class.':post_register_Action');
+$route->get('/login', \App\Controller\User\AuthController::class.':get_login_Action');
+$route->post('/login', \App\Controller\User\AuthController::class.':post_login_Action');
 

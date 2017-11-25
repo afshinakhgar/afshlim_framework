@@ -78,4 +78,13 @@ class AuthController extends Controller
             // Generate Exception Error
         }
     }
+
+
+
+    /* ResourceFull Actions*/
+    public function index(Request $request , Response $response)
+    {
+        return $this->view->render($response, 'auth/login');
+    }
+
 }
