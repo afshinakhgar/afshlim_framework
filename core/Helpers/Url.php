@@ -12,25 +12,11 @@ class Url
 {
     public static function redirect($location = null)
     {
-        if ($location) {
-            if (!headers_sent()) {
-                header('Location: ' . $location);
-                exit;
-            } else {
-                echo '<script type="text/javascript">';
-                echo 'window.location.href="' . $location . '";';
-                echo '</script>';
-                echo '<noscript>';
-                echo '<meta http-equiv="refresh" content="0;url=' . $location . '" />';
-                echo '</noscript>';
-                exit;
-            }
-        }
+
     }
     public static function redirectBack()
     {
-        header('Location: javascript://history.go(-1)');
-        exit;
+
     }
 
     public static function getPrevious(){
