@@ -1,4 +1,3 @@
-###status
 [![Build Status](https://travis-ci.org/afshinpersian/afshlim_framework.svg?branch=master)](https://travis-ci.org/afshinpersian/afshlim_framework)
 
 # AfshlimFramework
