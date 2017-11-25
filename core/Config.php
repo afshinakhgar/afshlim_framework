@@ -12,7 +12,7 @@ class Config {
     private static $config = array();
     private function __construct(){}
     public static function load($path = null){
-        $path = ($path) ?: BASE_PATH . '/config/*';
+        $path = ($path) ?: __APP_ROOT__ . '/config/*';
         foreach (glob($path) as $file) {
             $config = include $file;
             self::$config = array_merge(self::$config, $config);
