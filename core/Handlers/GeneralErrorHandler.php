@@ -9,6 +9,8 @@
 namespace Core\Handlers;
 
 
+use Core\Interfaces\_ErrorHandler;
+
 class GeneralErrorHandler extends _ErrorHandler
 {
     public function __invoke($request, $response, $exception) {
