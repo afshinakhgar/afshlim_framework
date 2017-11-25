@@ -638,9 +638,9 @@ class JalaliDate {
         $gy+=(int)(($days-1)/365);
         if($days > 365)$days=($days-1)%365;
         $gd=$days+1;
-        $days = array(0,31,((($gy%4==0) and ($gy%100!=0)) or ($gy%400==0)) ?29:28 ,31,30,31,30,31,31,30,31,30,31) ;
+        $daysArr = array(0,31,((($gy%4==0) and ($gy%100!=0)) or ($gy%400==0)) ?29:28 ,31,30,31,30,31,31,30,31,30,31) ;
         $gm = 0;
-        foreach($days as $gm=>$v){
+        foreach($daysArr as $gm=>$v){
             if($gd <= $v)break;
             $gd-=$v;
         }
