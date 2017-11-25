@@ -38,15 +38,15 @@ class Route
         $routeNames = implode('.',explode('/',trim($url,'/')));
 
         $this->app->group($url, function () use ($controller,$routeNames, $args) {
-
             $this->get('', $controller . ':index')->add(self::middleware('index', $args))->setName($routeNames.'.index');
+
             $this->get('/create', $controller . ':create')->add(self::middleware('create', $args))->setName($routeNames.'.create');
             $this->get('/{id:[0-9]+}', $controller . ':show')->add(self::middleware('show', $args))->setName($routeNames.'.show');
             $this->get('/{id:[0-9]+}/edit', $controller . ':edit')->add(self::middleware('edit', $args))->setName($routeNames.'.edit');
             $this->post('', $controller . ':store')->add(self::middleware('store', $args))->setName($routeNames.'.store');
             $this->put('/{id:[0-9]+}', $controller . ':update')->add(self::middleware('update', $args))->setName($routeNames.'.update');
             $this->patch('/{id:[0-9]+}', $controller . ':update')->add(self::middleware('index', $args))->setName($routeNames.'.update');
-            $this->delete('/{id:[0-9]+}', $controller . ':destroy')->add(self::middleware('destroy', $args)->setName($routeNames.'.destroy'));
+            $this->delete('/{id:[0-9]+}', $controller . ':destroy')->add(self::middleware('destroy', $args))->setName($routeNames.'.destroy');
 
         })->add(self::middleware('group', $args));
     }
