@@ -618,7 +618,7 @@ class JalaliDate {
 
     /*	F	*/
    public function jalali_to_gregorian($jy,$jm,$jd,$mod=''){
-        list($jy,$jm,$jd)=explode('_',$this->tr_num($jy.'_'.$jm.'_'.$jd));/* <= Extra :اين سطر ، جزء تابع اصلي نيست */
+        list($jy,$jm,$jd) = explode('_',$this->tr_num($jy.'_'.$jm.'_'.$jd)); /* <= Extra :اين سطر ، جزء تابع اصلي نيست */
         if($jy > 979){
             $gy=1600;
             $jy-=979;
@@ -638,7 +638,9 @@ class JalaliDate {
         $gy+=(int)(($days-1)/365);
         if($days > 365)$days=($days-1)%365;
         $gd=$days+1;
-        foreach(array(0,31,((($gy%4==0) and ($gy%100!=0)) or ($gy%400==0))?29:28 ,31,30,31,30,31,31,30,31,30,31) as $gm=>$v){
+        $days = array(0,31,((($gy%4==0) and ($gy%100!=0)) or ($gy%400==0)) ?29:28 ,31,30,31,30,31,31,30,31,30,31) ;
+        $gm = 0;
+        foreach($days as $gm=>$v){
             if($gd <= $v)break;
             $gd-=$v;
         }
