@@ -8,9 +8,9 @@
 
 namespace Core\Helpers;
 
-class JalaliDateHelper {
+class JalaliDate {
 
-    function jdate($format,$timestamp='',$none='',$time_zone='Asia/Tehran',$tr_num='fa'){
+    public function jdate($format,$timestamp='',$none='',$time_zone='Asia/Tehran',$tr_num='fa'){
 
         $T_sec=0;/* <= رفع خطاي زمان سرور ، با اعداد '+' و '-' بر حسب ثانيه */
 
@@ -216,7 +216,7 @@ class JalaliDateHelper {
     }
 
     /*	F	*/
-    function jstrftime($format,$timestamp='',$none='',$time_zone='Asia/Tehran',$tr_num='fa'){
+    public function jstrftime($format,$timestamp='',$none='',$time_zone='Asia/Tehran',$tr_num='fa'){
 
         $T_sec=0;/* <= رفع خطاي زمان سرور ، با اعداد '+' و '-' بر حسب ثانيه */
 
@@ -433,7 +433,7 @@ class JalaliDateHelper {
     }
 
     /*	F	*/
-    function jmktime($h='',$m='',$s='',$jm='',$jd='',$jy='',$none='',$timezone='Asia/Tehran'){
+    public function jmktime($h='',$m='',$s='',$jm='',$jd='',$jy='',$none='',$timezone='Asia/Tehran'){
         if($timezone!='local')date_default_timezone_set($timezone);
         if($h===''){
             return time();
@@ -468,7 +468,7 @@ class JalaliDateHelper {
     }
 
     /*	F	*/
-    function jgetdate($timestamp='',$none='',$timezone='Asia/Tehran',$tn='en'){
+    public function jgetdate($timestamp='',$none='',$timezone='Asia/Tehran',$tn='en'){
         $ts=($timestamp==='')?time():$this->tr_num($timestamp);
         $jdate=explode('_',jdate('F_G_i_j_l_n_s_w_Y_z',$ts,'',$timezone,$tn));
         return array(
@@ -487,21 +487,21 @@ class JalaliDateHelper {
     }
 
     /*	F	*/
-    function jcheckdate($jm,$jd,$jy){
+    public function jcheckdate($jm,$jd,$jy){
         list($jm,$jd,$jy)=explode('_',$this->tr_num($jm.'_'.$jd.'_'.$jy));
         $l_d=($jm==12)?((((($jy%33)%4)-1)==((int)(($jy%33)*0.05)))?30:29):31-(int)($jm/6.5);
         return($jm>12 or $jd>$l_d or $jm<1 or $jd<1 or $jy<1)?false:true;
     }
 
     /*	F	*/
-    function tr_num($str,$mod='en',$mf='٫'){
+    private function tr_num($str,$mod='en',$mf='٫'){
         $num_a=array('0','1','2','3','4','5','6','7','8','9','.');
         $key_a=array('۰','۱','۲','۳','۴','۵','۶','۷','۸','۹',$mf);
         return($mod=='fa')?str_replace($num_a,$key_a,$str):str_replace($key_a,$num_a,$str);
     }
 
     /*	F	*/
-    function jdate_words($array,$mod=''){
+    private function jdate_words($array,$mod=''){
         foreach($array as $type=>$num){
             $num=(int)$this->tr_num($num);
             switch($type){
@@ -584,7 +584,7 @@ class JalaliDateHelper {
     12053 = 365*33 + 32/4    &    36524 = 365*100 + 100/4 - 100/100   */
 
     /*	F	*/
-    function gregorian_to_jalali($gy,$gm,$gd,$mod=''){
+   public  function gregorian_to_jalali($gy,$gm,$gd,$mod=''){
         list($gy,$gm,$gd)=explode('_',$this->tr_num($gy.'_'.$gm.'_'.$gd));/* <= Extra :اين سطر ، جزء تابع اصلي نيست */
         $g_d_m=array(0,31,59,90,120,151,181,212,243,273,304,334);
         if($gy > 1600){
@@ -613,7 +613,7 @@ class JalaliDateHelper {
     }
 
     /*	F	*/
-    function jalali_to_gregorian($jy,$jm,$jd,$mod=''){
+   public function jalali_to_gregorian($jy,$jm,$jd,$mod=''){
         list($jy,$jm,$jd)=explode('_',$this->tr_num($jy.'_'.$jm.'_'.$jd));/* <= Extra :اين سطر ، جزء تابع اصلي نيست */
         if($jy > 979){
             $gy=1600;
@@ -642,15 +642,13 @@ class JalaliDateHelper {
     }
 
 
-    function g_t_j($date,$separator='-'){
+   public  function g_t_j($date,$separator='-'){
         $query_date = date('Y-m-d',strtotime($date));
         $query_date = explode('-',$query_date);
 
         $gDate = $this->gregorian_to_jalali($query_date[0],$query_date[1],$query_date[2]);
         return $gDate[0].$separator.$gDate[1].$separator.$gDate[2];
     }
-    function j_t_g(){
 
-    }
 }
 
