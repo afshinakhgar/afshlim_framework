@@ -7,7 +7,7 @@
  */
 
 namespace Core\Interfaces;
-abstract class _Service extends Model
+abstract class _Service
 {
 
 
