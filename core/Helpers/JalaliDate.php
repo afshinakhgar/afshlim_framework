@@ -434,14 +434,18 @@ class JalaliDate {
 
     /*	F	*/
     public function jmktime($h='',$m='',$s='',$jm='',$jd='',$jy='',$none='',$timezone='Asia/Tehran'){
-        if($timezone!='local')date_default_timezone_set($timezone);
+        if($timezone!='local') {
+            date_default_timezone_set($timezone);
+        }
         if($h===''){
+
+
             return time();
-        }else{
-            list($h,$m,$s,$jm,$jd,$jy)=explode('_',$this->tr_num($h.'_'.$m.'_'.$s.'_'.$jm.'_'.$jd.'_'.$jy));
-            if($m===''){
+        } else {
+            list($h,$m,$s,$jm,$jd,$jy) = explode('_',$this->tr_num($h.'_'.$m.'_'.$s.'_'.$jm.'_'.$jd.'_'.$jy));
+            if ($m===''){
                 return mktime($h);
-            }else{
+            } else {
                 if($s===''){
                     return mktime($h,$m);
                 }else{
