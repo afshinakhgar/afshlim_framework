@@ -25,7 +25,7 @@ $c['generalErrorHandler'] = function ($container) {
 
 
 // Service factory for the ORM
-$container['validator'] = function ($container) {
+$container['validator'] = function () {
     return new App\Validation\Validator();
 };
 
@@ -61,10 +61,10 @@ $container['view'] = function ($container) {
 
     $messages = $container->flash->getMessages();
 
-
+    $viewSettings = $container['settings']['view'];
     return new \Slim\Views\Blade(
-        $container['settings']['view']['blade_template_path'].$container['settings']['view']['template'],
-        $container['settings']['view']['blade_cache_path'],
+        [$viewSettings['blade_template_path'].$viewSettings['template']],
+        $viewSettings['blade_cache_path'],
         null,
         [
             'translator'=>$container['translator'],
@@ -75,7 +75,7 @@ $container['view'] = function ($container) {
 $translator = new \Core\Translator\Translator($container);
 $translator->init();
 
-$container['translator'] = function ($container) use ($translator) {
+$container['translator'] = function () use ($translator) {
     return $translator;
 };
 
