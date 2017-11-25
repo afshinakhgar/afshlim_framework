@@ -1,7 +1,6 @@
 <?php
 session_start();
-use \Psr\Http\Message\ServerRequestInterface as Request;
-use \Psr\Http\Message\ResponseInterface as Response;
+
 define("PATH_ROOT", __DIR__ . '/../');
 
 
