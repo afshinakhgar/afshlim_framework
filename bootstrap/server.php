@@ -16,11 +16,11 @@ use SlimFacades\Route;
 
 Facade::setFacadeApplication($app);
 
-
-
+$settings = $app->getContainer()->settings;
+$settings['tracy']['path'];
 
 use Tracy\Debugger;
-Debugger::enable(Debugger::DEVELOPMENT, __APP_ROOT__ . 'logs/debugger');
+Debugger::enable(Debugger::DEVELOPMENT, $settings['tracy']['path']);
 
 
 
