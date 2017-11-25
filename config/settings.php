@@ -20,7 +20,7 @@ $config = [
         'logger' => [
             'name' => 'afshFramework',
             'level' => Monolog\Logger::DEBUG,
-            'path' => __DIR__ . '/../logs/app.log',
+            'path' => __DIR__ . '/../storage/logs/app.log',
         ],
         'db' => [
             'driver'    => $env($APPROOT,'DB_DRIVER', 'mysql'),
