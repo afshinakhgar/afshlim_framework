@@ -1,4 +1,5 @@
 # AfshlimFramework
+[![Build Status](https://travis-ci.org/afshinpersian/afshlim_framework.svg?branch=master)](https://travis-ci.org/afshinpersian/afshlim_framework)
 a Slim framework boilerplate in my Way
 - [PSR-7](http://www.php-fig.org/psr/psr-7/ "PHP Framework Interop Group")
 - [PSR-4](http://www.php-fig.org/psr/psr-4/ "PHP Framework Interop Group")
