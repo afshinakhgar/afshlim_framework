@@ -15,9 +15,11 @@ use SlimFacades\Facade;
 use SlimFacades\Route;
 
 Facade::setFacadeApplication($app);
+$settings['tracy']['path'] = '';
+if($app->getContainer() instanceof Psr\Container\ContainerInterface){
+    $settings = $app->getContainer()->settings;
+}
 
-$settings = $app->getContainer()->settings;
-$settings['tracy']['path'];
 
 use Tracy\Debugger;
 Debugger::enable(Debugger::DEVELOPMENT, $settings['tracy']['path']);
