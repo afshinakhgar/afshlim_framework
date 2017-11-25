@@ -13,7 +13,6 @@ class Auth extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        //Change 'serviceName' to you want.
         return 'AuthService';
     }
 }

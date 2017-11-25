@@ -6,7 +6,7 @@
  * Time: 1:11 PM
  */
 
-namespace Core\Service;
+namespace Core\Services;
 
 use App\DataAccess\User\UserDataAccess;
 use Core\Interfaces\_Service;
@@ -24,9 +24,9 @@ class AuthService extends _Service
         return isset($_SESSION['user']);
     }
 
-    public function attempt(string $username, string $email,string $mobile,string $password)
+    public function attempt(string $username,string $password)
     {
-        $user = UserDataAccess::getUserByEmail_OR_Mobile_OR_Username_one_r($username,$email,$mobile)->first();
+        $user = UserDataAccess::getUserLoginField($username)->first();
 
         if (!$user) {
             return false;

@@ -11,7 +11,7 @@ namespace App\Command;
 
 use Core\Interfaces\_Command;
 
-class MakeMiddlewate extends _Command
+class MakeMiddleware extends _Command
 {
     protected function configure()
     {

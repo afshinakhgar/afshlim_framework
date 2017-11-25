@@ -72,6 +72,7 @@ $container['view'] = function ($container) {
         ]
     );
 };
+//$app->getContainer()->get('blade')->get('global-var');
 $translator = new \Core\Translator\Translator($container);
 $translator->init();
 
@@ -94,6 +95,19 @@ $GLOBALS['container'] = $container;
 
 
 
+
+/*Dynamic containers in services*/
+$dir = scandir(__APP_ROOT__.'/core/Services/');
+$ex_folders = array('..', '.');
+$filesInServices =  array_diff($dir,$ex_folders);
+
+foreach($filesInServices as $service){
+    $content = preg_replace('/.php/','',$service);
+    $container[$content] = function () use ($content){
+        $class =  '\\Core\\Services\\'.$content ;
+        return new $class();
+    };
+}
 
 
 return $container;

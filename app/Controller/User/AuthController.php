@@ -11,6 +11,7 @@ namespace App\Controller\User;
 
 use App\DataAccess\User\UserDataAccess;
 use App\Model\User;
+use Core\Facades\Auth;
 use Respect\Validation\Validator as v;
 
 use App\Controller\Controller;
@@ -26,6 +27,42 @@ class AuthController extends Controller
         return $this->view->render($response, 'auth/login');
     }
 
+
+    public function post_login_Action(Request $request , Response $response)
+    {
+        $validate = $this->validator->validate($request,[
+            'login' => v::noWhitespace()->notEmpty(),
+            'password' => v::notEmpty(),
+        ]);
+        $params = $request->getParams();
+
+
+        try {
+
+            if (!$validate->failed()) {
+                $userOne = UserDataAccess::getUserLoginField($params['login']);
+                if(!isset($userOne->id)) {
+
+//                    $this->logger->info();
+                    $this->flash->addMessage('error','User not exist');
+                    return $response->withRedirect('login');
+
+                }else{
+                    Auth::attempt($params['login'],$params['password']);
+                    $this->flash->addMessage('success','login');
+                    return $response->withRedirect('login');
+
+                }
+            }
+
+        } catch (Exception $e) {
+
+        }
+
+
+
+        return $this->view->render($response, 'auth/login');
+    }
 
 
     public function get_register_Action(Request $request , Response $response )
@@ -50,7 +87,7 @@ class AuthController extends Controller
             if(!$validate->failed()){
 
                 $params = $request->getParams();
-                $userOne = UserDataAccess::getUserByEmail_OR_Mobile_OR_Username_one_r($params['username'],$params['email'],$params['mobile']);
+                $userOne = UserDataAccess::getUserLoginField($params['username'],$params['email'],$params['mobile']);
 
                 if(!isset($userOne->id)){
                     $user = new User();

@@ -12,6 +12,11 @@ namespace App\DataAccess\User;
 use Core\Interfaces\_DataAccess;
 use PDO;
 use App\Model\User;
+
+/**
+ * @param UserDataAccess
+ */
+
 class UserDataAccess extends _DataAccess
 {
     /**
@@ -20,15 +25,15 @@ class UserDataAccess extends _DataAccess
      * @param string $mobile
      * @return User
      */
-    function getUserByEmail_OR_Mobile_OR_Username_one_r(string $username,string $email,string $mobile)
+    public static function  getUserLoginField(string $loginField)
     {
-        return User::where('username',$username)
-            ->orWhere('email',$email)
-            ->orWhere('mobile',$mobile)
+        return User::where('username',$loginField)
+            ->orWhere('email',$loginField)
+            ->orWhere('mobile',$loginField)
             ->first();
     }
 
-    function getUserById(int $userid)
+    public static function getUserById(int $userid)
     {
         return User::find((int)$userid);
     }

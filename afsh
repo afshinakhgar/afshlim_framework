@@ -40,7 +40,6 @@ $app->add(new MakeTestCommand());
 $app->add(new RunTestCommand());
 $app->add(new MigrationStatusCommand());
 $app->add(new MigrateRollbackCommand());
-$app->add(new ServeCommand());
 
 
 
