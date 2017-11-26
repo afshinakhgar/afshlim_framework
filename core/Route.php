@@ -39,6 +39,8 @@ class Route
 
         $this->app->group($url, function () use ($controller,$routeNames, $args) {
             $this->get('', $controller . ':index')->add(self::middleware('index', $args))->setName($routeNames.'.index');
+            $this->get('/', $controller . ':index')->add(self::middleware('index', $args))->setName($routeNames.'.index');
+            $this->get('/index', $controller . ':index')->add(self::middleware('index', $args))->setName($routeNames.'.index');
 
             $this->get('/create', $controller . ':create')->add(self::middleware('create', $args))->setName($routeNames.'.create');
             $this->get('/{id:[0-9]+}', $controller . ':show')->add(self::middleware('show', $args))->setName($routeNames.'.show');
