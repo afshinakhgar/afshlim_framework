@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/afshinpersian/afshlim_framework.svg?branch=master)](https://travis-ci.org/afshinpersian/afshlim_framework)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/afshinpersian/afshlim_framework/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/afshinpersian/afshlim_framework/?branch=master)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/afshinpersian/afshlim_framework.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fafshinpersian%2Fafshlim_framework)
 # AfshlimFramework
 a Slim framework boilerplate in my Way
 - [PSR-7](http://www.php-fig.org/psr/psr-7/ "PHP Framework Interop Group")
