@@ -30,5 +30,5 @@ $route->get('/', HomeController::class.':index');
 $route->get('/register[/{params:.*}]', \App\Controller\User\AuthController::class.':get_register_Action');
 $route->post('/register', \App\Controller\User\AuthController::class.':post_register_Action');
 $route->get('/login', \App\Controller\User\AuthController::class.':get_login_Action');
-$route->post('/login', \App\Controller\User\AuthController::class.':post_login_Action');
+$route->post('/login', \App\Controller\User\AuthController::class.':post_login_Action')->setName('post.login');
 

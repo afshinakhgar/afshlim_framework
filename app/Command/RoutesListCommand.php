@@ -11,6 +11,7 @@ namespace App\Command;
 use Slim\App;
 use Slim\Router;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -41,12 +42,33 @@ class RoutesListCommand extends Command
 
     public function execute(InputInterface $input , OutputInterface $output)
     {
+        $allRoutes = [];
 
 // And then iterate over $routes
-        $routes = $this->app->getContainer()->getRoutes();
-        dd($routes);
-        foreach ($routes as $route) {
-            echo $route->getPattern(), "<br>";
+        $routes = $this->app->getContainer()->get('router')->getRoutes();
+
+        foreach ($routes as $route){
+            foreach($route->getMethods() as $methods){
+                $allRoutes['routes'][] = [
+                'pattern' => $route->getPattern(),
+                'callable' => $route->getCallable(),
+                'name' => $route->getName(),
+                'method' => $methods,
+            ];
+            }
+
         }
+
+        $table = new Table($output);
+
+
+        $table
+            ->setHeaders(array('patern','callable', 'name','methods'))
+            ->setRows(
+               $allRoutes['routes']
+            )
+        ;
+        $table->render();
+
     }
 }

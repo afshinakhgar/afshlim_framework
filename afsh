@@ -1,7 +1,9 @@
 #!/usr/bin/env php
 
 <?php
+
 include 'bootstrap/app.php';
+
 use Phpmig\Console\Command;
 
 
