@@ -35,7 +35,6 @@ foreach ($files as $partial) {
     if ( ! file_exists($file))
     {
         $msg = "Route partial [{$partial}] not found.";
-        throw new \Illuminate\Filesystem\FileNotFoundException($msg);
     }
 
     require_once $file;
