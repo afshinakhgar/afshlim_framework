@@ -1,7 +1,8 @@
 [![Build Status](https://travis-ci.org/afshinpersian/afshlim_framework.svg?branch=master)](https://travis-ci.org/afshinpersian/afshlim_framework)
 [![Total Downloads](https://poser.pugx.org/afshinpersian/afshlim_framework/downloads)](https://packagist.org/packages/afshinpersian/afshlim_framework)
+[![License](https://poser.pugx.org/afshinpersian/afshlim_framework/license)](https://packagist.org/packages/afshinpersian/afshlim_framework)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/afshinpersian/afshlim_framework/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/afshinpersian/afshlim_framework/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/afshinpersian/afshlim_framework/v/stable)](https://packagist.org/packages/afshinpersian/afshlim_framework)
-[![License](https://poser.pugx.org/afshinpersian/afshlim_framework/license)](https://packagist.org/packages/afshinpersian/afshlim_framework)[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/afshinpersian/afshlim_framework/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/afshinpersian/afshlim_framework/?branch=master)
 
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/afshinpersian/afshlim_framework.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fafshinpersian%2Fafshlim_framework)
 
