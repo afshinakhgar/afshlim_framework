@@ -32,16 +32,14 @@ class Translator extends _TranslateHandler
 
             $translationBaseFolder = $this->settings['translation']['translations_path'].$this->local;
             $translationBaseFile = $translationBaseFolder.'/'.$namespace.'.php';
-
-            if(file_exists($translationBaseFolder)){
+            if(file_exists($translationBaseFile)){
                 $lang= include_once ($translationBaseFile);
             }else{
+                return $lang[$group] = $key;
 
             }
         }else{
-
         }
-
 
         if(count($replace) > 0){
             foreach($replace as $key=>$replace_item){
