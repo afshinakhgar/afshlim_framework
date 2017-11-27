@@ -1,18 +1,7 @@
 #!/usr/bin/env php
 
 <?php
-define('__APP_ROOT__',__DIR__) ;
-
-require_once __DIR__ . '/vendor/autoload.php';
-
-
-use \Slim\App;
-require __DIR__.'/bootstrap/bootstrap.php';
-
-require __DIR__.'/config/settings.php';
-$app = new App($config);
-require_once __DIR__.'/bootstrap/dependencies.php';
-
+include 'bootstrap/app.php';
 use Phpmig\Console\Command;
 
 
@@ -26,21 +15,23 @@ use App\Command\RunTestCommand;
 use App\Command\MigrationStatusCommand;
 use App\Command\MigrateRollbackCommand;
 use App\Command\ServeCommand;
+use App\Command\RoutesListCommand;
 use Symfony\Component\Console\Application;
 
 
-$app = new Application();
+$application = new Application();
 
-$app->add(new HashCommand());
-$app->add(new MakeMigration());
-$app->add(new MigrateCommand());
-$app->add(new MakeController());
-$app->add(new MakeModel());
-$app->add(new MakeTestCommand());
-$app->add(new RunTestCommand());
-$app->add(new MigrationStatusCommand());
-$app->add(new MigrateRollbackCommand());
+$application->add(new HashCommand());
+$application->add(new MakeMigration());
+$application->add(new MigrateCommand());
+$application->add(new MakeController());
+$application->add(new MakeModel());
+$application->add(new MakeTestCommand());
+$application->add(new RunTestCommand());
+$application->add(new MigrationStatusCommand());
+$application->add(new MigrateRollbackCommand());
+$application->add(new RoutesListCommand('route list ' , $app));
 
 
 
-$app->run();
+$application->run();

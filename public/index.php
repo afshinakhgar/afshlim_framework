@@ -1,6 +1,4 @@
 <?php
-define('__APP_ROOT__',__DIR__ . '/../') ;
-
 require '../bootstrap/server.php';
 
 //$whoopsGuard = new \Zeuxisoo\Whoops\Provider\Slim\WhoopsGuard();
