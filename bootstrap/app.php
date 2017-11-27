@@ -16,9 +16,9 @@ if(php_sapi_name() != 'cli') {
     $settings['tracy']['path'] = '';
     if($app->getContainer() instanceof Psr\Container\ContainerInterface){
         $settings = $app->getContainer()->settings;
+        Tracy\Debugger::enable(Tracy\Debugger::DEVELOPMENT, $settings['tracy']['path']);
+        Facade::setFacadeApplication($app);
     }
-    Tracy\Debugger::enable(Tracy\Debugger::DEVELOPMENT, $settings['tracy']['path']);
-    Facade::setFacadeApplication($app);
 
     require  __APP_ROOT__.'bootstrap/middlewares.php';
 
