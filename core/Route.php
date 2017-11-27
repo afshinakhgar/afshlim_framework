@@ -10,6 +10,8 @@ namespace Core;
 
 
 
+use Psr\Container\ContainerInterface;
+
 class Route
 {
 
