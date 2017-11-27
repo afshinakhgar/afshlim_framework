@@ -9,12 +9,14 @@
 namespace Core\Translator;
 
 
+use Psr\Container\ContainerInterface;
+
 abstract class _TranslateHandler
 {
     protected $container ;
     protected $local;
 
-    function __construct($container)
+    function __construct(ContainerInterface $container)
     {
         $this->container = $container;
     }
