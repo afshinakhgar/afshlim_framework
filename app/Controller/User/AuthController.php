@@ -28,19 +28,20 @@ class AuthController extends Controller
     }
 
 
-    public function post_login_Action(Request $request , Response $response)
+    public function post_login_step1_Action(Request $request , Response $response)
     {
         $validate = $this->validator->validate($request,[
-            'login' => v::noWhitespace()->notEmpty(),
-            'password' => v::notEmpty(),
+            'login' => v::noWhitespace()->notEmpty()
         ]);
         $params = $request->getParams();
-
-
         try {
 
             if (!$validate->failed()) {
                 $userOne = UserDataAccess::getUserLoginField($params['login']);
+                $token = UserDataAccess::createNewToken($userOne->id);
+                /*send code by sms*/
+                $code = $token->code;
+
                 if(!isset($userOne->id)) {
 
 //                    $this->logger->info();
@@ -48,7 +49,6 @@ class AuthController extends Controller
                     return $response->withRedirect('login');
 
                 }else{
-                    Auth::attempt($params['login'],$params['password']);
                     $this->flash->addMessage('success','login');
                     return $response->withRedirect('login');
 
@@ -76,29 +76,23 @@ class AuthController extends Controller
         $validate = $this->validator->validate($request,[
             'firstname' => v::noWhitespace()->notEmpty()->alpha(),
             'lastname' => v::noWhitespace()->notEmpty()->alpha(),
-            'mobile' => v::noWhitespace()->notEmpty(),
-            'email' => v::noWhitespace()->notEmpty(),
-            'username' => v::noWhitespace()->notEmpty(),
+            'login' => v::noWhitespace()->notEmpty(),
         ]);
-
 
         try{
 
             if(!$validate->failed()){
 
                 $params = $request->getParams();
-                $userOne = UserDataAccess::getUserLoginField($params['username'],$params['email'],$params['mobile']);
+                $userOne = UserDataAccess::getUserLoginField($params['login']);
 
                 if(!isset($userOne->id)){
                     $user = new User();
                     $hash = new Hash();
                     $user->first_name = $request->getParam('firstname');
                     $user->last_name = $request->getParam('lastname');
-                    $user->email = $request->getParam('email');
-                    $user->username = $request->getParam('username');
-                    $user->mobile = $request->getParam('mobile');
-                    $user->password = $hash->hash($request->getParam('password'));
-                    $user->api_token = $hash->hash($request->getParam('email'));
+                    $user->mobile = $request->getParam('login');
+                    $user->api_token = $hash->hash($request->getParam('login'));
                     $user->save();
                     $this->flash->addMessage('info','You have been signed up');
                     return $response->withRedirect('/');

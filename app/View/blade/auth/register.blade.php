@@ -16,20 +16,9 @@
             </div>
 
             <div class="form-group">
-                <label for="email">email</label>
-                <input name="email"  type="email" class="form-control" id="email" placeholder="email">
+                <label for="login">mobile</label>
+                <input  name="login"  type="login" class="form-control" id="mobile" placeholder="mobile">
             </div>
-
-            <div class="form-group">
-                <label for="mobile">mobile</label>
-                <input  name="mobile"  type="mobile" class="form-control" id="mobile" placeholder="mobile">
-            </div>
-
-            <div class="form-group">
-                <label for="username">username</label>
-                <input  name="username"  type="username" class="form-control" id="mobile" placeholder="username">
-            </div>
-
 
             <div class="form-group">
                 <input type="submit" class="submit btn-success">

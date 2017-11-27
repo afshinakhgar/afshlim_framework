@@ -9,10 +9,10 @@ $config = [
         'app' => [
             'log_timer'=>true
         ],
-        'displayErrorDetails' => false,
+        'displayErrorDetails' => true,
         'addContentLengthHeader' => false,
         'determineRouteBeforeAppMiddleware' => true,
-        'debug'=>false,
+        'debug'=>true,
         'translation' => [
             'default_lang' => 'en',
             'translations_path' => $APPROOT . 'translations/',
