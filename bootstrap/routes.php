@@ -1,31 +1,6 @@
 <?php
 use App\Controller\HomeController;
-
-//
-//$resourceFullRoutes = [
-//    'get' => [
-//        'index',
-//        'one/{id:[0-9]}',
-//        'edit/{id:[0-9]}',
-//    ],
-//    'delete'=> [
-//        'delete'
-//    ],
-//    'post' => [
-//        'store',
-//    ],
-//    'put' => [
-//        'update'
-//    ]
-//
-//];
-//
-
 $route = new \Core\Route($app);
-
-
-
-
 
 $files = getDirFiles(__APP_ROOT__.'app/Routes/');
 /** Route Partial Loadup =================================================== */
