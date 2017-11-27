@@ -11,6 +11,7 @@ namespace Core\Interfaces;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Views\Blade;
 
 abstract class _Controller
 {
@@ -71,7 +72,7 @@ abstract class _Controller
     /**
      * Get Twig Engine
      *
-     * @return Twig
+     * @return Blade
      */
     protected function getView()
     {
