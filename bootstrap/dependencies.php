@@ -18,7 +18,7 @@ $container['db'] = function ($container) {
 //
 
 
-$c['generalErrorHandler'] = function ($container) {
+$container['generalErrorHandler'] = function ($container) {
     return new \Core\Handlers\GeneralErrorHandler($container);
 };
 
