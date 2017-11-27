@@ -1,6 +1,10 @@
 <?php
 return [
-    'fields' => [ 'auth'=> ['login' => [
-        'label'=>'afshin'
-    ]] ]
+    'fields' => [
+        'step1'=> [
+            'login_mobile'=> 'mobile',
+            'login_submit'=>'login'
+        ]
+
+    ]
 ];

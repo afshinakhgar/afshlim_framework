@@ -29,36 +29,33 @@ class Translator extends _TranslateHandler
         $t_dir = $this->getTranslation_dirs();
 
         if(in_array($this->local,$t_dir)){
-
             $translationBaseFolder = $this->settings['translation']['translations_path'].$this->local;
             $translationBaseFile = $translationBaseFolder.'/'.$namespace.'.php';
             if(file_exists($translationBaseFile)){
-                $lang= include_once ($translationBaseFile);
+                $lang = include ($translationBaseFile);
             }else{
-                return $lang[$group] = $key;
-
+                return  $key;
             }
         }else{
         }
+        $keyArr = explode('.',$key);
+        unset($keyArr[0]);
+        $keyArr = array_values($keyArr);
+        $lang_new = $this->getDataFromTranslation($lang,$keyArr);
 
         if(count($replace) > 0){
             foreach($replace as $key=>$replace_item){
-                if(strpos($lang[$group],'%') != 0){
-                    str_replace($key,$replace_item,$lang[$group]);
+                if(strpos($lang_new,'%') != 0){
+                    str_replace($key,$replace_item,$lang_new);
                 }
             }
         }else{
-            $keyArr = explode('.',$key);
-            unset($keyArr[0]);
-            $keyArr = array_values($keyArr);
-            $lang = $this->getDataFromTranslation($lang,$keyArr);
-
-            return $lang;
+            return $lang_new;
         }
     }
 
 
-    public function getDataFromTranslation($data,$keyArr){
+    public function getDataFromTranslation( $data, $keyArr){
         $arrayFound  = $data[$keyArr[0]];
         if($arrayFound){
             unset($keyArr[0]);

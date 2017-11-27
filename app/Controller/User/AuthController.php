@@ -22,7 +22,7 @@ use Slim\Http\Response;
 class AuthController extends Controller
 {
 
-    public function get_login_Action(Request $request , Response $response)
+    public function get_login_step1_Action(Request $request , Response $response)
     {
         return $this->view->render($response, 'auth/login');
     }
