@@ -9,6 +9,7 @@
 namespace Core\Interfaces;
 
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\Blade;
@@ -83,7 +84,7 @@ abstract class _Controller
      *
      * @param string $template
      * @param array $data
-     * @return string
+     * @return ResponseInterface
      */
     protected function render($template, $data = [])
     {
