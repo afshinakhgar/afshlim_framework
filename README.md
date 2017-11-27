@@ -57,5 +57,6 @@ it's done
 * `php afsh migrate` // run migrations
 * `php afsh migrate:rollback`// rollback migrations
 * `php afsh migration:status` // checking status of migrations
+* `php afsh routes:list` // getting routes list in cli tool
 
 
