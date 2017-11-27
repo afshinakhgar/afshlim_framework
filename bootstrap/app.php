@@ -2,12 +2,12 @@
 define('__APP_ROOT__',__DIR__ . '/../') ;
 
 require  __APP_ROOT__.'bootstrap/bootstrap.php';
+require  __APP_ROOT__.'core/Functions/helpers.php';
 require __APP_ROOT__.'vendor/autoload.php';
 require __APP_ROOT__.'config/settings.php';
 $app = new \Core\App($config);
 
 use SlimFacades\Facade;
-
 // get container app
 require __APP_ROOT__.'bootstrap/dependencies.php';
 require  __APP_ROOT__.'bootstrap/routes.php';

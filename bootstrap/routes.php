@@ -24,10 +24,21 @@ use App\Controller\HomeController;
 $route = new \Core\Route($app);
 
 
-$route->get('/', HomeController::class.':index')->setName('home');
-$route->get('/register[/{params:.*}]', \App\Controller\User\AuthController::class.':get_register_Action')->setName('register');
-$route->post('/register', \App\Controller\User\AuthController::class.':post_register_Action')->setName('register');
-$route->get('/login', \App\Controller\User\AuthController::class.':get_login_Action')->setName('login');
-$route->post('/login', \App\Controller\User\AuthController::class.':post_login_Action')->setName('login');
-$route->resource('/user/auth', '\App\Controller\User\AuthController', $args = []);
 
+
+
+$files = getDirFiles(__APP_ROOT__.'app/Routes/');
+/** Route Partial Loadup =================================================== */
+foreach ($files as $partial) {
+    $file = __APP_ROOT__.'app/Routes/'.$partial;
+
+    if ( ! file_exists($file))
+    {
+        $msg = "Route partial [{$partial}] not found.";
+        throw new \Illuminate\Filesystem\FileNotFoundException($msg);
+    }
+
+    require_once $file;
+}
+
+$route->resource('/user/auth', '\App\Controller\User\AuthController', $args = []);
