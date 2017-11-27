@@ -18,11 +18,9 @@ class Env
             $_dotenv = new Dotenv($filePath );
             $_dotenv->load();
             unset($_dotenv);
-        }else{
-
-            die('enviroment file (`.env`) not found in project root  ');
+        }else {
+            return '';
         }
-
 
         $value = getenv($key);
         if ($value === false) {
