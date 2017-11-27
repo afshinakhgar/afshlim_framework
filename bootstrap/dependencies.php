@@ -56,6 +56,13 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 
+// not found handler
+$container['notFoundHandler'] = function ($container) {
+    return function (\Slim\Http\Request $request, \Slim\Http\Response $response) use ($container) {
+        return $container['view']->render($response->withStatus(404), '404');
+    };
+};
+
 // Register Blade View helper
 $container['view'] = function ($container) {
 
