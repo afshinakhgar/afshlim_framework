@@ -95,4 +95,3 @@ $config = [
 ];
 
 return $config;
-?>
