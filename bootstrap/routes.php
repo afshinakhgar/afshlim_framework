@@ -36,8 +36,10 @@ foreach ($files as $partial) {
     {
         $msg = "Route partial [{$partial}] not found.";
     }
-
-    require_once $file;
+    include $file;
 }
+$route->get('/', HomeController::class.':index')->setName('home');
 
 $route->resource('/user/auth', '\App\Controller\User\AuthController', $args = []);
+
+
