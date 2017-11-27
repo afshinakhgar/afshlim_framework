@@ -1,11 +1,7 @@
 @extends('layout/main')
 
 @section('content')
-        <?php
-                $a [] = $translator->trans('auth.fields.step1.login_mobile');
-                $a [] = $translator->trans('auth.fields.step1.login_submit');
-                dd($a);
-                ?>
+
     <div class="container">
         <h1>Login</h1>
         <form action="login" method="post">

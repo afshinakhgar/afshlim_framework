@@ -56,7 +56,7 @@ class Translator extends _TranslateHandler
 
 
     public function getDataFromTranslation( $data, $keyArr){
-        $arrayFound  = $data[$keyArr[0]];
+        $arrayFound  = isset($data[$keyArr[0]]) ? $data[$keyArr[0]] : '';
         if($arrayFound){
             unset($keyArr[0]);
             $keyArr = array_values($keyArr);
