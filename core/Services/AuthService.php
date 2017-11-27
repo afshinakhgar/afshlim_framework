@@ -31,7 +31,7 @@ class AuthService extends _Service
         if (!$user) {
             return false;
         }
-        if (password_verify($password,$user->password)) {
+        if (password_verify($password,'')) {
             $_SESSION['user'] = $user->id;
             return true;
         }

@@ -8,16 +8,20 @@
 
 namespace Core\Translator;
 
+use Interop\Container\ContainerInterface;
+
 class Translator extends _TranslateHandler
 {
-
+    /**
+     * @var ContainerInterface $setting
+     *
+    */
     public function init()
     {
         $setting = $this->settings['translation'];
         $this->local = $setting['default_lang'];
 
     }
-
 
     private function _loadkey(string $key , array $replace = [])
     {
