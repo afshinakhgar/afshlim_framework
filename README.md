@@ -14,6 +14,11 @@ a Slim framework boilerplate in my Way
 - Namespaced
 - MVC
 
+---------------------
+
+### Why I use Afshlim
+> as a php developer I used to use many php frameworks such as laravel- yii - codeigniter and in the other hand I have used some php micro frameworks like SLIM , SILEX , FatfreeFramework ... but micro frameworks are tiny and fullstacks are huge , this skeleton is very slim with features of full stack frameworks .. 
+this is my way to creating new framework ... I know it's not perfect .. but it's easy to use and full featured tool
 ### How to install
 Run this command from the directory in which you want to install
 ```bash
@@ -32,6 +37,8 @@ run migration with this command
     php afsh migrate
 ```
 it's done
+
+----------
 
 ### Libraries
 * Helpers
