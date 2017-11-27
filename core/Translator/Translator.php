@@ -48,9 +48,31 @@ class Translator extends _TranslateHandler
                 }
             }
         }else{
-            return $lang[$group];
+            $keyArr = explode('.',$key);
+            unset($keyArr[0]);
+            $keyArr = array_values($keyArr);
+            $lang = $this->getDataFromTranslation($lang,$keyArr);
+
+            return $lang;
         }
     }
+
+
+    public function getDataFromTranslation($data,$keyArr){
+        $arrayFound  = $data[$keyArr[0]];
+        if($arrayFound){
+            unset($keyArr[0]);
+            $keyArr = array_values($keyArr);
+            if(isset($keyArr[0])){
+                return $this->getDataFromTranslation($arrayFound,$keyArr);
+            }
+        }
+        return $arrayFound ;
+    }
+
+
+
+
 
     public function trans(string $key, array $replace = [])
     {

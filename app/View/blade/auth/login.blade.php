@@ -6,7 +6,7 @@
         <h1>Login</h1>
         <form action="login" method="post">
             <div class="form-group">
-                <label for="login">email</label>
+                <label for="mobile">{{$translator->trans('auth.fields.auth.login.label')}}</label>
                 <input name="login"  type="email" class="form-control" id="login" placeholder="email">
             </div>
             <div class="form-group">
