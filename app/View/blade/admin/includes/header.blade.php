@@ -14,6 +14,7 @@
                 <th>Mobile</th>
                 <th>name</th>
                 <th>last Name</th>
+                <th>Role</th>
             </tr>
         </thead>
 
@@ -23,8 +24,8 @@
                 <td>{{$row->mobile}}</td>
                 <td>{{$row->first_name}}</td>
                 <td>{{$row->last_name}}</td>
+                <td><a href="#">Role</a></td>
             </tr>
-
         @endforeach
 
     </table>
