@@ -1,11 +1,11 @@
 <?php
 namespace App\Middleware;
 
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use Core\Facades\Auth;
+
 use Core\Interfaces\_Middleware;
 
-class !nameMiddleware extends _Middleware
+class AuthenticationMiddleware extends _Middleware
 {
 
     /**
@@ -14,11 +14,14 @@ class !nameMiddleware extends _Middleware
      * @param callable                                 $next
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function __invoke ($request, $response, $next)
+    public function __invoke($request, $response, $next )
     {
-        //TODO
-        /** @var $response \Psr\Http\Message\ResponseInterface */
+        if(!Auth::check()){
+            return $response->withRedirect('/');
+        }
+
         $response = $next($request, $response);
+
 
         return $response;
     }

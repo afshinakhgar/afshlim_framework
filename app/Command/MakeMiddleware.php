@@ -10,6 +10,9 @@ namespace App\Command;
 
 
 use Core\Interfaces\_Command;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class MakeMiddleware extends _Command
 {
@@ -29,7 +32,7 @@ class MakeMiddleware extends _Command
     {
         $name = $input->getArgument('name');
 
-        $directory = "app/src/Middleware/";
+        $directory = "app/Middleware/";
         $file = file_get_contents("core/resources/templates/create_middleware.txt");
         $file = str_replace("!name", $name, $file);
         if (is_dir($directory) && !is_writable($directory)) {

@@ -17,6 +17,7 @@ use App\Command\RunTestCommand;
 use App\Command\MigrationStatusCommand;
 use App\Command\MigrateRollbackCommand;
 use App\Command\ServeCommand;
+use App\Command\MakeMiddleware;
 use App\Command\RoutesListCommand;
 use Symfony\Component\Console\Application;
 
@@ -28,6 +29,7 @@ $application->add(new MakeMigration());
 $application->add(new MigrateCommand());
 $application->add(new MakeController());
 $application->add(new MakeModel());
+$application->add(new MakeMiddleware());
 $application->add(new MakeTestCommand());
 $application->add(new RunTestCommand());
 $application->add(new MigrationStatusCommand());

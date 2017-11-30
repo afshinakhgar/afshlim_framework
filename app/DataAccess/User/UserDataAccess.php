@@ -22,9 +22,7 @@ use App\Model\User;
 class UserDataAccess extends _DataAccess
 {
     /**
-     * @param string $username
-     * @param string $email
-     * @param string $mobile
+     * @param string $loginField
      * @return User
      */
     public static function getUserLoginField(string $loginField)
@@ -69,5 +67,14 @@ class UserDataAccess extends _DataAccess
         }
     }
 
+
+
+    /**
+     * @return array User
+     */
+    public static function getAllUsers(int $limit = 20)
+    {
+        return User::paginate($limit);
+    }
 
 }
