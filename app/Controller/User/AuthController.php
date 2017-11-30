@@ -24,7 +24,18 @@ class AuthController extends Controller
 
     public function get_login_step1_Action(Request $request , Response $response)
     {
+        if(Auth::check()){
+            return $response->withRedirect('/');
+        }
         return $this->view->render($response, 'auth/login');
+    }
+
+    public function get_logout_Action(Request $request , Response $response)
+    {
+        if(Auth::check()){
+            Auth::logout();
+        }
+        return $response->withRedirect('/');
     }
 
 
@@ -37,24 +48,20 @@ class AuthController extends Controller
         try {
 
             if (!$validate->failed()) {
-                $userOne = UserDataAccess::getUserLoginField($params['login']);
-                $token = UserDataAccess::createNewToken($userOne->id);
-                /*send code by sms*/
-                $code = $token->code;
-
-                if(!isset($userOne->id)) {
-
-//                    $this->logger->info();
-                    $this->flash->addMessage('error','User not exist');
-                    return $response->withRedirect('login');
-
+                $hash = new Hash();
+                // not two step
+                if(!$this->settings['auth']['2step']){
+                   $user  = Auth::attempt($params['login'],$hash->hash($request->getParam('password')));
                 }else{
-                    $this->flash->addMessage('success','login');
-                    return $response->withRedirect('login');
-
+                    $user  = Auth::attempt($params['login'],'step1');
+                    $token = UserDataAccess::createNewToken($user->id);
+                    /*send code by sms*/
+                    $code = $token->code;
                 }
-            }
 
+                $this->flash->addMessage($user['type'],$user['message']);
+                return $response->withRedirect('login');
+            }
         } catch (Exception $e) {
 
         }
@@ -93,6 +100,12 @@ class AuthController extends Controller
                     $user->last_name = $request->getParam('lastname');
                     $user->mobile = $request->getParam('login');
                     $user->api_token = $hash->hash($request->getParam('login'));
+
+                    // not two step
+                    if(!$this->settings['auth']['2step']){
+                        $user->password = $hash->hash($request->getParam('password'));
+                    }
+
                     $user->save();
                     $this->flash->addMessage('info','You have been signed up');
                     return $response->withRedirect('/');

@@ -16,7 +16,8 @@ class Hash{
      * @return string $hash
      */
     public static function hash($password){
-        return (string)password_hash($password, PASSWORD_DEFAULT);
+//        return (string)password_hash($password, PASSWORD_DEFAULT);
+        return sha1(md5($password));
     }
 
     /**

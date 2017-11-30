@@ -69,13 +69,15 @@ $container['view'] = function ($container) {
     $messages = $container->flash->getMessages();
 
     $viewSettings = $container['settings']['view'];
+
     return new \Slim\Views\Blade(
         [$viewSettings['blade_template_path'].$viewSettings['template']],
         $viewSettings['blade_cache_path'],
         null,
         [
             'translator'=>$container['translator'],
-            'messages'=> $messages
+            'messages'=> $messages,
+            'settings'  => $container->settings
         ]
     );
 };

@@ -17,6 +17,9 @@ $config = [
             'default_lang' => 'en',
             'translations_path' => $APPROOT . 'translations/',
         ],
+        'auth' => [
+            '2step' => false
+        ],
         'logger' => [
             'name' => 'afshFramework',
             'level' => Monolog\Logger::DEBUG,

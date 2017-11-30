@@ -3,6 +3,7 @@ namespace App\Controller;
 
 
 use App\Model\Test;
+use Core\Facades\Auth;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
