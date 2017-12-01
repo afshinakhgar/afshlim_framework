@@ -10,5 +10,8 @@ namespace Core\Helpers;
 
 class Url
 {
-
+    public function urlFor($name, $params = array())
+    {
+        return $this->request->getRootUri() . $this->router->urlFor($name, $params);
+    }
 }
