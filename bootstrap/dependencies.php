@@ -63,24 +63,7 @@ $container['notFoundHandler'] = function ($container) {
     };
 };
 
-// Register Blade View helper
-$container['view'] = function ($container) {
 
-    $messages = $container->flash->getMessages();
-
-    $viewSettings = $container['settings']['view'];
-
-    return new \Slim\Views\Blade(
-        [$viewSettings['blade_template_path'].$viewSettings['template']],
-        $viewSettings['blade_cache_path'],
-        null,
-        [
-            'translator'=>$container['translator'],
-            'messages'=> $messages,
-            'settings'  => $container->settings
-        ]
-    );
-};
 //$app->getContainer()->get('blade')->get('global-var');
 $translator = new \Core\Translator\Translator($container);
 $translator->init();
@@ -97,6 +80,29 @@ $container['flash'] = function () {
 
 
 
+
+// Register Blade View helper
+$container['view'] = function ($container) {
+
+    $messages = $container->flash->getMessages();
+
+    $viewSettings = $container['settings']['view'];
+
+    return new \Slim\Views\Blade(
+        [$viewSettings['blade_template_path'].$viewSettings['template']],
+        $viewSettings['blade_cache_path'],
+        null,
+        [
+            'translator'=> $container['translator'],
+            'messages'=> $messages,
+            'settings'  => $container->settings
+        ]
+    );
+};
+$app->getContainer()['view']->getRenderer()->getCompiler()->directive('helloWorld', function(){
+
+    return "<?php echo 'Hello Directive'; ?>";
+});
 
 
 
@@ -117,6 +123,8 @@ foreach($filesInServices as $service){
         return new $class();
     };
 }
+
+
 
 
 return $container;

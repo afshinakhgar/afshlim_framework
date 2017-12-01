@@ -24,7 +24,8 @@
                 <td>{{$row->mobile}}</td>
                 <td>{{$row->first_name}}</td>
                 <td>{{$row->last_name}}</td>
-                <td><a href="#">Role</a></td>
+{{--                <td><a href="{{ path_for('admin.user.role') }}">Role</a></td>--}}
+                <td>@helloWorld </td>
             </tr>
         @endforeach
 

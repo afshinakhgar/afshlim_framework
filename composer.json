@@ -26,7 +26,7 @@
         "slim/flash": "^0.4.0",
         "slim/csrf": "^0.8.2",
         "monolog/monolog": "^1.23",
-        "rubellum/slim-blade-view": "^0.1.1",
+        "buchin/slim-blade-view":"dev-master",
         "runcmf/runtracy": "^0.2.3",
         "symfony/console": "^3.3",
         "davedevelopment/phpmig": "^1.4",
