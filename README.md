@@ -74,9 +74,9 @@ it's done
 #### TODO
 - [x] registration
 - [x] login 1 step
-- [] admin panel
-- [] sending email
-- [] image manupulation
-- [] ajax support
+- [ ] admin panel
+- [ ] sending email
+- [ ] image manupulation
+- [ ] ajax support
 
 
