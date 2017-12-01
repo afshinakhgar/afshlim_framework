@@ -71,4 +71,12 @@ it's done
 * `php afsh migration:status` // checking status of migrations
 * `php afsh routes:list` // getting routes list in cli tool
 
+#### TODO
+- [x] registration
+- [x] login 1 step
+- [] admin panel
+- [] sending email
+- [] image manupulation
+- [] ajax support
+
 
