@@ -110,6 +110,8 @@ class AuthController extends Controller
                     $this->flash->addMessage('info','You have been signed up');
                     return $response->withRedirect('/');
                 }else{
+                    $this->flash->addMessage('error','User Already exist');
+
                     return $response->withRedirect('/');
                 }
 
