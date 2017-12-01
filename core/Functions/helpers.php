@@ -1,10 +1,11 @@
 <?php
 
 
-function getDirFiles($path)
-{
-    $dir = scandir($path);
-    $ex_folders = array('..', '.');
 
-    return array_diff($dir,$ex_folders);
+function url(string $name ,array $params)
+{
+    $url = new \Core\Helpers\Url($GLOBALS['container']);
+    return $url->get($name , $params);
 }
+
+url('admin.user.list',[]);

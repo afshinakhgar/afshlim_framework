@@ -8,10 +8,27 @@
 
 namespace Core\Helpers;
 
+
+use Core\Route;
+use Slim\Http\Request;
+
 class Url
 {
-    public function urlFor($name, $params = array())
+    protected $container;
+    public function __construct($container)
     {
-        return $this->request->getRootUri() . $this->router->urlFor($name, $params);
+        $this->container = $container;
+    }
+    public function get( $name, $params = array() )
+    {
+            $route = $this->container->get('router')->pathFor($name,$params);
+
+
+            return $route;
+//        $name = $route->getName();
+//        $groups = $route->getGroups();
+//        $methods = $route->getMethods();
+//        $arguments = $route->getArguments();
+
     }
 }

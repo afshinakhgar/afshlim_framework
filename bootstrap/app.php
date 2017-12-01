@@ -2,10 +2,10 @@
 define('__APP_ROOT__',__DIR__ . '/../') ;
 
 require  __APP_ROOT__.'bootstrap/bootstrap.php';
-require  __APP_ROOT__.'core/Functions/helpers.php';
 require __APP_ROOT__.'vendor/autoload.php';
 require __APP_ROOT__.'config/settings.php';
 
+require  __APP_ROOT__.'core/Functions/general_helpers.php';
 
 
 $app = new \Core\App($config);
@@ -13,7 +13,9 @@ $app = new \Core\App($config);
 use SlimFacades\Facade;
 // get container app
 require __APP_ROOT__.'bootstrap/dependencies.php';
+
 require  __APP_ROOT__.'bootstrap/routes.php';
+require  __APP_ROOT__.'core/Functions/helpers.php';
 
 if(php_sapi_name() != 'cli') {
     $settings['tracy']['path'] = '';

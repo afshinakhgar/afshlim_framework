@@ -107,6 +107,7 @@ $app->getContainer()['view']->getRenderer()->getCompiler()->directive('helloWorl
 
 
 $GLOBALS['container'] = $container;
+$GLOBALS['app'] = $app;
 
 
 
