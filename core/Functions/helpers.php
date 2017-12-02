@@ -25,7 +25,7 @@ function public_path(string $uri = '') {
     return $url_asset;
 }
 
-function assets(string $uri = '') {
+function asset(string $uri = '') {
     $url = public_path();
     $url_asset = $url.'assets/'.$uri;
     return $url_asset;
