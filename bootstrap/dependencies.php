@@ -83,7 +83,6 @@ $container['flash'] = function () {
 
 // Register Blade View helper
 $container['view'] = function ($container) {
-
     $messages = $container->flash->getMessages();
 
     $viewSettings = $container['settings']['view'];

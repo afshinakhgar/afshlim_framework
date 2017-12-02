@@ -4,12 +4,22 @@
 
     <!-- Links -->
     <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link 1</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link 2</a>
-        </li>
+        @if(\Core\Facades\Auth::check())
+            <li class="nav-item">
+                <a class="nav-link" href="#">{{\Core\Facades\Auth::user()->first_name}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('logout')}}">خروج</a>
+            </li>
+        @else
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('login.step1')}}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('register')}}">Register</a>
+            </li>
+        @endif
+
 
 
     </ul>
