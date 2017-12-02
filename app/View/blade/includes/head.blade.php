@@ -8,4 +8,3 @@
         padding-top: 70px;
     }
 </style>
-<link rel="stylesheet" href="{{asset('lib/css/jquery.toast.css')}}">
