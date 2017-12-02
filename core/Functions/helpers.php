@@ -8,4 +8,10 @@ function url(string $name ,array $params)
     return $url->get($name , $params);
 }
 
-url('admin.user.list',[]);
+// translate
+
+
+function trans($key , $replace = []){
+    $container = $GLOBALS['container'];
+    return $container->translator->trans($key,$replace);
+}
