@@ -92,28 +92,4 @@ abstract class _Controller
     }
 
 
-
-    public function _getBasePath(Request $request)
-    {
-        $protocol = $request->getUri()->getScheme();
-        $baseHost = $request->getUri()->getHost();
-        $port = $request->getUri()->getPort() ? ':' . $request->getUri()->getPort() : '';
-        $baseUrl = $protocol . '://' . $baseHost . $port;
-        return $baseUrl;
-    }
-
-    public function _getBaseRoutePath(Request $request)
-    {
-        $protocol = $request->getUri()->getScheme();
-        $baseHost = $request->getUri()->getHost();
-        $path = $request->getUri()->getPath();
-        $pathArr = explode('/',$path);
-        unset($pathArr[count($pathArr)-1]);
-        $path = implode('/',$pathArr);
-        $port = $request->getUri()->getPort() ? ':' . $request->getUri()->getPort() : '';
-        $baseUrl = $protocol . '://' . $baseHost . $port . $path;
-        return $baseUrl;
-    }
-
-
 }
