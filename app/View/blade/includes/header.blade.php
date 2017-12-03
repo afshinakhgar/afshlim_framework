@@ -19,9 +19,6 @@
                 <a class="nav-link" href="{{url('register')}}">Register</a>
             </li>
         @endif
-
-
-
     </ul>
 </nav>
 <br>

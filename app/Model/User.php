@@ -43,4 +43,17 @@ class User extends _Model
         return $this->hasMany(Token::class);
     }
 
+
+    /**
+     * User Roles relation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Model\Role', 'roles', 'user_id', 'role_id');
+    }
+
+
 }
