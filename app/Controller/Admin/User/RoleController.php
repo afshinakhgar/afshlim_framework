@@ -81,10 +81,9 @@ class RoleController extends Controller
     public function usersByRole_Action(Request $request, Response $response, $args)
     {
 
-        $list = RoleDataAccess::getUsersRole();
-
-        return $this->view->render($response, 'admin.user.role.index',[
-            'list'=>$list
+        $list = RoleDataAccess::getRoleById((int)$args['role_id']);
+        return $this->view->render($response, 'admin.user.role.users_list',[
+            'list' => $list
         ]);
 
     }

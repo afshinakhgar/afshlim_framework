@@ -32,12 +32,13 @@ class RoleDataAccess extends _DataAccess
     }
 
     /**
-     * @param string $loginField
+     * @param integer $role_id
      * @return User
      */
-    public static function getUsersRole()
+    public static function getRoleById(int $role_id)
     {
-        return Role::users()->get();
+        $role = Role::find($role_id)->users()->get();
+        return $role;
     }
 
 
