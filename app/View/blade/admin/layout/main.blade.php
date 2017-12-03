@@ -16,6 +16,7 @@
 
 
 @include('admin.includes.header')
+@include('admin.includes.dashboard')
 
 <div class="container">
 

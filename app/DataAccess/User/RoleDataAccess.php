@@ -40,4 +40,16 @@ class RoleDataAccess extends _DataAccess
         return Role::users()->get();
     }
 
+
+    public static function createRole($params)
+    {
+        $role = new Role();
+        $role->name = $params['name'];
+        $role->display_name = $params['display_name'];
+        $role->description = $params['description'] ? $params['description'] : '';
+
+        $role->save();
+    }
+
+
 }
