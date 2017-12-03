@@ -48,6 +48,7 @@ $config = [
         /* Tracy debuger*/
         'tracy' => [
             'path' => __APP_ROOT__ . 'storage/logs/debugger/',
+            'active' => 1,
             'showPhpInfoPanel' => 1,
             'showSlimRouterPanel' => 1,
             'showSlimEnvironmentPanel' => 1,

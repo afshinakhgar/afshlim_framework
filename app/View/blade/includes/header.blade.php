@@ -9,7 +9,7 @@
                 <a class="nav-link" href="#">{{\Core\Facades\Auth::user()->first_name}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{url('logout')}}">خروج</a>
+                <a class="nav-link" href="{{url('logout')}}">LogOut</a>
             </li>
         @else
             <li class="nav-item">
