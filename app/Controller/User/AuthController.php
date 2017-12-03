@@ -49,6 +49,8 @@ class AuthController extends Controller
 
             if (!$validate->failed()) {
                 $hash = new Hash();
+
+
                 // not two step
                 if(!$this->settings['auth']['2step']){
                    $user  = Auth::attempt($params['login'],$hash->hash($request->getParam('password')));
@@ -58,9 +60,9 @@ class AuthController extends Controller
                     /*send code by sms*/
                     $code = $token->code;
                 }
-
                 $this->flash->addMessage($user['type'],$user['message']);
-                return $response->withRedirect('login');
+                return $response->withStatus(200)->withHeader('Location', '/');
+
             }
         } catch (Exception $e) {
 

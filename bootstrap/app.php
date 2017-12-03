@@ -1,6 +1,5 @@
 <?php
 define('__APP_ROOT__',__DIR__ . '/../') ;
-
 require  __APP_ROOT__.'bootstrap/bootstrap.php';
 require __APP_ROOT__.'vendor/autoload.php';
 require __APP_ROOT__.'config/settings.php';
@@ -25,7 +24,6 @@ require  __APP_ROOT__.'bootstrap/routes.php';
 require  __APP_ROOT__.'core/Functions/helpers.php';
 
 if(php_sapi_name() != 'cli') {
-    $settings['tracy']['path'] = '';
     if($config['settings']['debug'] && $config['settings']['tracy']['active']){
         Tracy\Debugger::enable(Tracy\Debugger::DEVELOPMENT, $config['settings']['tracy']['path']);
     }

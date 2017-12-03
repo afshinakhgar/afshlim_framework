@@ -1,6 +1,7 @@
 <?php
-$app->add(new RunTracy\Middlewares\TracyMiddleware($app));
-
+if($config['settings']['debug'] && $config['settings']['tracy']['active']) {
+    $app->add(new RunTracy\Middlewares\TracyMiddleware($app));
+}
 
 $appMiddleWare = new \App\Middleware\AppMiddleware($app->getContainer());
 $app->add($appMiddleWare);

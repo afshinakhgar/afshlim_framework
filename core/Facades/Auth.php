@@ -8,9 +8,14 @@
 
 namespace Core\Facades;
 
+use Core\Services\AuthService;
 use SlimFacades\Facade;
 class Auth extends Facade
 {
+    /**
+     * @param Core\Services\AuthService\AuthService
+     * @return AuthService
+    */
     protected static function getFacadeAccessor()
     {
         return 'AuthService';

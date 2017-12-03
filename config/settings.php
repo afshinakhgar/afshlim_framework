@@ -7,12 +7,12 @@ defined('DS') || define('DS', DIRECTORY_SEPARATOR);
 $config = [
     'settings' => [
         'app' => [
-            'log_timer'=>true
+            'log_timer' => true
         ],
         'displayErrorDetails' => true,
         'addContentLengthHeader' => false,
         'determineRouteBeforeAppMiddleware' => true,
-        'debug'=>true,
+        'debug'=>true ,
         'translation' => [
             'default_lang' => 'en',
             'translations_path' => $APPROOT . 'translations/',
@@ -48,7 +48,7 @@ $config = [
         /* Tracy debuger*/
         'tracy' => [
             'path' => __APP_ROOT__ . 'storage/logs/debugger/',
-            'active' => 1,
+            'active' => 0,
             'showPhpInfoPanel' => 1,
             'showSlimRouterPanel' => 1,
             'showSlimEnvironmentPanel' => 1,
