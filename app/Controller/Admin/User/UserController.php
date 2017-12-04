@@ -25,8 +25,7 @@ class UserController extends Controller
 
         $user = UserDataAccess::getUserById($userid);
 
-        $all_roles = RoleDataAccess::getAllRoles();
-
+        $all_roles = RoleDataAccess::listAllRoles();
 
         foreach($user->roles as $role){
             $roleList[$role->id] = $role->display_title;

@@ -22,19 +22,19 @@ use App\Model\User;
 
 class RoleDataAccess extends _DataAccess
 {
-    /**
-     * @param string $loginField
-     * @return User
-     */
+
     public static function getAllRoles(int $limit = 20)
     {
         return Role::paginate($limit);
     }
 
-    /**
-     * @param integer $role_id
-     * @return User
-     */
+
+    public static function listAllRoles()
+    {
+        return Role::all();
+    }
+
+
     public static function getRoleById(int $role_id)
     {
         $role = Role::find($role_id);
