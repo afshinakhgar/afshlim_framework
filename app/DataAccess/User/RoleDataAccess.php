@@ -37,8 +37,14 @@ class RoleDataAccess extends _DataAccess
      */
     public static function getRoleById(int $role_id)
     {
-        $role = Role::find($role_id)->users()->get();
-        return $role;
+        $role = Role::find($role_id);
+        $list = [];
+        if(isset($role->id)){
+            $list = $role->users()->get();
+        }
+
+
+        return $list;
     }
 
 
