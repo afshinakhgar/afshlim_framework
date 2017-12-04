@@ -42,8 +42,6 @@ class RoleDataAccess extends _DataAccess
         if(isset($role->id)){
             $list = $role->users()->get();
         }
-
-
         return $list;
     }
 

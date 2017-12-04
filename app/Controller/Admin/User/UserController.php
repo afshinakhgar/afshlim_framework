@@ -16,4 +16,35 @@ class UserController extends Controller
             'list'=>$list
         ]);
     }
+
+
+    public function get_userrole(Request $request, Response $response, $args)
+    {
+        $userid = (int)$args['userid'];
+
+        $user = UserDataAccess::getUserById($userid);
+
+        $all_roles = RoleDataAccess::getAllRoles();
+
+
+        foreach($user->roles as $role){
+            $roleList[$role->id] = $role->display_title;
+        }
+
+
+        return $this->view->render($response, 'admin.user.userrole',[
+            'user'=>$user,
+            'roles'=>$roleList,
+            'all_roles'=>$all_roles,
+        ]);
+    }
+
+
+    public function post_userrole(Request $request, Response $response, $args)
+    {
+        $list = UserDataAccess::getAllUsers();
+        return $this->view->render($response, 'admin.user.index',[
+            'list'=>$list
+        ]);
+    }
 }

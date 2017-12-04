@@ -52,7 +52,7 @@ class User extends _Model
 
     public function roles()
     {
-        return $this->belongsToMany('App\Model\Role', 'roles', 'user_id', 'role_id');
+        return $this->belongsToMany('App\Model\Role');
     }
 
 
