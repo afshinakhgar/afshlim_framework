@@ -5,6 +5,17 @@
     <div class="container">
         <h1>Create Role</h1>
         <form action="{{route('admin.user.userrole')}}" method="post">
+
+            <select name="roles" id="roles">
+                @foreach($all_roles as $role)
+                    <option value="{{$role['id']}}">
+                        {{$role['display_name']}}
+                    </option>
+
+                @endforeach
+            </select>
+
+
             <div class="form-group">
                 <input name="name"  type="text" class="form-control" id="name" placeholder="name">
             </div>

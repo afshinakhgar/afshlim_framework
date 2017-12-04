@@ -26,16 +26,19 @@ class UserController extends Controller
         $user = UserDataAccess::getUserById($userid);
 
         $all_roles = RoleDataAccess::listAllRoles();
+        foreach($all_roles as $role){
+            $allRolesList[$role->id] = $role->display_name;
+        }
 
         foreach($user->roles as $role){
             $roleList[$role->id] = $role->display_title;
         }
 
 
-        return $this->view->render($response, 'admin.user.userrole',[
+        return $this->view->render($response, 'admin.user.userrole_form',[
             'user'=>$user,
             'roles'=>$roleList,
-            'all_roles'=>$all_roles,
+            'all_roles'=>$allRolesList,
         ]);
     }
 
