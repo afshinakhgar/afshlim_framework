@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin\User;
 use App\Controller\Controller;
+use App\DataAccess\User\RoleDataAccess;
 use App\DataAccess\User\UserDataAccess;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
