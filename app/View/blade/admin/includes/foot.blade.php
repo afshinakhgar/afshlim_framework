@@ -1,1 +1,1 @@
-<script src="{{asset('assets/lib/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('lib/jquery/jquery.min.js')}}"></script>

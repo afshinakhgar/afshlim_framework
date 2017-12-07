@@ -27,7 +27,7 @@ function public_path(string $uri = '') {
 
     $url = new \Core\Helpers\Url($container);
 
-    $url_asset = $url->getBaseRoutePath($request) .'/'. $uri;
+    $url_asset = $url->getBasePath($request) .'/'. $uri;
     return $url_asset;
 }
 
