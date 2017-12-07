@@ -32,8 +32,8 @@ class RoleController extends Controller
     public function post_create(Request $request, Response $response, $args)
     {
         $validate = $this->validator->validate($request,[
-            'name' => v::noWhitespace()->notEmpty()->alpha(),
-            'display_name' => V::noWhitespace()->notEmpty()->alpha(),
+            'name' => v::notEmpty()->alpha(),
+            'display_name' => V::notEmpty()->alpha(),
         ]);
 
         try{
@@ -41,6 +41,8 @@ class RoleController extends Controller
             if(!$validate->failed()){
 
                 $params = $request->getParams();
+
+
                 $createRole = RoleDataAccess::createRole($params);
 
                 if(!isset($createRole->id)){

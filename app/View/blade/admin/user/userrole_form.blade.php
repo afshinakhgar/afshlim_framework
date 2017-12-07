@@ -12,11 +12,14 @@
                     </option>
 
                 @endforeach
-            </select>
+            </select> <a href="" id="add_role"> + </a>
 
+            <input type="hidden" value="" id="current_roles">
 
+            <hr>
             <div class="form-group">
-                <input name="name"  type="text" class="form-control" id="name" placeholder="name">
+                <label for="mobile">Mobile </label>
+                <input name="mobile" disabled="disabled" value="{{$user->mobile}}" type="text" class="form-control" id="username">
             </div>
 
             <div class="form-group">
@@ -28,3 +31,15 @@
     </div>
 
 @endsection
+
+
+
+<script type="text/javascript">
+    $(function(){
+        $('#add_role').on('click',function (e) {
+            e.preventDefault();
+            var role_val = $('roles').val();
+            console.log(role_val);
+        }) ;
+    });
+</script>
