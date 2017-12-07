@@ -11,7 +11,6 @@
             <th>description</th>
         </tr>
         </thead>
-
         @foreach($list as $row)
             <tr>
                 <td>{{$row->id}}</td>
@@ -19,10 +18,9 @@
                 <td>{{$row->name}}</td>
                 <td>{{$row->description}}</td>
                 <td>
-                    <a href="{{route('admin.role.user_list')}}">Users</a>
+                    <a href="{{route('admin.role.user_list',['role_id'=>$row->id])}}">Users</a>
                 </td>
             </tr>
         @endforeach
-
     </table>
 @endsection

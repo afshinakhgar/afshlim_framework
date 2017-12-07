@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>{{ $title or '' }}</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    @include('admin.includes.head')
 
 </head>
 <body>
@@ -19,6 +19,7 @@
     @include('includes.messages')
     @yield('content')
 </div>
+@include('admin.includes.foot')
 
 </body>
 </html>
