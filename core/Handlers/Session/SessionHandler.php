@@ -10,8 +10,9 @@ namespace Core\Handlers\Session;
 
 
 use Core\Interfaces\_Session;
+use Core\Interfaces\AbstractSession;
 
-class SessionHandler extends SessionInterface implements _Session
+class SessionHandler extends AbstractSession implements _Session
 {
     public function get($key = null)
     {
