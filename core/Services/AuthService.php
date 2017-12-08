@@ -77,6 +77,7 @@ class AuthService extends _Service
 
     public function logout()
     {
+
         unset($_SESSION['user']);
     }
 

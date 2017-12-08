@@ -80,19 +80,19 @@ $container['flash'] = function () {
 
 
 //
-//$container['session'] = function ($container)  {
-//    $setting_session_driver = $container['settings']['session']['driver'] ?? 'session';
+$container['session'] = function ($container)  {
+    $setting_session_driver = $container['settings']['session']['driver'] ?? 'session';
+
+    $sessionOBJ = new \Core\Services\Session();
+    $session = $sessionOBJ->init($setting_session_driver) ;
+    return $session;
+};
+
+
+//$setting_session_driver = $container['settings']['session']['driver'] ?? 'session';
 //
-//    $session = new \Core\Services\Session($setting_session_driver);
-//    return $session;
-//};
-
-$setting_session_driver = $container['settings']['session']['driver'] ?? 'session';
-
-$sessionOBJ = new \Core\Services\Session($setting_session_driver);
-$session = $sessionOBJ->init('session') ;
-
-$session->set('afshin.test.tes','yes');
+//$sessionOBJ = new \Core\Services\Session($setting_session_driver);
+//$session = $sessionOBJ->init('session') ;
 
 
 // Register Blade View helper

@@ -44,6 +44,10 @@ class AuthController extends Controller
         $validate = $this->validator->validate($request,[
             'login' => v::noWhitespace()->notEmpty()
         ]);
+
+        $this->getContainer()->session->set('afshin.test.tes','yes');
+
+
         $params = $request->getParams();
         try {
 
