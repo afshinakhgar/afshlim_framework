@@ -11,7 +11,7 @@ namespace Core\Handlers\Session;
 
 use Core\Interfaces\_Session;
 
-class SessionHandler implements _Session
+class SessionHandler extends SessionInterface implements _Session
 {
     public function get($key = null)
     {
@@ -26,34 +26,21 @@ class SessionHandler implements _Session
         }
     }
 
-    public function getRecursiveSessionKey($data , $keyArr){
-        $arrayFound  = isset($data[$keyArr[0]]) ? $data[$keyArr[0]] : '';
-        if($arrayFound){
-            unset($keyArr[0]);
-            $keyArr = array_values($keyArr);
-            if(isset($keyArr[0])){
-                return $this->getRecursiveSessionKey($arrayFound,$keyArr);
-            }
-        }
-        return $arrayFound ;
-    }
-
-
-
     public function set($key,$val)
     {
-//        $keys = explode('.',$key);
-//        foreach ($keys as $key) {
-//            if (!array_key_exists($key, $_SESSION)) {
-//                $reference[$key] = [];
-//            }
-//            $reference[$key] = 1;
-//        }
-////        $reference = $val;
-//
-//
-//
-//        dd($reference);
-//        $_SESSION = $val;
+        $_SESSION = $this->setArr($key,$val);
     }
+
+
+    public function exists($key,$val)
+    {
+       $keySession = $this->get($key);
+
+       if($keySession){
+          return true;
+       }
+       return false;
+    }
+
+
 }
