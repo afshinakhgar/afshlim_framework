@@ -91,7 +91,6 @@ $setting_session_driver = $container['settings']['session']['driver'] ?? 'sessio
 
 $sessionOBJ = new \Core\Services\Session($setting_session_driver);
 $session = $sessionOBJ->init('session') ;
-dd($session->set('test.afsh','1') );
 
 
 
