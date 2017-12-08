@@ -93,7 +93,6 @@ $sessionOBJ = new \Core\Services\Session($setting_session_driver);
 $session = $sessionOBJ->init('session') ;
 
 $session->set('afshin.test.tes','yes');
-dd($session->get('afshin.test.tes'));
 
 
 // Register Blade View helper
