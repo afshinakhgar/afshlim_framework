@@ -22,22 +22,18 @@ class UserController extends Controller
     public function get_userrole(Request $request, Response $response, $args)
     {
         $userid = (int)$args['userid'];
-
+        $user_roleList = [];
         $user = UserDataAccess::getUserById($userid);
+        $user_roleList = UserDataAccess::getUserRoles($userid);
 
         $all_roles = RoleDataAccess::listAllRoles();
         foreach($all_roles as $role){
             $allRolesList[$role->id] = $role->display_name;
         }
 
-        foreach($user->roles as $role){
-            $roleList[$role->id] = $role->display_title;
-        }
-
-
         return $this->view->render($response, 'admin.user.userrole_form',[
             'user'=>$user,
-            'roles'=>$roleList,
+            'user_roleList'=>$user_roleList,
             'all_roles'=>$allRolesList,
         ]);
     }

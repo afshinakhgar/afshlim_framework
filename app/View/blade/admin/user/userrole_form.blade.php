@@ -20,9 +20,16 @@
             </select> <a href="" id="add_role" class="btn btn-default"> + </a>
 
             <input type="hidden" value="" id="current_roles">
-            <div id="current_demo_roles">
 
+            <span id="current_demo_roles">
+                @foreach($user_roleList as $roles)
+                    <span class="admin_role">
+                    {{$roles->display_name}}</span>
+                @endforeach
             </div>
+
+
+
             <hr>
             <div class="form-group">
                 <label for="mobile">Mobile </label>

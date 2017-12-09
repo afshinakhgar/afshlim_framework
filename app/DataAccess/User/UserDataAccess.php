@@ -77,4 +77,15 @@ class UserDataAccess extends _DataAccess
         return User::paginate($limit);
     }
 
+
+
+    public static function getUserRoles(int $userid)
+    {
+        return User::find((int)$userid)->roles()->get();
+    }
+
+
+
+
+
 }
