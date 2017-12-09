@@ -5,7 +5,6 @@
     <title>{{ $title or '' }}</title>
 
     @include('admin.includes.head')
-
 </head>
 <body>
 

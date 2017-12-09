@@ -1,1 +1,0 @@
-<script src="{{asset('lib/jquery/jquery.min.js')}}"></script>

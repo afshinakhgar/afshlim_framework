@@ -36,23 +36,5 @@
 
     </table>
 
-    <style>
-        .admin_role{
-            display: inline-block;
-            background-color:#e9e4e5;
-            padding:1px 5px 1px 5px;
-            -webkit-border-radius: 4px;
-            -moz-border-radius: 4px;
-            border-radius: 4px;
-            color: #7257fd;
-        }
-        .admin_role::after{
-            content: ',';
-        }
 
-        .admin_role:last-child::after{
-            content: '';
-        }
-
-    </style>
 @endsection
