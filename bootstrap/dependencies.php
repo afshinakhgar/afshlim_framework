@@ -15,6 +15,14 @@ $container['db'] = function ($container) {
     return $pdo;
 };
 
+
+$moduleInitializer = new \MartynBiz\Slim3Module\Initializer($app, [
+    'App\\Module\\Hello'
+]);
+
+$moduleInitializer->initModules();
+
+
 //
 
 

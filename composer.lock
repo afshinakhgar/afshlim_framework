@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf104deca3088f897cd0af535ac95ed0",
+    "content-hash": "4efcfc719c9917833096e7a6b75dcfa8",
     "packages": [
         {
             "name": "buchin/slim-blade-view",
@@ -833,6 +833,55 @@
             "description": "The Illuminate View package.",
             "homepage": "https://laravel.com",
             "time": "2017-10-16T16:47:50+00:00"
+        },
+        {
+            "name": "martynbiz/slim3-module",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/martynbiz/slim3-module.git",
+                "reference": "687976586d4b62b567bc1d88a0d6ad8dc98856ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/martynbiz/slim3-module/zipball/687976586d4b62b567bc1d88a0d6ad8dc98856ea",
+                "reference": "687976586d4b62b567bc1d88a0d6ad8dc98856ea",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "slim/slim": "~3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MartynBiz\\Slim3Module\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martyn Bissett",
+                    "email": "martynbissett@yahoo.co.uk",
+                    "homepage": "http://martyn.biz",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple class for loading modules in a Slim 3 project",
+            "homepage": "http://github.com/martynbiz/slim3-module",
+            "keywords": [
+                "modules",
+                "mvc",
+                "slim",
+                "slim3"
+            ],
+            "time": "2016-06-09 14:09:17"
         },
         {
             "name": "monolog/monolog",
@@ -1698,7 +1747,7 @@
         },
         {
             "name": "symfony/config",
-            "version": "v3.4.0",
+            "version": "v3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
@@ -1760,16 +1809,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v3.3.13",
+            "version": "v3.3.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "63cd7960a0a522c3537f6326706d7f3b8de65805"
+                "reference": "55497618e68845b6f92a66d13187138ac3d7750e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/63cd7960a0a522c3537f6326706d7f3b8de65805",
-                "reference": "63cd7960a0a522c3537f6326706d7f3b8de65805",
+                "url": "https://api.github.com/repos/symfony/console/zipball/55497618e68845b6f92a66d13187138ac3d7750e",
+                "reference": "55497618e68845b6f92a66d13187138ac3d7750e",
                 "shasum": ""
             },
             "require": {
@@ -1824,11 +1873,11 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-11-16T15:24:32+00:00"
+            "time": "2017-11-29T12:25:49+00:00"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.4.0",
+            "version": "v3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
@@ -1884,7 +1933,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.0.0",
+            "version": "v4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -1933,7 +1982,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v3.4.0",
+            "version": "v3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -2041,7 +2090,7 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v3.3.13",
+            "version": "v3.3.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
@@ -3531,7 +3580,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v2.8.31",
+            "version": "v2.8.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -3580,16 +3629,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.3.13",
+            "version": "v3.3.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "0938408c4faa518d95230deabb5f595bf0de31b9"
+                "reference": "36353762fdca3a0ecdce4640764efc885df979f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/0938408c4faa518d95230deabb5f595bf0de31b9",
-                "reference": "0938408c4faa518d95230deabb5f595bf0de31b9",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/36353762fdca3a0ecdce4640764efc885df979f6",
+                "reference": "36353762fdca3a0ecdce4640764efc885df979f6",
                 "shasum": ""
             },
             "require": {
@@ -3631,7 +3680,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-11-10T18:26:04+00:00"
+            "time": "2017-12-04T14:51:35+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -3687,7 +3736,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "buchin/slim-blade-view": 20
+        "buchin/slim-blade-view": 20,
+        "martynbiz/slim3-module": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
