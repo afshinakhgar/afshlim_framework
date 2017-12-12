@@ -16,7 +16,7 @@ $container['db'] = function ($container) {
 };
 
 
-$moduleInitializer = new \MartynBiz\Slim3Module\Initializer($app, [
+$moduleInitializer = new \Core\ModuleInitializer($app, [
     'App\\Module\\Hello'
 ]);
 

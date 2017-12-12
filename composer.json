@@ -34,9 +34,7 @@
         "zeuxisoo/slim-whoops": "0.6.*",
         "zhangshize/slim-facades": "^1.1",
         "davidepastore/slim-validation": "^0.5.0",
-        "swiftmailer/swiftmailer": "^6.0",
-        "martynbiz/slim3-module": "dev-master"
-
+        "swiftmailer/swiftmailer": "^6.0"
     },
     "require-dev": {
         "phpunit/phpunit": "5.4.*",

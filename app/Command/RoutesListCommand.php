@@ -58,10 +58,9 @@ class RoutesListCommand extends Command
             }
 
         }
-
         $table = new Table($output);
 
-
+        if(isset($allRoutes['routes']))
         $table
             ->setHeaders(array('patern','callable', 'name','methods'))
             ->setRows(

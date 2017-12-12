@@ -57,7 +57,7 @@ it's done
 * [slim/Flash](https://github.com/slimphp/Slim-Flash)
 * [symfony command](https://github.com/symfony/console/blob/master/Command/Command.php)
 * [Database Migration With PhpMig](https://github.com/davedevelopment/phpmig)
-* [Modular System with slim3-module](https://github.com/martynbiz/slim3-module)
+* Modular System
 
 
 ### CLI Tools
