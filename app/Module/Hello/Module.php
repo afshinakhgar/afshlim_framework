@@ -11,6 +11,6 @@ class Module extends AbstractModule
     {
         $app->get('/hello/{name}', function ($request, $response) {
             return $this->view->render($response, '.index');
-        });
+        })->setName('module.hello');
     }
 }

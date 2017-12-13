@@ -46,18 +46,31 @@ class RoutesListCommand extends Command
 
 // And then iterate over $routes
         $routes = $this->app->getContainer()->get('router')->getRoutes();
-
         foreach ($routes as $route){
             foreach($route->getMethods() as $methods){
-                $allRoutes['routes'][] = [
-                'pattern' => $route->getPattern(),
-                'callable' => $route->getCallable(),
-                'name' => $route->getName(),
-                'method' => $methods,
-            ];
+
+                if(!is_callable($route->getCallable()) ){
+                    $allRoutes['routes'][] = [
+                        'pattern' => $route->getPattern(),
+                        'callable' => $route->getCallable(),
+                        'name' => $route->getName(),
+                        'method' => $methods,
+                    ];
+                }else{
+                    $allRoutes['routes'][] = [
+                        'pattern' => $route->getPattern(),
+                        'callable' => '__CLASS__',
+                        'name' => $route->getName(),
+                        'method' => $methods,
+                    ];
+                }
+
             }
 
         }
+
+
+
         $table = new Table($output);
 
         if(isset($allRoutes['routes']))
