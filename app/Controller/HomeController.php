@@ -46,7 +46,6 @@ class HomeController extends Controller
 
 
 
-        $role = Auth::hasRole('admin');
 
 
 
