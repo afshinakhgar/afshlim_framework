@@ -50,14 +50,14 @@ class RoutesListCommand extends Command
             foreach($route->getMethods() as $methods){
 
                 if(!is_callable($route->getCallable()) ){
-                    $allRoutes['routes'][] = [
+                    $allRoutes['routes']['list'][] = [
                         'pattern' => $route->getPattern(),
                         'callable' => $route->getCallable(),
                         'name' => $route->getName(),
                         'method' => $methods,
                     ];
                 }else{
-                    $allRoutes['routes'][] = [
+                    $allRoutes['routes']['modules'][] = [
                         'pattern' => $route->getPattern(),
                         'callable' => '__CLASS__',
                         'name' => $route->getName(),
@@ -72,14 +72,26 @@ class RoutesListCommand extends Command
 
 
         $table = new Table($output);
-
-        if(isset($allRoutes['routes']))
         $table
             ->setHeaders(array('patern','callable', 'name','methods'))
             ->setRows(
-               $allRoutes['routes']
+               $allRoutes['routes']['list']
             )
         ;
+        $table->render();
+
+        echo '+ Module Routes'."\n";
+
+        $table = new Table($output);
+
+        $table
+            ->setHeaders(array('patern','callable', 'name','methods'))
+            ->setRows(
+                $allRoutes['routes']['modules']
+            )
+        ;
+
+
         $table->render();
 
     }
