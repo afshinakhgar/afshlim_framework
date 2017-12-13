@@ -17,8 +17,24 @@ class AuthService extends _Service
     public function user()
     {
         return UserDataAccess::getUserById(isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : 0);
-
     }
+
+    public function hasRole($roleName)
+    {
+        if(!self::check()){
+            return false;
+        }
+        $userRoles =  UserDataAccess::getUserRoles(isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : 0);
+        $hasAccess = false;
+        foreach ($userRoles as $role){
+            if($role->name == $roleName){
+                $hasAccess = true;
+                break;
+            }
+        }
+        return $hasAccess;
+    }
+
 
     public function check()
     {

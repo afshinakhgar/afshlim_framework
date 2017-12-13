@@ -45,6 +45,11 @@ class HomeController extends Controller
 //        echo $book->toJson();
 
 
+
+        $role = Auth::hasRole('admin');
+
+
+
         return $this->view->render($response, 'index');
 
 
