@@ -20,6 +20,7 @@ class Config {
     }
     public static function get($key,$default = null){
         $result = self::$config;
+
         foreach (explode('.' , $key) as $segment) {
             if(isset($result[$segment]))
                 $result = $result[$segment];

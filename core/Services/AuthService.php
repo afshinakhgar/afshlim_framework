@@ -9,6 +9,7 @@
 namespace Core\Services;
 
 use App\DataAccess\User\UserDataAccess;
+use Core\App;
 use Core\Config;
 use Core\Interfaces\_Service;
 
@@ -51,8 +52,8 @@ class AuthService extends _Service
             ];
         }
         $setting = Config::get('settings.auth');
-        if($setting['2step']){
-            $this->twoStepAuth();
+        if(1 || $setting['2step']){
+            return $this->twoStepAuth($loginField,$password);
         }else{
             if ($this->checkPass($password,$user->password)) {
                 $_SESSION['user']['user_id'] = $user->id;
@@ -86,9 +87,25 @@ class AuthService extends _Service
     }
 
 
-    public function twoStepAuth()
+    public function twoStepAuth(string $loginField,string $password)
     {
-        return true;
+        $user = UserDataAccess::getUserLoginField($loginField);
+
+        if(UserDataAccess::checkToken($password,$loginField)){
+            $_SESSION['user']['user_id'] = $user->id;
+            $_SESSION['user']['mobile'] = $user->mobile;
+
+
+            return [
+                'type'=>'success',
+                'message'=> 'Logined',
+            ];
+        }else{
+            return [
+                'type'=>'error',
+                'message'=> 'problem!',
+            ];
+        }
     }
 
     public function logout()

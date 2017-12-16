@@ -57,6 +57,26 @@ class UserDataAccess extends _DataAccess
     }
 
 
+    public static function checkToken($token , $mobile)
+    {
+        $token = Token::where('code',$token)->first();
+        if($token){
+            $user = self::getUserById($token->user_id);
+        }else{
+            return false;
+        }
+
+        if($token->used == 0 && $mobile == $user->mobile){
+            $token->used = 1;
+            $token->save();
+        }else{
+            return false;
+        }
+
+        return true;
+    }
+
+
     static function getTokenByUsedUserid(int $userid)
     {
         $token = Token::where('user_id',$userid)->where('used',0)->first();

@@ -10,5 +10,4 @@ namespace Core\Interfaces;
 abstract class _Service
 {
 
-
 }
