@@ -52,7 +52,7 @@ class AuthService extends _Service
             ];
         }
         $setting = Config::get('settings.auth');
-        if(1 || $setting['2step']){
+        if($setting['2step']){
             return $this->twoStepAuth($loginField,$password);
         }else{
             if ($this->checkPass($password,$user->password)) {

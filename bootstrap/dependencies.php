@@ -120,6 +120,12 @@ $container['view'] = function ($container) {
         ]
     );
 };
+
+// Register Blade View helper
+$container['json'] = function ($container) {
+    return new \Core\Handlers\JsonHandler();
+};
+
 $app->getContainer()['view']->getRenderer()->getCompiler()->directive('helloWorld', function(){
 
     return "<?php echo 'Hello Directive'; ?>";
