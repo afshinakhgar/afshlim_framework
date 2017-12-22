@@ -18,7 +18,7 @@ $config = [
             'translations_path' => $APPROOT . 'translations/',
         ],
         'auth' => [
-            '2step' => true
+            '2step' => false
         ],
         'logger' => [
             'name' => 'afshFramework',
