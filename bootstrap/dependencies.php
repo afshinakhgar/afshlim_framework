@@ -107,6 +107,11 @@ $container['session'] = function ($container)  {
 $container['view'] = function ($container) {
     $messages = $container->flash->getMessages();
 
+     if(!is_dir('../app/View/cache')){
+        @mkdir('../app/View/cache');
+    }
+
+
     $viewSettings = $container['settings']['view'];
 
     return new \Slim\Views\Blade(
