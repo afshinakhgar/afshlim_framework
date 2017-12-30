@@ -13,10 +13,15 @@ a Slim framework boilerplate in my Way
 - PHP 7.0
 - Namespaced
 - MVC
+--------------------
+
+## Contents
+- [Usage](#Usage)
+
 
 ---------------------
 
-### Why I use Afshlim
+### Usage
 > as a php developer I used to use many php frameworks such as laravel- yii - codeigniter and in the other hand I have used some php micro frameworks like SLIM , SILEX , FatfreeFramework ... but micro frameworks are tiny and fullstacks are huge , this skeleton is very slim with features of full stack frameworks .. 
 this is my way to creating new framework ... I know it's not perfect .. but it's easy to use and full featured tool
 ### How to install

@@ -46,24 +46,5 @@
 
 
 
-    <script type="text/javascript">
-        $(function(){
-            var val_roles_store = '';
-            $('#add_role').on('click',function (e) {
-                e.preventDefault();
-                var role_val = $('#roles').find(":selected").val();
-                var role_text = $('#roles').find(":selected").text();
-
-                val_roles_store += role_val+',';
-
-                $('#current_roles').val(val_roles_store);
-                if(role_val !== '0'){
-                    $('#role_item_'+role_val).remove();
-                    $('#current_demo_roles').append('<span class="admin_role">'+role_text+'</span>');
-                }else {
-                    alert('first select a role');
-                }
-            });
-        });
-    </script>
+   
 @endsection

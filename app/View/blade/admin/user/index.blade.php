@@ -5,12 +5,12 @@
     <table class="table table-responsive">
         <thead>
         <tr>
-            <th>id</th>
-            <th>Mobile</th>
-            <th>name</th>
-            <th>last Name</th>
-            <th>Role</th>
-            <th>Edit Role</th>
+            <th>شماره کاربر</th>
+            <th>تلفن همراه</th>
+            <th>نام</th>
+            <th>نام خانوادگی</th>
+            <th>نقش</th>
+            <th>عملیات</th>
         </tr>
         </thead>
         @if(isset($list))
@@ -22,13 +22,13 @@
                     <td>{{$row->last_name}}</td>
                     <td>
                         @foreach($row->roles as $role)
-                          <i class="admin_role">{{$role->display_name}}</i>
+                          <i class="badge badge-warning">{{$role->display_name}}</i>
                         @endforeach
                     </td>
 
                     <td>
-                        <a href="{{route('admin.user.editroles',['userid'=>$row->id])}}">Edit Roles</a>
-
+                        <a href="{{route('admin.user.editroles',['userid'=>$row->id])}}" class="btn badge-primary ">ویرایش نقش</a>
+                        <a href="{{route('admin.user.edit',['mobile'=>$row->mobile])}}" class="btn badge-primary">ویرایش</a>
                     </td>
                 </tr>
             @endforeach
