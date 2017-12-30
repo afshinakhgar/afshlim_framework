@@ -9,17 +9,10 @@
 namespace Core;
 
 class Config {
-    private static $config = array();
-    private function __construct(){}
-    public static function load($path = null){
-        $path = ($path) ?: __APP_ROOT__ . '/config/*';
-        foreach (glob($path) as $file) {
-            $config = include $file;
-            self::$config = array_merge(self::$config, $config);
-        }
-    }
+
     public static function get($key,$default = null){
-        $result = self::$config;
+        $path = __APP_ROOT__ . '/config/'.$key[0].'.php';
+        $result = include_once $path;
         foreach (explode('.' , $key) as $segment) {
             if(isset($result[$segment]))
                 $result = $result[$segment];

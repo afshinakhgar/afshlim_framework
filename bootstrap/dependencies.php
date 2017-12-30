@@ -107,6 +107,11 @@ $container['session'] = function ($container)  {
 $container['view'] = function ($container) {
     $messages = $container->flash->getMessages();
 
+     if(!is_dir('../app/View/cache')){
+        @mkdir('../app/View/cache');
+    }
+
+
     $viewSettings = $container['settings']['view'];
 
     return new \Slim\Views\Blade(
@@ -120,6 +125,12 @@ $container['view'] = function ($container) {
         ]
     );
 };
+
+// Register Blade View helper
+$container['json'] = function ($container) {
+    return new \Core\Handlers\JsonHandler();
+};
+
 $app->getContainer()['view']->getRenderer()->getCompiler()->directive('helloWorld', function(){
 
     return "<?php echo 'Hello Directive'; ?>";

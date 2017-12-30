@@ -59,11 +59,52 @@ class AuthController extends Controller
                 if(!$this->settings['auth']['2step']){
                    $user  = Auth::attempt($params['login'],$hash->hash($request->getParam('password')));
                 }else{
-                    $user  = Auth::attempt($params['login'],'step1');
+                    $user  = UserDataAccess::getUserLoginField($params['login']);
                     $token = UserDataAccess::createNewToken($user->id);
                     /*send code by sms*/
                     $code = $token->code;
                 }
+                $this->flash->addMessage($user['type'],$user['message']);
+                return $response->withStatus(200)->withHeader('Location', '/loginstep2/'.$params['login'])->withAddedHeader('login', $params['login']);
+
+            }
+        } catch (Exception $e) {
+
+        }
+
+
+
+        return $this->view->render($response, 'auth/login');
+    }
+    public function get_login_step2_Action(Request $request , Response $response , $args)
+    {
+        if(Auth::check()){
+            return $response->withRedirect('/');
+        }
+
+        $login = $args['params'];
+
+        return $this->view->render($response, 'auth/login_step2',['login'=>$login]);
+    }
+
+
+    public function post_login_step2_Action(Request $request , Response $response)
+    {
+
+        if(!$this->settings['auth']['2step']) {
+            return '';
+        }
+        $validate = $this->validator->validate($request,[
+            'login' => v::noWhitespace()->notEmpty(),
+            'code' => v::noWhitespace()->notEmpty()
+        ]);
+        $params = $request->getParams();
+        try {
+
+            if (!$validate->failed()) {
+                $user  = Auth::attempt($params['login'],$params['code']);
+
+
                 $this->flash->addMessage($user['type'],$user['message']);
                 return $response->withStatus(200)->withHeader('Location', '/');
 
