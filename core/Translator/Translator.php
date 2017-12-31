@@ -18,7 +18,7 @@ class Translator extends _TranslateHandler
     */
     public function init()
     {
-        $setting = $this->settings['translation'];
+        $setting = $this->settings['app']['translation'];
         $this->local = $setting['default_lang'];
 
     }
