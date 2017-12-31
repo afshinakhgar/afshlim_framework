@@ -62,6 +62,7 @@ it's done
 * [slim/Flash](https://github.com/slimphp/Slim-Flash)
 * [symfony command](https://github.com/symfony/console/blob/master/Command/Command.php)
 * [Database Migration With PhpMig](https://github.com/davedevelopment/phpmig)
+* [Image Manupulation with gregwar/image](https://github.com/Gregwar/Image)
 * Modular System
 
 
@@ -82,7 +83,7 @@ it's done
 - [x] login 1 step
 - [ ] admin panel
 - [ ] sending email
-- [ ] image manupulation
+- [x] image manupulation
 - [ ] ajax support
 
 
