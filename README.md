@@ -81,6 +81,7 @@ it's done
 #### TODO
 - [x] registration
 - [x] login 1 step
+- [x] login 2 step
 - [ ] admin panel
 - [ ] sending email
 - [x] image manupulation
