@@ -4,7 +4,7 @@ date_default_timezone_set("Asia/Tehran");
 require_once 'vendor/autoload.php';
 use Phpmig\Adapter;
 use Illuminate\Database\Capsule\Manager as Capsule;
-include 'settings.php';
+include 'databases.php';
 $capsule   = new Capsule;
 $capsule->addConnection($config['databases']['db']);
 $capsule->setAsGlobal();
