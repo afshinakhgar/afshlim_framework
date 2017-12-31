@@ -1,5 +1,5 @@
 <?php
-if($config['settings']['debug'] && $config['settings']['tracy']['active']) {
+if($config['settings']['app']['debug'] && $config['settings']['tracy']['active']) {
     $app->add(new RunTracy\Middlewares\TracyMiddleware($app));
 }
 

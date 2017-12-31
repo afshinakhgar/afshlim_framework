@@ -6,7 +6,7 @@ use Phpmig\Adapter;
 use Illuminate\Database\Capsule\Manager as Capsule;
 include 'settings.php';
 $capsule   = new Capsule;
-$capsule->addConnection($config['settings']['db']);
+$capsule->addConnection($config['databases']['db']);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 $container = new ArrayObject();

@@ -2,7 +2,7 @@
 return [
     //session
     'session' => [
-        'driver' => 'file',
+        'driver' => 'session',
         'name' => 'afshlim',
         'lifetime' => 7200,
         'path' => null,

@@ -83,13 +83,14 @@ $capsule->bootEloquent();
 
 
 // monolog
-$container['logger'] = function ($c) {
-    $settings = $c->get('settings')['app']['logger'];
+$container['logger'] = function ($container) {
+    $settings = $container->get('settings')['app']['logger'];
     $logger = new Monolog\Logger($settings['name']);
     $logger->pushProcessor(new Monolog\Processor\UidProcessor());
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
     return $logger;
 };
+
 
 // not found handler
 $container['notFoundHandler'] = function ($container) {

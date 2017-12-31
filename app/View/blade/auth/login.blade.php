@@ -10,7 +10,7 @@
                 <input name="login"  type="text" class="form-control" id="login" placeholder="{{$translator->trans('auth.fields.login_mobile')}}">
             </div>
 
-            @if(!$settings['auth']['2step'])
+            @if(!$settings['app']['auth']['2step'])
                 <div class="form-group">
                     <label for="login">password</label>
                     <input  name="password"  type="password" class="form-control" id="mobile" placeholder="password">
