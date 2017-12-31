@@ -82,7 +82,7 @@ class UserController extends Controller
         unset($fields['roles']);
         $user = UserDataAccess::createUsersByFields($fields);
         $attachedRoles = explode(',', rtrim($params['roles'],','));
-        // $attachRolesToUsers =
+        // $attachRolesToUsers = 
         if($attachedRoles){
             $user->roles()->sync($attachedRoles);
             $user->save();
@@ -90,10 +90,10 @@ class UserController extends Controller
 
         $uploadedFiles = $request->getUploadedFiles();
         if($uploadedFiles){
-            $uploadedFile = $uploadedFiles['file'];
+             $uploadedFile = $uploadedFiles['file'];
             if($uploadedFile->getSize()){
                 if ($uploadedFile->getError() === UPLOAD_ERR_OK) {
-                    $directory = $this->settings['image']['dir'].'/user';
+                    $directory = $this->settings['app']['image']['dir'].'/temp';
                     if(!is_dir($directory)){
                         @mkdir($directory);
                     }
@@ -130,7 +130,7 @@ class UserController extends Controller
         UserDataAccess::updateuserFieldById($user,$fields);
 
         $attachedRoles = explode(',', rtrim($params['roles'],','));
-        // $attachRolesToUsers =
+        // $attachRolesToUsers = 
         if($attachedRoles){
             $user->roles()->sync($attachedRoles);
             $user->save();
@@ -138,10 +138,10 @@ class UserController extends Controller
 
         $uploadedFiles = $request->getUploadedFiles();
         if($uploadedFiles){
-            $uploadedFile = $uploadedFiles['file'];
+             $uploadedFile = $uploadedFiles['file'];
             if($uploadedFile->getSize()){
                 if ($uploadedFile->getError() === UPLOAD_ERR_OK) {
-                    $directory = $this->settings['image']['dir'].'/temp';
+                    $directory = $this->settings['app']['image']['dir'].'/temp';
                     if(!is_dir($directory)){
                         @mkdir($directory);
                     }
@@ -161,7 +161,7 @@ class UserController extends Controller
                 }
             }
         }
-
+        
 
         $this->flash->addMessage('success','کاربر ویرایش شد');
 
@@ -178,7 +178,7 @@ class UserController extends Controller
         $user = UserDataAccess::getUserById($userid);
         $user_roleList = UserDataAccess::getUserRoles($userid);
 
-
+      
         $allRolesList = $this->_getAllRoles();
         return $this->view->render($response, 'admin.user.userrole_form',[
             'user'=>$user,

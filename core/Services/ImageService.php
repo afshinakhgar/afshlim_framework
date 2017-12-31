@@ -52,10 +52,9 @@ class ImageService extends _Service
     public function createPhotos($src,$photoid,$type='user_photo', $dimensions = false)
     {
         // Get default dimensions
-        $dest = realpath('.'.$GLOBALS['container']['image']['upload_path']);
+        $dest = realpath('.'.$GLOBALS['settings']['image']['upload_path']);
 
-
-        $defaultDimensions = $dimensions ? $dimensions : $GLOBALS['container']['image'][$type]['dimensions'];
+        $defaultDimensions = $dimensions ? $dimensions : $GLOBALS['settings']['image'][$type]['dimensions'];
         foreach ($defaultDimensions as $keys=>$dimension)
         {
             if(!isset($dimension[2])) $dimension[2] = 100; // quality

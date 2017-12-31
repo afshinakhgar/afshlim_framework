@@ -26,7 +26,7 @@ foreach($filesInConfig as $config_file){
 
 }
 
-$config = $configs;
+$config['settings'] = $configs;
 require  __APP_ROOT__.'core/Functions/general_helpers.php';
 
 

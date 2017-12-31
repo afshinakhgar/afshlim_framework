@@ -29,7 +29,7 @@ class Translator extends _TranslateHandler
         $t_dir = $this->getTranslation_dirs();
 
         if(in_array($this->local,$t_dir)){
-            $translationBaseFolder = $this->settings['translation']['translations_path'].$this->local;
+            $translationBaseFolder = $this->settings['app']['translation']['translations_path'].$this->local;
             $translationBaseFile = $translationBaseFolder.'/'.$namespace.'.php';
             if(file_exists($translationBaseFile)){
                 $lang = include ($translationBaseFile);
@@ -80,7 +80,7 @@ class Translator extends _TranslateHandler
 
     public function getTranslation_dirs()
     {
-        $dir = scandir($this->settings['translation']['translations_path']);
+        $dir = scandir($this->settings['app']['translation']['translations_path']);
         $ex_folders = array('..', '.');
 
 

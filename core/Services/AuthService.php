@@ -52,7 +52,7 @@ class AuthService extends _Service
             ];
         }
         $setting = Config::get('settings.auth');
-        if($setting['2step']){
+        if(1 || $setting['2step']){
             return $this->twoStepAuth($loginField,$password);
         }else{
             if ($this->checkPass($password,$user->password)) {
@@ -90,11 +90,9 @@ class AuthService extends _Service
     public function twoStepAuth(string $loginField,string $password)
     {
         $user = UserDataAccess::getUserLoginField($loginField);
-
         if(UserDataAccess::checkToken($password,$loginField)){
             $_SESSION['user']['user_id'] = $user->id;
             $_SESSION['user']['mobile'] = $user->mobile;
-
 
             return [
                 'type'=>'success',

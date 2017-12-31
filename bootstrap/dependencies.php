@@ -5,7 +5,7 @@ $container = $app->getContainer();
 
 /* database connection */
 $container['db'] = function ($container) {
-    $db = $container['databases']['db'];
+    $db = $container['settings']['databases']['db'];
     $pdo = new PDO("mysql:host=" . $db['host'] . ";dbname=" . $db['database'],
         $db['username'], $db['password']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -18,6 +18,35 @@ $moduleInitializer = new \Core\ModuleInitializer($app, [
 ]);
 
 $moduleInitializer->initModules();
+
+
+// $container['mailer'] = function ($container) {
+//     $config = $container->settings['swiftmailer'];
+//     $allowedTransportTypes = ['smtp', 'sendmail'];
+//     if (false === $config['enable']
+//         || !in_array($config['transport_type'], $allowedTransportTypes)
+//     ) {
+//         return false;
+//     }
+//     if ('smtp' === $config['transport_type']) {
+//         $transport = new \Swift_SmtpTransport();
+//     } elseif ('sendmail' === $config['transport_type']) {
+//         $transport = new \Swift_SendmailTransport();
+//     }
+//     if (isset($config[$config['transport_type']])
+//         && is_array($config[$config['transport_type']])
+//         && count($config[$config['transport_type']])
+//     ) {
+//         foreach ($config[$config['transport_type']] as $optionKey => $optionValue) {
+//             $methodName = 'set' . str_replace('_', '', ucwords($optionKey, '_'));
+//             $transport->{$methodName}($optionValue);
+//         }
+//     }
+//     return new \Swift_Mailer($transport);
+// };
+
+
+
 
 
 //
@@ -35,7 +64,7 @@ $container['validator'] = function () {
 
 
 $container['eloquent'] = function ($container) {
-    $db = $container['databases']['db'];
+    $db = $container['settings']['databases']['db'];
 
     $capsule = new \Illuminate\Database\Capsule\Manager;
     $capsule->addConnection($db);
@@ -48,14 +77,14 @@ $container['eloquent'] = function ($container) {
 
 // database
 $capsule = new Capsule;
-$capsule->addConnection($config['databases']['db']);
+$capsule->addConnection($config['settings']['databases']['db']);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
 
 // monolog
 $container['logger'] = function ($c) {
-    $settings = $c->get('settings')['logger'];
+    $settings = $c->get('settings')['app']['logger'];
     $logger = new Monolog\Logger($settings['name']);
     $logger->pushProcessor(new Monolog\Processor\UidProcessor());
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
@@ -94,7 +123,6 @@ $container['session'] = function ($container)  {
     return $session;
 };
 
-
 //$setting_session_driver = $container[' ings']['session']['driver'] ?? 'session';
 //
 //$sessionOBJ = new \Core\Services\Session($setting_session_driver);
@@ -111,7 +139,6 @@ $container['view'] = function ($container) {
 
 
     $viewSettings = $container['settings']['view'];
-
     return new \Slim\Views\Blade(
         [$viewSettings['blade_template_path'].$viewSettings['template']],
         $viewSettings['blade_cache_path'],
@@ -138,6 +165,7 @@ $app->getContainer()['view']->getRenderer()->getCompiler()->directive('helloWorl
 
 $GLOBALS['container'] = $container;
 $GLOBALS['app'] = $app;
+$GLOBALS['settings'] = $container['settings'];
 
 
 
