@@ -39,6 +39,12 @@ class UserDataAccess extends _DataAccess
     }
 
 
+    public static function getUserOneByMobile(string $mobile)
+    {
+        return User::where('mobile',$mobile)->first();
+    }
+
+
     public static function createNewToken(int $userid)
     {
         $notUsedToken = self::getTokenByUsedUserid($userid);
@@ -105,6 +111,32 @@ class UserDataAccess extends _DataAccess
     }
 
 
+
+
+    public static function updateuserFieldById($user,array $fields)
+    {
+        foreach($fields as $field=>$value){
+            $user->$field = $value;
+        }
+        $user->save();
+
+
+        return $user;
+    }
+
+
+    public static function createUsersByFields(array $fields)
+    {
+
+        $user = new User;
+        foreach($fields as $field=>$value){
+            $user->$field = $value;
+        }
+
+        $user->save();
+
+        return $user;
+    }
 
 
 

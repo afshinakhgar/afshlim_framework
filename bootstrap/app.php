@@ -1,9 +1,32 @@
 <?php
 define('__APP_ROOT__',__DIR__ . '/../') ;
+$APPROOT = __APP_ROOT__;
 require  __APP_ROOT__.'bootstrap/bootstrap.php';
 require __APP_ROOT__.'vendor/autoload.php';
-require __APP_ROOT__.'config/settings.php';
 
+$env = new \Core\Helpers\Env();
+
+defined('DS') || define('DS', DIRECTORY_SEPARATOR);
+
+/*Dynamic containers in services*/
+$config_dir = scandir(__APP_ROOT__.'/config/');
+$ex_config_folders = array('..', '.');
+$filesInConfig =  array_diff($config_dir,$ex_config_folders);
+if (!isset($configs)) {
+    $configs = array();
+}
+$i=0;
+foreach($filesInConfig as $config_file){
+	if($config_file === 'phpmig.php'){continue;}
+	$file[$i] = include_once  __APP_ROOT__.'config/'.$config_file;
+	if(is_array($file[$i])){
+		$configs = array_merge($configs, $file[$i]);
+		$i++;
+	}
+
+}
+
+$config = $configs;
 require  __APP_ROOT__.'core/Functions/general_helpers.php';
 
 

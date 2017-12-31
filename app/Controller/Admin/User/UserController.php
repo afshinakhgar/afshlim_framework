@@ -6,7 +6,8 @@ use App\DataAccess\User\RoleDataAccess;
 use App\DataAccess\User\UserDataAccess;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Core\Services\File;
+use Core\Facades\Image;
+use Core\Facades\File;
 class UserController extends Controller
 {
 
@@ -38,6 +39,8 @@ class UserController extends Controller
 
     public function get_edit_Action(Request $request, Response $response, $args)
     {
+
+
         $user = UserDataAccess::getUserOneByMobile($args['mobile']);
         $allRolesList = $this->_getAllRoles();
         $user_roleList = UserDataAccess::getUserRoles($user->id);
@@ -79,7 +82,7 @@ class UserController extends Controller
         unset($fields['roles']);
         $user = UserDataAccess::createUsersByFields($fields);
         $attachedRoles = explode(',', rtrim($params['roles'],','));
-        // $attachRolesToUsers = 
+        // $attachRolesToUsers =
         if($attachedRoles){
             $user->roles()->sync($attachedRoles);
             $user->save();
@@ -87,7 +90,7 @@ class UserController extends Controller
 
         $uploadedFiles = $request->getUploadedFiles();
         if($uploadedFiles){
-             $uploadedFile = $uploadedFiles['file'];
+            $uploadedFile = $uploadedFiles['file'];
             if($uploadedFile->getSize()){
                 if ($uploadedFile->getError() === UPLOAD_ERR_OK) {
                     $directory = $this->settings['image']['dir'].'/user';
@@ -95,6 +98,12 @@ class UserController extends Controller
                         @mkdir($directory);
                     }
                     $file = File::moveUploadedFile($directory,$user->id, $uploadedFile);
+                    Image::createPhotos($directory.'/'.$file,$user->id);
+                    if(file_exists($file)){
+                        File::delete($file);
+                    }
+
+
                 }
 
                 if($user->has_pic == 'no'){
@@ -121,7 +130,7 @@ class UserController extends Controller
         UserDataAccess::updateuserFieldById($user,$fields);
 
         $attachedRoles = explode(',', rtrim($params['roles'],','));
-        // $attachRolesToUsers = 
+        // $attachRolesToUsers =
         if($attachedRoles){
             $user->roles()->sync($attachedRoles);
             $user->save();
@@ -129,14 +138,22 @@ class UserController extends Controller
 
         $uploadedFiles = $request->getUploadedFiles();
         if($uploadedFiles){
-             $uploadedFile = $uploadedFiles['file'];
+            $uploadedFile = $uploadedFiles['file'];
             if($uploadedFile->getSize()){
                 if ($uploadedFile->getError() === UPLOAD_ERR_OK) {
-                    $directory = $this->settings['image']['dir'].'/user';
+                    $directory = $this->settings['image']['dir'].'/temp';
                     if(!is_dir($directory)){
                         @mkdir($directory);
                     }
                     $file = File::moveUploadedFile($directory,$user->id, $uploadedFile);
+                    Image::createPhotos($file,$user->id);
+                    if(file_exists($file)){
+                        File::delete($file);
+                    }
+
+
+
+
                 }
 
                 if($user->has_pic == 'no'){
@@ -144,7 +161,7 @@ class UserController extends Controller
                 }
             }
         }
-        
+
 
         $this->flash->addMessage('success','کاربر ویرایش شد');
 
@@ -161,7 +178,7 @@ class UserController extends Controller
         $user = UserDataAccess::getUserById($userid);
         $user_roleList = UserDataAccess::getUserRoles($userid);
 
-      
+
         $allRolesList = $this->_getAllRoles();
         return $this->view->render($response, 'admin.user.userrole_form',[
             'user'=>$user,

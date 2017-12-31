@@ -1,9 +1,4 @@
 <?php
-
-$APPROOT = __APP_ROOT__;
-$env = new \Core\Helpers\Env();
-
-defined('DS') || define('DS', DIRECTORY_SEPARATOR);
 $config = [
     'settings' => [
         'app' => [
@@ -13,15 +8,18 @@ $config = [
         'addContentLengthHeader' => false,
         'determineRouteBeforeAppMiddleware' => true,
         'debug'=>true ,
+        'image' => [
+            'dir' =>  $APPROOT . '/public/uploads'
+        ],
         'translation' => [
             'default_lang' => 'en',
             'translations_path' => $APPROOT . 'translations/',
         ],
         'auth' => [
-            '2step' => false
+            '2step' => true
         ],
         'logger' => [
-            'name' => 'afshFramework',
+            'name' => 'cafesaba',
             'level' => Monolog\Logger::DEBUG,
             'path' => __DIR__ . '/../storage/logs/app.log',
         ],

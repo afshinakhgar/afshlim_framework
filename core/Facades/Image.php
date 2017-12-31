@@ -1,16 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: afshin
- * Date: 11/24/17
- * Time: 1:08 PM
- */
-
 namespace Core\Facades;
 
-use Core\Services\FileService;
+use Core\Services\ImageService  ;
 use SlimFacades\Facade;
-class File extends Facade
+class Image extends Facade
 {
     /**
      * @param Core\Services\AuthService\AuthService
@@ -18,6 +11,6 @@ class File extends Facade
     */
     protected static function getFacadeAccessor()
     {
-        return 'FileService';
+        return 'ImageService';
     }
 }

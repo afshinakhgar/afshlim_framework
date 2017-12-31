@@ -4,17 +4,14 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 $container = $app->getContainer();
 
 /* database connection */
-
-
 $container['db'] = function ($container) {
-    $db = $container['settings']['db'];
+    $db = $container['databases']['db'];
     $pdo = new PDO("mysql:host=" . $db['host'] . ";dbname=" . $db['database'],
         $db['username'], $db['password']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $pdo;
 };
-
 
 $moduleInitializer = new \Core\ModuleInitializer($app, [
     'App\\Module\\Hello'
@@ -31,7 +28,6 @@ $container['generalErrorHandler'] = function ($container) {
 };
 
 
-
 // Service factory for the ORM
 $container['validator'] = function () {
     return new App\Validation\Validator();
@@ -39,8 +35,10 @@ $container['validator'] = function () {
 
 
 $container['eloquent'] = function ($container) {
+    $db = $container['databases']['db'];
+
     $capsule = new \Illuminate\Database\Capsule\Manager;
-    $capsule->addConnection($container['settings']['db']);
+    $capsule->addConnection($db);
     $capsule->setAsGlobal();
     $capsule->bootEloquent();
     $capsule::connection()->enableQueryLog();
@@ -50,7 +48,7 @@ $container['eloquent'] = function ($container) {
 
 // database
 $capsule = new Capsule;
-$capsule->addConnection($config['settings']['db']);
+$capsule->addConnection($config['databases']['db']);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
@@ -97,7 +95,7 @@ $container['session'] = function ($container)  {
 };
 
 
-//$setting_session_driver = $container['settings']['session']['driver'] ?? 'session';
+//$setting_session_driver = $container[' ings']['session']['driver'] ?? 'session';
 //
 //$sessionOBJ = new \Core\Services\Session($setting_session_driver);
 //$session = $sessionOBJ->init('session') ;
@@ -107,7 +105,7 @@ $container['session'] = function ($container)  {
 $container['view'] = function ($container) {
     $messages = $container->flash->getMessages();
 
-     if(!is_dir('../app/View/cache')){
+    if(!is_dir('../app/View/cache')){
         @mkdir('../app/View/cache');
     }
 

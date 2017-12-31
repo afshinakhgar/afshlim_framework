@@ -15,7 +15,7 @@
          
             <div class="col-sm-12 col-md-12 col-lg-12 mt-12">
                 <div class="card">
-                    @include('helpers.userPhoto')
+                    @include('helpers.userPhoto',['type'=>'user_photo','size'=>'l'])
                     <div class="card-block">
                         <h4 class="card-title"> {{$user->first_name}}  {{$user->last_name}}</h4>
                         <div class="meta">
