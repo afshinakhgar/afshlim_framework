@@ -22,6 +22,7 @@ class Env
         }
 
         $value = getenv($key);
+
         if ($value === false) {
             return $default;
         }

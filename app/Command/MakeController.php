@@ -15,6 +15,11 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 
+
+use Symfony\Component\Console\Helper\QuestionHelper;
+use Symfony\Component\Console\Question\Question;
+
+
 use Core\Helpers\Hash;
 
 class MakeController extends _Command {
@@ -68,11 +73,17 @@ class MakeController extends _Command {
 
 
         if (!is_dir($directory)) {
-            $dialog = $this->getHelperSet()->get('dialog');
-            if (!$dialog->askConfirmation($output, '<question>Directory doesn\'t exist. Would you like to try to create it?</question>')) {
-                return;
+
+            $helper = $this->getHelper('question');
+            $question = new Question('<question>Directory doesn\'t exist. Would you like to try to create it?</question>');
+            // $question->setHidden(true);
+            // $question->setHiddenFallback(false);
+            // $question->setMaxAttempts(2);
+            $q = $helper->ask($input, $output, $question);
+
+            if ($q) {
+                @mkdir($directory);
             }
-            @mkdir($directory);
             if (!is_dir($directory)) {
                 $output->writeln('<error>Couldn\'t create directory.</error>');
                 return;

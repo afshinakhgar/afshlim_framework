@@ -17,8 +17,8 @@ class AuthService extends _Service
 {
     public function user()
     {
-        if(isset($_Cookie['user'])){
-            $_SESSION['user'] = $_Cookie['user'];
+        if(!isset($_SESSION['user']) && json_decode($_COOKIE['user'],true) !== null){
+            $_SESSION['user'] = json_decode($_COOKIE['user'],true);
         }
         return UserDataAccess::getUserById(isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : 0);
     }
@@ -42,6 +42,9 @@ class AuthService extends _Service
 
     public function check()
     {
+        if(!isset($_SESSION['user']) && json_decode($_COOKIE['user'],true) !== null){
+            $_SESSION['user'] = json_decode($_COOKIE['user'],true);
+        }
         return isset($_SESSION['user']['user_id']);
     }
 
@@ -62,11 +65,10 @@ class AuthService extends _Service
                 $_SESSION['user']['user_id'] = $user->id;
                 $_SESSION['user']['mobile'] = $user->mobile;
 
-
-               setcookie('user', [
-                  'user_id'=>$user->id,
-                  'mobile'=>$user->mobile,
-               ], time() + (86400 * 30), "/"); // 86400 = 1 day *30 => 30 day
+                setcookie('user', json_encode([
+                    'user_id'=>$user->id,
+                    'mobile'=>$user->mobile,
+                ]), time() + (86400 * 30), "/"); // 86400 = 1 day *30 => 30 day
 
 
                 return [
@@ -105,6 +107,12 @@ class AuthService extends _Service
             $_SESSION['user']['user_id'] = $user->id;
             $_SESSION['user']['mobile'] = $user->mobile;
 
+            setcookie('user', json_encode([
+                'user_id'=>$user->id,
+                'mobile'=>$user->mobile,
+            ]), time() + (86400 * 30), "/"); // 86400 = 1 day *30 => 30 day
+
+
             return [
                 'type'=>'success',
                 'message'=> 'Logined',
@@ -119,7 +127,10 @@ class AuthService extends _Service
 
     public function logout()
     {
-
+        if (isset($_COOKIE['user'])) {
+            unset($_COOKIE['user']);
+            setcookie('user', '', time() - 3600, '/'); // empty value and old timestamp
+        }
         unset($_SESSION['user']);
     }
 

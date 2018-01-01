@@ -40,3 +40,4 @@ function getImageFileName($photoid,$fileType='l',$type='user_photo')
 
     return $fileName;
 }
+
