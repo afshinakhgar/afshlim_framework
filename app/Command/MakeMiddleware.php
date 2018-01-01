@@ -48,10 +48,10 @@ class MakeMiddleware extends _Command
             // $question->setMaxAttempts(2);
             $q = $helper->ask($input, $output, $question);
 
-            if ($q)) {
+            if ($q) {
                 @mkdir($directory);
             }
-            
+
             if (!is_dir($directory)) {
                 $output->writeln('<error>Couldn\'t create directory.</error>');
                 return;
