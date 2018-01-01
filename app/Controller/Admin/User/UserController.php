@@ -8,6 +8,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Core\Facades\Image;
 use Core\Facades\File;
+
+use Respect\Validation\Validator as v;
+
 class UserController extends Controller
 {
 
@@ -24,8 +27,11 @@ class UserController extends Controller
 
     public function get_info_Action(Request $request, Response $response, $args)
     {
+        // $user = UserDataAccess::getUserOneByMobile($args['mobile']);
         $user = UserDataAccess::getUserOneByMobile($args['mobile']);
-
+        if(!$user->id){
+            $user = UserDataAccess::getUserOneByUsername($args['mobile']);
+        }
         if(!$user){
             return '404';
         }
@@ -42,6 +48,9 @@ class UserController extends Controller
 
 
         $user = UserDataAccess::getUserOneByMobile($args['mobile']);
+        if(!$user->id){
+            $user = UserDataAccess::getUserOneByUsername($args['mobile']);
+        }
         $allRolesList = $this->_getAllRoles();
         $user_roleList = UserDataAccess::getUserRoles($user->id);
         $roleList = '';
@@ -114,14 +123,29 @@ class UserController extends Controller
 
         $this->flash->addMessage('success','کاربر جدید ایجاد شد');
 
-        return $response->withRedirect(Route('admin.user.edit',['mobile'=>$user->mobile]));
+        return $response->withRedirect(Route('admin.user.edit',['mobile'=>$user->username]));
     }
 
     public function put_update_Action(Request $request, Response $response, $args)
     {
         $params = $request->getParams();
-        $user = UserDataAccess::getUserOneByMobile($params['mobile']);
+        $user = UserDataAccess::getUserOneByUsername($params['username']);
+        if(!$user->id){
+            $user = UserDataAccess::getUserOneByMobile($params['mobile']);
+        }
 
+
+        $validate = $this->validator->validate($request,[
+            'username' => v::noWhitespace()->notEmpty()
+        ]);
+
+        $params = $request->getParams();
+
+        if ($validate->failed()) {
+            $this->flash->addMessage('error','ورودی مشکل دارد');
+            $userField = $params['username'] ? $params['username'] : $params['mobile'];
+            return $response->withRedirect(Route('admin.user.edit',['mobile'=>$userField]));
+        }
         foreach($params as $key=>$param){
             $fields[$key] = $param;
         }
@@ -164,9 +188,8 @@ class UserController extends Controller
         
 
         $this->flash->addMessage('success','کاربر ویرایش شد');
-
-
-        return $response->withRedirect(Route('admin.user.edit',['mobile'=>$params['mobile']]));
+        $userField = $params['username'] ? $params['username'] : $params['mobile'];
+        return $response->withRedirect(Route('admin.user.edit',['mobile'=>$userField]));
     }
 
 

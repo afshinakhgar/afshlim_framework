@@ -35,6 +35,14 @@
 
                                     <input id="mobile" name="mobile" type="tel" class="form-control" required value="">
                                 </div>
+
+                                 <div class="form-group">
+                                    <label for="mobile">نام کاربری *</label>
+
+                                    <input id="mobile" name="username" type="text" class="form-control" required value="{{$user->username}}">
+                                </div>
+
+                                
                                 <div class="form-group">
                                     <label for="mobile">ایمیل</label>
 

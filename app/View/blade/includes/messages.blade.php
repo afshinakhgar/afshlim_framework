@@ -17,7 +17,7 @@
         <ul class="alert alert-success">
             @foreach($messages['success'] as $error)
                 <ol>
-                    <strong>Error!</strong> {!! $error !!}
+                    <strong></strong> {!! $error !!}
                 </ol>
             @endforeach
         </ul>

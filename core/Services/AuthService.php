@@ -17,6 +17,9 @@ class AuthService extends _Service
 {
     public function user()
     {
+        if(isset($_Cookie['user'])){
+            $_SESSION['user'] = $_Cookie['user'];
+        }
         return UserDataAccess::getUserById(isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : 0);
     }
 
@@ -58,6 +61,14 @@ class AuthService extends _Service
             if ($this->checkPass($password,$user->password)) {
                 $_SESSION['user']['user_id'] = $user->id;
                 $_SESSION['user']['mobile'] = $user->mobile;
+
+
+               setcookie('user', [
+                  'user_id'=>$user->id,
+                  'mobile'=>$user->mobile,
+               ], time() + (86400 * 30), "/"); // 86400 = 1 day *30 => 30 day
+
+
                 return [
                     'type'=>'success',
                     'message'=> 'Logined',

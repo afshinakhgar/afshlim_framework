@@ -13,8 +13,7 @@ class Env
 {
     public function __invoke($filePath ,$key, $default = null)
     {
-
-        if (file_exists($filePath . '/.env')) {
+        if (file_exists($filePath . '.env')) {
             $_dotenv = new Dotenv($filePath );
             $_dotenv->load();
             unset($_dotenv);

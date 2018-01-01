@@ -1,10 +1,10 @@
 <?php
-$config = [
+return  [
+    'determineRouteBeforeAppMiddleware' => true,
+    'addContentLengthHeader' => true,
+    'displayErrorDetails' => true,
     'app' => [
         'log_timer' => true,
-        'displayErrorDetails' => true,
-        'addContentLengthHeader' => false,
-        'determineRouteBeforeAppMiddleware' => true,
         'debug'=>true ,
         'image' => [
             'dir' =>  $APPROOT . '/public/uploads'
@@ -27,4 +27,3 @@ $config = [
 
 ];
 
-return $config;

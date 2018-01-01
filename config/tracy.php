@@ -3,7 +3,7 @@ return [
     /* Tracy debuger*/
     'tracy' => [
         'path' => __APP_ROOT__ . 'storage/logs/debugger/',
-        'active' => 0,
+        'active' => 1,
         'showPhpInfoPanel' => 1,
         'showSlimRouterPanel' => 1,
         'showSlimEnvironmentPanel' => 1,
@@ -11,7 +11,7 @@ return [
         'showSlimResponsePanel' => 1,
         'showSlimContainer' =>1 ,
         'showEloquentORMPanel' => 1,
-        'showIdiormPanel' => 0,// > 0 mean you enable logging
+        'showIdiormPanel' => 1,// > 0 mean you enable logging
         // but show or not panel you decide in browser in panel selector
         'showDoctrinePanel' => 'em',// here also enable logging and you must enter your Doctrine container name
         // and also as above show or not panel you decide in browser in panel selector

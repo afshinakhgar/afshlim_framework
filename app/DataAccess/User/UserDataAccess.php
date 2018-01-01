@@ -45,6 +45,12 @@ class UserDataAccess extends _DataAccess
     }
 
 
+    public static function getUserOneByUsername(string $username)
+    {
+        return User::where('username',$username)->first();
+    }
+
+
     public static function createNewToken(int $userid)
     {
         $notUsedToken = self::getTokenByUsedUserid($userid);

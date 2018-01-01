@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Database\Capsule\Manager as Capsule;
 $container = $app->getContainer();
 
@@ -56,6 +57,13 @@ $container['generalErrorHandler'] = function ($container) {
     return new \Core\Handlers\GeneralErrorHandler($container);
 };
 
+// $container['errorHandler'] = function ($container) {
+//     return function ($request, $response, $exception) use ($container) {
+//         return $container['response']->withStatus(500)
+//                              ->withHeader('Content-Type', 'text/html')
+//                              ->write('Something went wrong!');
+//     };
+// };
 
 // Service factory for the ORM
 $container['validator'] = function () {
@@ -81,7 +89,6 @@ $capsule->addConnection($config['settings']['databases']['db']);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
-
 // monolog
 $container['logger'] = function ($container) {
     $settings = $container->get('settings')['app']['logger'];
@@ -90,7 +97,6 @@ $container['logger'] = function ($container) {
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
     return $logger;
 };
-
 
 // not found handler
 $container['notFoundHandler'] = function ($container) {
@@ -118,7 +124,6 @@ $container['flash'] = function () {
 //
 $container['session'] = function ($container)  {
     $setting_session_driver = $container['settings']['session']['driver'] ?? 'session';
-
     $sessionOBJ = new \Core\Services\Session();
     $session = $sessionOBJ->init($setting_session_driver) ;
     return $session;
@@ -167,7 +172,6 @@ $app->getContainer()['view']->getRenderer()->getCompiler()->directive('helloWorl
 $GLOBALS['container'] = $container;
 $GLOBALS['app'] = $app;
 $GLOBALS['settings'] = $container['settings'];
-
 
 
 
