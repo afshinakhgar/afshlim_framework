@@ -7,11 +7,11 @@ return  [
         'log_timer' => true,
         'debug'=>true ,
         'image' => [
-            'dir' =>  $APPROOT . '/public/uploads'
+            'dir' =>  __APP_ROOT__ . '/public/uploads'
         ],
         'translation' => [
             'default_lang' => 'en',
-            'translations_path' => $APPROOT . 'translations/',
+            'translations_path' => __APP_ROOT__ . 'translations/',
         ],
         'auth' => [
             '2step' => true

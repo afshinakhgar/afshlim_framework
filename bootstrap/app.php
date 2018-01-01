@@ -1,6 +1,5 @@
 <?php
 define('__APP_ROOT__',__DIR__ . '/../') ;
-$APPROOT = __APP_ROOT__;
 require  __APP_ROOT__.'bootstrap/bootstrap.php';
 require __APP_ROOT__.'vendor/autoload.php';
 
