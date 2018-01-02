@@ -8,8 +8,6 @@
 
 namespace Core\Interfaces;
 
-
-
 use Symfony\Component\Console\Command\Command;
 
 abstract class _Command extends Command

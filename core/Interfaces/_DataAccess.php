@@ -9,9 +9,22 @@
 namespace Core\Interfaces;
 
 
+use Psr\Container\ContainerInterface;
 use SlimFacades\Facade;
 
 abstract class _DataAccess
 {
+    protected $container;
 
+    function __construct(ContainerInterface $container)
+    {
+        $this->container = $container;
+    }
+
+    public function __get($property)
+    {
+        if ($this->container->{$property}) {
+            return $this->container->{$property};
+        }
+    }
 }

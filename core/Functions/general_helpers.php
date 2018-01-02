@@ -8,6 +8,7 @@ function getDirFiles($path)
     return array_diff($dir,$ex_folders);
 }
 
+
 /*folder*/
 function getImageDirName($photoid, $type = 'user_photo' ,$collectionNum =1000)
 {
@@ -22,6 +23,10 @@ function getImageDirName($photoid, $type = 'user_photo' ,$collectionNum =1000)
 
     if ($folderName) {
         $folderName = $dir;
+    }else{
+        $folderName = (int) ($photoid / $collectionNum);
+        $folderName++;
+        $folderName = $type.'/'.$folderName.'/';
     }
 
     return $folderName;
@@ -34,6 +39,9 @@ function getImageFileName($photoid,$fileType='l',$type='user_photo')
     switch ($type) {
         case 'user_photo':
             $fileName = 'user'.(int)$photoid.'-'.$fileType;
+        break;
+        case 'category_photo':
+            $fileName = 'category'.(int)$photoid.'-'.$fileType;
         break;
     }
 

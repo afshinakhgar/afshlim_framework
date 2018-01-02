@@ -16,3 +16,19 @@
 	</ul>
 </nav>
 <hr>
+
+
+<nav class="navbar navbar-expand-sm">
+	<ul class="navbar-nav">
+		<li class="badge nav-item">
+			<a href="{{route('admin.category.create')}}">ایجاد دسته</a>
+		</li>
+		<li class="badge nav-item">
+			&nbsp; <a href="{{route('admin.category.list')}}">دسته ها</a>
+		</li>
+		<li class="badge nav-item">
+			&nbsp; <a href="{{route('admin.category.create')}}">طبقه جدید</a>
+		</li>
+	</ul>
+</nav>
+<hr>

@@ -21,6 +21,19 @@ $moduleInitializer = new \Core\ModuleInitializer($app, [
 $moduleInitializer->initModules();
 
 
+
+// $container is application's DIC container.
+// Setup Paginator resolvers
+Illuminate\Pagination\Paginator::currentPageResolver(function ($pageName = 'page') use ($container) {
+
+    $page = $container->request->getParam($pageName);
+    if (filter_var($page, FILTER_VALIDATE_INT) !== false && (int) $page >= 1) {
+        return $page;
+    }
+    return 1;
+});
+
+
 // $container['mailer'] = function ($container) {
 //     $config = $container->settings['swiftmailer'];
 //     $allowedTransportTypes = ['smtp', 'sendmail'];
@@ -169,12 +182,6 @@ $app->getContainer()['view']->getRenderer()->getCompiler()->directive('helloWorl
 
 
 
-$GLOBALS['container'] = $container;
-$GLOBALS['app'] = $app;
-$GLOBALS['settings'] = $container['settings'];
-
-
-
 /*Dynamic containers in services*/
 $dir = scandir(__APP_ROOT__.'/core/Services/');
 $ex_folders = array('..', '.');
@@ -188,6 +195,37 @@ foreach($filesInServices as $service){
     };
 }
 
+
+// data access container
+$array = getDirFiles(__APP_ROOT__.'/app/DataAccess/');
+foreach($array as $key=>$item){
+    $classDataAccessFolder[$item] = getDirFiles(__APP_ROOT__.'/app/DataAccess/'.$item);
+
+}
+$result = array();
+foreach($classDataAccessFolder as $DaFolder=>$DAFile)
+{
+    foreach($DAFile as $r){
+        $dataAccessFiles[$r] = $DaFolder.'\\'.$r;
+    }
+}
+
+foreach($dataAccessFiles as $key=>$dataAccessFile){
+    $contentDataAccess = preg_replace('/.php/','',$dataAccessFile);
+    $containerDataAccess = preg_replace('/.php/','',$key);
+    $container[$containerDataAccess] = function ($container) use ($contentDataAccess){
+        $classDataAccess =  '\\App\\DataAccess\\'.$contentDataAccess ;
+        return new $classDataAccess($container);
+    };
+}
+
+
+
+
+
+$GLOBALS['container'] = $container;
+$GLOBALS['app'] = $app;
+$GLOBALS['settings'] = $container['settings'];
 
 
 

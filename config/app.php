@@ -7,7 +7,7 @@ return  [
         'log_timer' => true,
         'debug'=>true ,
         'image' => [
-            'dir' =>  __APP_ROOT__ . '/public/uploads'
+            'dir' =>  __APP_ROOT__ . 'public/uploads'
         ],
         'translation' => [
             'default_lang' => 'en',
@@ -21,8 +21,11 @@ return  [
             'level' => Monolog\Logger::DEBUG,
             'path' => __DIR__ . '/../storage/logs/app.log',
         ],
-        
-        
+        'paging' => [
+            'perpage' => '20',
+        ],
+
+
     ],
 
 ];
