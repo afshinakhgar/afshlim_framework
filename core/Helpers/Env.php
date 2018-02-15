@@ -20,7 +20,6 @@ class Env
         }else {
             return '';
         }
-
         $value = getenv($key);
 
         if ($value === false) {
@@ -41,6 +40,7 @@ class Env
                 return null;
         }
         $strLen = strlen($value);
+
         if ($strLen > 1 && $value[0] === '"' && $value[$strLen - 1] === '"') {
             return substr($value, 1, -1);
         }

@@ -16,7 +16,8 @@
         "cli-tool",
         "console",
         "phpunit",
-        "Modular"
+        "Modular",
+        "Json APi"
     ],
     "require": {
         "php": ">= 7.0.0",
@@ -46,5 +47,9 @@
             "App\\": "app/",
             "Core\\": "core/"
         }
+    },
+    "scripts": {
+        "start": "php -S localhost:7000 -t public/",
+        "test": "phpunit"
     }
 }

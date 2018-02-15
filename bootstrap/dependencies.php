@@ -175,6 +175,12 @@ $container['json'] = function ($container) {
     return new \Core\Handlers\JsonHandler();
 };
 
+$container['jsonApi'] = function ($container) {
+    return new \Core\Renderers\JsonApiRenderer();
+};
+
+
+
 $app->getContainer()['view']->getRenderer()->getCompiler()->directive('helloWorld', function(){
 
     return "<?php echo 'Hello Directive'; ?>";
