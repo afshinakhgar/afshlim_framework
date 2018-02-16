@@ -149,12 +149,13 @@ class UserController extends Controller
         foreach($params as $key=>$param){
             $fields[$key] = $param;
         }
+
         unset($fields['roles']);
 
         UserDataAccess::updateuserFieldById($user,$fields);
-
-        $attachedRoles = explode(',', rtrim($params['roles'],','));
-        // $attachRolesToUsers = 
+        $newRoles = (trim(str_replace('0','',trim($params['roles'],',')),','));
+        $attachedRoles = explode(',', $newRoles);
+        // $attachRolesToUsers =
         if($attachedRoles){
             $user->roles()->sync($attachedRoles);
             $user->save();
