@@ -155,11 +155,14 @@ class UserController extends Controller
         UserDataAccess::updateuserFieldById($user,$fields);
         $newRoles = (trim(str_replace('0','',trim($params['roles'],',')),','));
         $attachedRoles = explode(',', $newRoles);
-        // $attachRolesToUsers =
-        if($attachedRoles){
-            $user->roles()->sync($attachedRoles);
-            $user->save();
+
+        if(count($attachedRoles) == 1 && $attachedRoles[0] == ''){
+            unset($attachedRoles[0]);
+            $attachedRoles = [];
         }
+        // $attachRolesToUsers =
+        $user->roles()->sync($attachedRoles);
+        $user->save();
 
         $uploadedFiles = $request->getUploadedFiles();
         if($uploadedFiles){
