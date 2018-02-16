@@ -14,6 +14,7 @@ use Slim\Http\Response;
 
 class Controller extends _Controller
 {
+	
 //    protected $classMethods = [];
 //    protected $calledClassName = '';
 //    protected $currentFullClassName = '';

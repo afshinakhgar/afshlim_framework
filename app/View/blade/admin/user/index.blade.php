@@ -15,9 +15,11 @@
                             <div class="card-block">
                                 <h4 class="card-title"> {{$user->first_name}}  {{$user->last_name}}</h4>
                                 <div class="meta">
+                                     @if(isset($user->roles))
                                      @foreach($user->roles as $role)
                                       <i class="badge badge-warning">{{$role->display_name}}</i>
                                      @endforeach
+                                     @endif
                                 </div>
                                 <div class="card-text">
                                 {{$user->created_at}}                       

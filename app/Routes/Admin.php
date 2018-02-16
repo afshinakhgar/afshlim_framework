@@ -26,3 +26,14 @@ $app->group('/admin/role', function () use ($app , $route) {
     $app->post('/create', \App\Controller\Admin\User\RoleController::class.':post_create')->setName('admin.user.role.create');
 })->add($roleMiddleWare);
 
+
+$app->group('/admin/category', function () use ($app , $route) {
+    $app->get('/list', \App\Controller\Admin\Category\CategoryController::class.':get_index_Action')->setName('admin.category.list');
+    $app->get('/create', \App\Controller\Admin\Category\CategoryController::class.':get_create_Action')->setName('admin.category.create');
+    $app->post('/create', \App\Controller\Admin\Category\CategoryController::class.':post_create_Action')->setName('admin.category.store');
+    $app->get('/edit/{id}', \App\Controller\Admin\Category\CategoryController::class.':get_edit_Action')->setName('admin.category.edit');
+    $app->post('/update/{id}', \App\Controller\Admin\Category\CategoryController::class.':post_update_Action')->setName('admin.category.update');
+    $app->get('/delete/{id}', \App\Controller\Admin\Category\CategoryController::class.':get_delete_Action')->setName('admin.category.delete');
+})->add($roleMiddleWare);
+
+
