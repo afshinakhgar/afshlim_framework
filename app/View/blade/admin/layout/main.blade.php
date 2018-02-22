@@ -6,19 +6,38 @@
 
     @include('admin.includes.head')
 </head>
-<body>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
 
+@include('admin.includes.navigate')
+@include('admin.includes.sidebar')
 
-@include('admin.includes.header')
-<div class="container">
+<div class="content-wrapper">
 
-@include('admin.includes.dashboard')
-
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Blank page
+            <small>it all starts here</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Examples</a></li>
+            <li class="active">Blank page</li>
+        </ol>
+    </section>
 
     @include('includes.messages')
     @yield('content')
-</div>
-@include('admin.includes.foot')
 
+</div>
+
+    {{--@include('admin.includes.header')--}}
+{{--@include('admin.includes.dashboard')--}}
+@include('admin.includes.sidebar_control')
+@include('admin.includes.footer')
+@include('admin.includes.foot')
+</div>
 </body>
 </html>
